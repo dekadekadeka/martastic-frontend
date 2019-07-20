@@ -1,33 +1,61 @@
-.App {
-  text-align: center;
+:root {
+  --martaBlue: #0193cf;
+  --martaGold: #fcb117;
+  --martaOrange: #f37521;
+  --mainTransition: all 0.3s linear;
+  --mainSpacing: 3px;
+  --lightShadow: 2px 5px 3px 0px rgba(0, 0, 0, 0.5);
+  --darkShadow: 4px 10px 5px 0px rgba(0, 0, 0, 0.5);
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+body{
+  font-family: 'Roboto', sans-serif;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+h1{
+  font-family: 'Vampiro One', cursive;
+}
+/* begin navbar */
+.navbar{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));
+}
+
+.nav-links{
+  list-style-type: none;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-around;
+  font-size: 1.25em;
 }
 
-.App-link {
-  color: #61dafb;
+.nav-links a{
+  text-decoration: none;
+  color: #fff;
+  transition: var(--mainTransition);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.blue a:hover{
+  color: var(--martaBlue);
+  text-shadow: 0 0 5px rgb(50, 50, 50);
 }
+
+.gold a:hover{
+  color: var(--martaGold);
+  text-shadow: 0 0 5px rgb(50, 50, 50);
+}
+
+.orange a:hover{
+  color: var(--martaOrange);
+  text-shadow: 0 0 5px rgb(50, 50, 50);
+}
+/* end navbar */
+/* home */
+.home {
+  background-image: url("https://www.wjbf.com/wp-content/uploads/sites/47/2018/08/marta20train20in20atlanta20generic20pic_1534834593531.jpg_52549029_ver1.0.jpg");
+  min-height: 100vh;
+  background-size: cover;
+}
+/* end home */
