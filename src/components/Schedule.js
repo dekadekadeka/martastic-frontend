@@ -19,8 +19,7 @@ class Schedule extends Component {
         ))
         console.log(this.props.trains)
         return (
-            <div>
-                I am the train schedule choo choo
+            <div className="schedule">
                 {allTrains}
             </div>
         )

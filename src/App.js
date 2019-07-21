@@ -31,7 +31,6 @@ export default class App extends Component {
         <Route exact path="/login" component={Login} />
         <Route exact path="/about" component={About} />
         <Route exact path="/signup" component={Signup} />
-
         {/* <Route exact path="/profile"
         render={() => (loggedIn ? <Profile /> : <Redirect to="/login" />)} /> */}
         <Route component={Error} />
