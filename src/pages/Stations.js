@@ -6,7 +6,7 @@ export default class Stations extends Component {
         return (
             <div>
                 All Stations
-                <Schedule />
+                
             </div>
         )
     }

@@ -55,6 +55,21 @@ h1{
 /* home */
 .pic-info {
   position: absolute;
+  top: 80vh;
+  left: 5vh;
+}
+
+.pic-info h1{
+  color: #fff;
+  font-size: 50px;
+  margin-bottom: 0%;
+  text-shadow: 2px 2px 4px #000000;
+}
+
+.pic-info h3{
+  color: #fff;
+  margin-top: 0%;
+  text-shadow: 2px 2px 4px #000000;
 }
 /* end home */
 /* error */

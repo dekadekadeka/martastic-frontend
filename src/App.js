@@ -4,6 +4,7 @@ import Navbar from './components/Navbar'
 
 import Home from './pages/Home'
 import Users from './pages/Users'
+import Schedule from './components/Schedule'
 import Stations from './pages/Stations'
 import SingleStation from './pages/SingleStation'
 import Pics from './pages/Pics'
@@ -23,6 +24,7 @@ export default class App extends Component {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/users/" component={Users} />
+        <Route exact path="/schedule/" component={Schedule} />
         <Route exact path="/stations/" component={Stations} />
         <Route exact path="/stations/:slug" component={SingleStation} />
         <Route exact path="/pics/" component={Pics} />
