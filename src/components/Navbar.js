@@ -14,7 +14,6 @@ class Navbar extends Component {
     }
 
     render() {
-        console.log(this.props.currentUser.username)
         return (
             <div className="navbar">
                 <ul className="nav-links">
