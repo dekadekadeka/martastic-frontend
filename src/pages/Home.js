@@ -1,25 +1,28 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchPics } from '../actions/picActions';
+import { randomPic } from '../actions/picActions';
 import HomeDiv from '../components/HomeDiv'
 
 
 class Home extends Component {
     componentDidMount(){
-        this.props.fetchPics()
+        this.props.randomPic()
     }
 
     render() {
         return (
-            <HomeDiv>
-                the big div works
+            <HomeDiv img={this.props.pic.pic_url}>
+                <div className="pic-info">
+                    <h1>{{...this.props.pic.station}.name}</h1>
+                    <h3>Photo by {{...this.props.pic.user}.name}</h3>
+                </div>
             </HomeDiv>
         )
     }
 }
 
 const mapStateToProps = state => ({
-    pics: state.pics.pics
+    pic: state.pic.pic
 })
 
-export default connect(mapStateToProps, {fetchPics})(Home)
+export default connect(mapStateToProps, {randomPic})(Home)

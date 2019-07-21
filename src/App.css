@@ -53,12 +53,9 @@ h1{
 }
 /* end navbar */
 /* home */
-/* .home {
-  background-image: url("https://www.wjbf.com/wp-content/uploads/sites/47/2018/08/marta20train20in20atlanta20generic20pic_1534834593531.jpg_52549029_ver1.0.jpg");
-  min-height: 100vh;
-  background-size: cover;
-  background-position: center;
-} */
+.pic-info {
+  position: absolute;
+}
 /* end home */
 /* error */
 .error {

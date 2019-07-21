@@ -4,5 +4,6 @@ import picReducer from './picReducer';
 
 export default combineReducers({
     schedule: scheduleReducer,
-    pics: picReducer
+    pics: picReducer,
+    pic: picReducer
 })

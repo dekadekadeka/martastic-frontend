@@ -1,7 +1,8 @@
-import { FETCH_PICS } from '../actions/types'
+import { FETCH_PICS, RANDOM_PIC } from '../actions/types'
 
 const initialState = {
-    pics: []
+    pics: [],
+    pic: {}
 }
 
 export default function(state = initialState, action){
@@ -10,6 +11,11 @@ export default function(state = initialState, action){
             return {
                 ...state,
                 pics: action.payload
+            }
+        case RANDOM_PIC:
+            return {
+                ...state,
+                pic: action.payload
             }
         default:
             return state
