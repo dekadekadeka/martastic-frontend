@@ -10,6 +10,7 @@ import Pics from './pages/Pics'
 import Login from './pages/Login'
 import Error from './pages/Error'
 import Profile from './pages/Profile'
+import Signup from './pages/Signup'
 import About from './pages/About'
 
 import "./App.css"
@@ -27,6 +28,8 @@ export default class App extends Component {
         <Route exact path="/pics/" component={Pics} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/about" component={About} />
+        <Route exact path="/signup" component={Signup} />
+
         {/* <Route exact path="/profile"
         render={() => (loggedIn ? <Profile /> : <Redirect to="/login" />)} /> */}
         <Route component={Error} />
