@@ -4,9 +4,9 @@ import Schedule from '../components/Schedule'
 export default class Stations extends Component {
     render() {
         return (
-            <div>
+            <div className="stations">
                 All Stations
-                <Schedule />
+                
             </div>
         )
     }

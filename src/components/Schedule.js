@@ -8,12 +8,6 @@ class Schedule extends Component {
         this.props.fetchSchedule()
     }
 
-    // componentWillReceiveProps(nextProps){
-    //     if(nextProps.newPost){
-    //         this.props.posts.unshift(nextProps.newPost)
-    //     }
-    // }
-
     render() {
         const allTrains = this.props.trains.map(train => (
             <div>
@@ -25,10 +19,7 @@ class Schedule extends Component {
         ))
         console.log(this.props.trains)
         return (
-            <div>
-                <br />
-                <br />
-                I am the train schedule choo choo
+            <div className="schedule">
                 {allTrains}
             </div>
         )

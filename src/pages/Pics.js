@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 export default class Pics extends Component {
     render() {
         return (
-            <div>
+            <div className="all-pics">
                 Pics
             </div>
         )

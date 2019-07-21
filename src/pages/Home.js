@@ -1,11 +1,28 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { randomPic } from '../actions/picActions';
+import HomeDiv from '../components/HomeDiv'
 
-export default class Home extends Component {
+
+class Home extends Component {
+    componentDidMount(){
+        this.props.randomPic()
+    }
+
     render() {
         return (
-            <div className="home">
-                
-            </div>
+            <HomeDiv img={this.props.pic.pic_url}>
+                <div className="pic-info">
+                    <h1>{{...this.props.pic.station}.name}</h1>
+                    <h3>Photo by {{...this.props.pic.user}.name}</h3>
+                </div>
+            </HomeDiv>
         )
     }
 }
+
+const mapStateToProps = state => ({
+    pic: state.pic.pic
+})
+
+export default connect(mapStateToProps, {randomPic})(Home)
