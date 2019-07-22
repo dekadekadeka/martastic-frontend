@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 
-export default class Profile extends Component {
+
+class Profile extends Component {
     render() {
+        console.log(this.props.currentUser)
         return (
             <div className="profile">
                 Profile
@@ -9,3 +11,6 @@ export default class Profile extends Component {
         )
     }
 }
+
+
+export default Profile

@@ -17,12 +17,13 @@ class Login extends Component {
 
   handleSubmit = event => {
     event.preventDefault()
-    this.props.userLoginFetch(this.state)
+    this.props.userLoginFetch(this.state, this.props.history)
   }
 
   render() {
     return (
         <div className="log-in">
+        {this.props.redirect}
       <form onSubmit={this.handleSubmit}>
         <h1>Login</h1>
 
@@ -53,7 +54,7 @@ class Login extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  userLoginFetch: userInfo => dispatch(userLoginFetch(userInfo))
-})
+  userLoginFetch: (userInfo, history) => dispatch(userLoginFetch(userInfo, history))
+});
 
 export default connect(null, mapDispatchToProps)(Login);

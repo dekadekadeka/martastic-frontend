@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Route, Switch, Redirect } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import {connect} from 'react-redux';
 import {getProfileFetch} from './actions/authActions';
 
@@ -18,6 +18,8 @@ import Signup from './pages/Signup'
 import About from './pages/About'
 
 import "./App.css"
+
+// const loggedIn = !!localStorage.getItem("token");
 
 class App extends Component {
 
@@ -40,7 +42,6 @@ class App extends Component {
         <Route exact path="/about" component={About} />
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/profile" component={Profile} />
-        {/* // render={() => (loggedIn ? <Profile /> : <Redirect to="/login" />)} /> */}
         <Route component={Error} />
         </Switch>
     </div>
