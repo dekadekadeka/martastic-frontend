@@ -6,6 +6,5 @@ import authReducer from './authReducer'
 export default combineReducers({
     schedule: scheduleReducer,
     pics: picReducer,
-    pic: picReducer,
     currentUser: authReducer,
 })

@@ -18,7 +18,7 @@ class Navbar extends Component {
             <div className="navbar">
                 <ul className="nav-links">
                 {this.props.currentUser.username ? 
-                <Link to="/profile">My Profile</Link>
+                <Link to="/profile" className="profile-nav">My Profile</Link>
                 : null }
                 <span className="blue"><Link to="/">Home</Link></span>
                 <span className="blue"><Link to="/schedule">Schedule</Link></span>
