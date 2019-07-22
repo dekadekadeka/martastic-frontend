@@ -22,7 +22,7 @@ class Home extends Component {
 }
 
 const mapStateToProps = state => ({
-    pic: state.pic.pic
+    pic: state.pics.pic
 })
 
 export default connect(mapStateToProps, {randomPic})(Home)

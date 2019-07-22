@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 import { Route, Switch } from 'react-router-dom'
-import {connect} from 'react-redux';
-import {getProfileFetch} from './actions/authActions';
 
 import Navbar from './components/Navbar'
 
@@ -19,13 +17,7 @@ import About from './pages/About'
 
 import "./App.css"
 
-// const loggedIn = !!localStorage.getItem("token");
-
 class App extends Component {
-
-  componentDidMount = () => {
-    this.props.getProfileFetch()
-  }
 
   render() {
   return (
@@ -49,8 +41,4 @@ class App extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  getProfileFetch: () => dispatch(getProfileFetch())
-})
-
-export default connect(null, mapDispatchToProps)(App);
+export default App;
