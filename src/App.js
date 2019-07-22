@@ -19,7 +19,7 @@ import About from './pages/About'
 
 import "./App.css"
 
-const loggedIn = !!localStorage.getItem("token");
+// const loggedIn = !!localStorage.getItem("token");
 
 class App extends Component {
 
@@ -28,7 +28,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(loggedIn)
   return (
     <div>
       <Navbar />
