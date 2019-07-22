@@ -9,6 +9,7 @@ import Schedule from './components/Schedule'
 import Stations from './pages/Stations'
 import SingleStation from './pages/SingleStation'
 import Pics from './pages/Pics'
+import SinglePic from './pages/SinglePic'
 import Login from './pages/Login'
 import Error from './pages/Error'
 import Profile from './pages/Profile'
@@ -30,6 +31,7 @@ class App extends Component {
         <Route exact path="/stations/" component={Stations} />
         <Route exact path="/stations/:slug" component={SingleStation} />
         <Route exact path="/pics/" component={Pics} />
+        <Route exact path="/pics/:id" component={SinglePic} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/about" component={About} />
         <Route exact path="/signup" component={Signup} />

@@ -139,10 +139,54 @@ h3{
 }
 /* end single station */
 /* all pics */
+.pic {
+  box-shadow: var(--lightShadow);
+  transition: var(--mainTransition);
+}
+.pic:hover {
+  box-shadow: var(--darkShadow);
+}
+.img-container {
+  position: relative;
+}
+.img-container img {
+  width: 100%;
+  height: 12rem;
+  display: block;
+  transition: var(--mainTransition);
+}
 .all-pics{
   margin-top: 10vh;
 }
+.picslist {
+  padding: 5rem 0;
+}
+.picslist-center {
+  width: 80vw;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  grid-row-gap: 2rem;
+  grid-column-gap: 30px;
+}
+
+@media screen and (min-width: 776px) {
+  .picslist-center {
+    width: 90vw;
+  }
+}
+@media screen and (min-width: 992px) {
+  .picslist-center {
+    width: 95vw;
+    max-width: 1170px;
+  }
+}
 /* end all pics */
+/* single pic */
+.single-pic{
+  margin-top: 10vh;
+}
+/* end single pic */
 /* log in */
 .log-in{
   margin-top: 10vh;
