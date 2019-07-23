@@ -19,7 +19,7 @@ class Home extends Component {
             </HomeDiv>
         )
     }
-}
+} 
 
 const mapStateToProps = state => ({
     pic: state.pics.pic

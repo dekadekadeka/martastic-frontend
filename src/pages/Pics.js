@@ -15,7 +15,7 @@ class Pics extends Component {
             <div className="img-container">
                 <Link to={`/pics/${pic.id}`}>
                 <img src={pic.pic_url || defaultImg} 
-                alt={{...pic}.station.name} />
+                alt={{...pic}.station.name} key={pic.id}/>
                 </Link>
             </div>
         </article>
