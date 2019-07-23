@@ -1,24 +1,13 @@
-import { FETCH_PICS, RANDOM_PIC } from './types';
-import { sample } from 'lodash';
+import { FETCH_PICS} from './types';
 
-export const fetchPics = () => dispatch => {
-    fetch("http://localhost:3000/pics")
-    .then(resp => resp.json())
-    .then(pics =>
+
+export const fetchPics = () => {
+    return async dispatch => {
+        const resp = await fetch("http://localhost:3000/pics");
+        const pics = await resp.json();
         dispatch({
             type: FETCH_PICS,
             payload: pics
         })
-    );
-}
-
-export const randomPic = () => dispatch => {
-    fetch("http://localhost:3000/pics")
-    .then(resp => resp.json())
-    .then(pic => 
-        dispatch({
-            type: RANDOM_PIC,
-            payload: sample(pic)
-        })
-    );
+    }
 }

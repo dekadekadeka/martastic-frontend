@@ -1,10 +1,9 @@
-import { FETCH_PICS, RANDOM_PIC } from '../actions/types'
+import { FETCH_PICS } from '../actions/types'
+import { sample } from 'lodash';
 
 const initialState = {
-    pics: [],
-    pic: {}
+    pics: []
 }
-
 export default function(state = initialState, action){
     switch(action.type){
         case FETCH_PICS:
@@ -12,12 +11,10 @@ export default function(state = initialState, action){
                 ...state,
                 pics: action.payload
             }
-        case RANDOM_PIC:
-            return {
-                ...state,
-                pic: action.payload
-            }
         default:
             return state
-    }
+        }
+}
+export const getRandomPic = (state) => {
+    return sample(state.pics.pics)
 }

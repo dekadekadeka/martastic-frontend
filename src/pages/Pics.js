@@ -5,10 +5,6 @@ import defaultImg from '../images/404.jpg'
 import { Link } from 'react-router-dom'
 
 class Pics extends Component {
-    componentDidMount(){
-        this.props.fetchPics()
-    }
-
     render() {
         const allPics = this.props.pics.map(pic => (
         <article className="pic">

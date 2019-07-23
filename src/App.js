@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import {fetchPics} from './actions/picActions'
+
 import { Route, Switch } from 'react-router-dom'
 
 import Navbar from './components/Navbar'
@@ -19,6 +22,10 @@ import About from './pages/About'
 import "./App.css"
 
 class App extends Component {
+
+componentDidMount(){
+    this.props.fetchPics()
+}
 
   render() {
   return (
@@ -43,4 +50,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect(null, {fetchPics})(App);
