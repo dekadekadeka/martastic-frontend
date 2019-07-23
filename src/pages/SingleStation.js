@@ -1,11 +1,40 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux';
 
-export default class SingleStation extends Component {
+class SingleStation extends Component {
+
+    componentDidMount(){
+        this.props.single_station(this.props.match.params.slug)
+    }
+
     render() {
+        if(this.props.selected === undefined) return null
+        console.log(this.props.selected)
         return (
             <div className="single-station">
-                Single Station
+                {this.props.selected.name}
             </div>
         )
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        selected: state.stations.selected
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        single_station: (slug) => {
+            dispatch({
+                type: 'SINGLE_STATION',
+                data: {
+                    slug: slug
+                }
+            })
+        } 
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(SingleStation)

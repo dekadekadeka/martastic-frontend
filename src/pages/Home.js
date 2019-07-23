@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { randomPic } from '../actions/picActions';
-import HomeDiv from '../components/HomeDiv'
+import { getRandomPic } from '../reducers/picReducer';
+import HomeDiv from '../components/HomeDiv';
 
 
 class Home extends Component {
-    componentDidMount(){
-        this.props.randomPic()
-    }
 
-    render() {
+
+    render(){
+        if(this.props.pic === undefined) return null
         return (
             <HomeDiv img={this.props.pic.pic_url}>
                 <div className="pic-info">
@@ -19,10 +18,13 @@ class Home extends Component {
             </HomeDiv>
         )
     }
+
 }
 
-const mapStateToProps = state => ({
-    pic: state.pics.pic
-})
+const mapStateToProps = (state) => {
+    return {
+        pic: getRandomPic(state)
+    }
+}
 
-export default connect(mapStateToProps, {randomPic})(Home)
+export default connect(mapStateToProps, {getRandomPic})(Home)

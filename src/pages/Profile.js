@@ -2,20 +2,15 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux';
 import {getProfileFetch} from '../actions/authActions';
 import genericProfile from '../images/generic_profile.jpg'
-import { Item } from 'semantic-ui-react'
 
 class Profile extends Component {
-
-componentDidMount = () => {
-    this.props.getProfileFetch()
-}
 
     render() {
         console.log(this.props.currentUser)
         return (
             <div className="profile">
                 <h1>My Profile</h1>
-                    <Item.Group>
+                    {/* <Item.Group>
                     <Item>
                     <Item.Image size='medium' src={this.props.currentUser.profile_pic_url? 
                         this.props.currentUser.profile_pic_url : genericProfile} />
@@ -29,7 +24,7 @@ componentDidMount = () => {
                         </Item.Description>
                     </Item.Content>
                     </Item>
-            </Item.Group>
+            </Item.Group> */}
             </div>
         )
     }

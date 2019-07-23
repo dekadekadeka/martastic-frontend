@@ -5,17 +5,13 @@ import defaultImg from '../images/404.jpg'
 import { Link } from 'react-router-dom'
 
 class Pics extends Component {
-    componentDidMount(){
-        this.props.fetchPics()
-    }
-
     render() {
         const allPics = this.props.pics.map(pic => (
         <article className="pic">
             <div className="img-container">
                 <Link to={`/pics/${pic.id}`}>
                 <img src={pic.pic_url || defaultImg} 
-                alt={{...pic}.station.name} />
+                alt={{...pic}.station.name} key={pic.id}/>
                 </Link>
             </div>
         </article>

@@ -27,6 +27,7 @@ h3{
   left: 0;
   width: 100%;
   background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0));
+  z-index: 1;
 }
 
 .nav-links{
