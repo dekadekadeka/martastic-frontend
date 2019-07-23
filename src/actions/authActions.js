@@ -1,5 +1,3 @@
-import { LOGIN_USER, LOGOUT_USER } from './types';
-
 export const createUser = user => {
     return async dispatch => {
     const resp = await fetch("http://localhost:3000/users", {
@@ -74,10 +72,10 @@ export function userLoginFetch(user, history){
 }
 
 const loginUser = userObj => ({
-    type: LOGIN_USER,
+    type: 'LOGIN_USER',
     payload: userObj
 })
 
 export const logoutUser = () => ({
-    type: LOGOUT_USER
+    type: 'LOGOUT_USER'
 })

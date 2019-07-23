@@ -5,10 +5,6 @@ import genericProfile from '../images/generic_profile.jpg'
 
 class Profile extends Component {
 
-componentDidMount = () => {
-    this.props.getProfileFetch()
-}
-
     render() {
         console.log(this.props.currentUser)
         return (
