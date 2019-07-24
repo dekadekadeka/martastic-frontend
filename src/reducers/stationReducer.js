@@ -1,6 +1,5 @@
 const initialState ={
-    stations: [],
-    selected: {}
+    stations: []
 }
 
 export default function(state = initialState, action){
@@ -10,13 +9,13 @@ export default function(state = initialState, action){
                 ...state,
                 stations: action.payload
             }
-        case 'SINGLE_STATION':
-            const selected = state.stations.find(station =>
-                station.slug === action.data.slug)
-            return {
-                ...state,
-                selected: selected
-            }
+        // case 'SINGLE_STATION':
+        //     const selected = state.stations.find(station =>
+        //         station.slug === action.data.slug)
+        //     return {
+        //         ...state,
+        //         selected: selected
+        //     }
         default:
             return state
     }

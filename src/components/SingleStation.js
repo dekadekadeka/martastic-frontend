@@ -1,9 +1,16 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
+import defaultImg from '../images/404.jpg';
+import { fetchStations } from '../actions/stationActions';
 
-class SinglePic extends Component {
+class SingleStation extends Component {
+
+    componentDidMount(){
+        this.props.fetchStations()
+    }
+
     render() {
-        const allComments = this.props.pic.comments.map(comment => (
+        const allComments = this.props.station.comments.map(comment => (
             <div className="comment">
     <a className="avatar">
       <img src={{...comment.user}.profile_pic_url} alt="Yay Marta"/>
@@ -19,10 +26,10 @@ class SinglePic extends Component {
     </div>
   </div>
         ))
-
         return (
-            <div className="single-pic">
-                <img className="big-pic" src={this.props.pic.pic_url} alt=""/>
+            <div className="single-station">
+                {this.props.station.name}
+                <img className="big-pic" src={{...this.props.station.pics[0]}.pic_url ? {...this.props.station.pics[0]}.pic_url : defaultImg } alt=""/>
             
             <div className="ui comments">
             <h3 className="ui dividing header">Comments</h3>
@@ -38,18 +45,18 @@ class SinglePic extends Component {
                 </div>
             </form>
             </div>
-        </div>
+            </div>
         )
     }
 }
 
 function mapStateToProps(state, ownProps){
-    let pic = {id:'', user_id:'', station_id:'', pic_url:'', rating:'', user:{}, station: {}, comments:[]};
-    const picId = ownProps.match.params.id;
-    if(state.pics.pics.length > 0){
-        pic = Object.assign({}, state.pics.pics.find(pic => pic.id === parseInt(picId)))
+    let station = {id:'', name:'', slug:'', rating:'', pics:[], users: [], comments:[]};
+    const slug = ownProps.match.params.slug;
+    if(state.stations.stations.length > 0){
+        station = Object.assign({}, state.stations.stations.find(station => station.slug === slug))
     }
-    return {pic: pic}
+    return {station: station}
 }
 
-export default connect(mapStateToProps)(SinglePic)
+export default connect(mapStateToProps, { fetchStations })(SingleStation)
