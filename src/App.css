@@ -137,6 +137,8 @@ h3{
 /* single station */
 .single-station{
   margin-top: 10vh;
+  margin-left: 10vh;
+  margin-right: 10vh;
 }
 /* end single station */
 /* all pics */
@@ -206,6 +208,8 @@ h3{
 /* profile */
 .profile{
   margin-top: 10vh;
+  margin-left: 10vh;
+  margin-right: 10vh;
 }
 .header{
     font-family: 'Roboto', sans-serif !important ; 

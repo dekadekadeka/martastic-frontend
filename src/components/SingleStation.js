@@ -28,7 +28,7 @@ class SingleStation extends Component {
         ))
         return (
             <div className="single-station">
-                {this.props.station.name}
+                <h1>{this.props.station.name}</h1>
                 <img className="big-pic" src={{...this.props.station.pics[0]}.pic_url ? {...this.props.station.pics[0]}.pic_url : defaultImg } alt=""/>
             
             <div className="ui comments">

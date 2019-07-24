@@ -10,21 +10,29 @@ class Profile extends Component {
         return (
             <div className="profile">
                 <h1>My Profile</h1>
-                    {/* <Item.Group>
-                    <Item>
-                    <Item.Image size='medium' src={this.props.currentUser.profile_pic_url? 
-                        this.props.currentUser.profile_pic_url : genericProfile} />
-                    <Item.Content>
-                        <Item.Header>{this.props.currentUser.name}</Item.Header>
-                        <Item.Meta>About Me</Item.Meta>
-                        <Item.Description>
-                        <p class="bio">{this.props.currentUser.bio}</p>
-                        <p>Location: {this.props.currentUser.location}</p>
-                        <p>Home Station: {this.props.currentUser.home_station}</p>
-                        </Item.Description>
-                    </Item.Content>
-                    </Item>
-            </Item.Group> */}
+                <div className="ui items">
+                <div className="item">
+                    <div className="image">
+                    <img src={this.props.currentUser.profile_pic_url ? this.props.currentUser.profile_pic_url : genericProfile} 
+                    alt="profile pic"/>
+                    </div>
+                    <div className="content">
+                    <a className="header">{this.props.currentUser.name}</a>
+                    <div className="meta">
+                        <span>About Me</span>
+                    </div>
+                    <div className="description">
+                        <p>{this.props.currentUser.bio}</p>
+                    </div>
+                    <div className="extra">
+                    <ul>
+                            <li>Location: {this.props.currentUser.location}</li>
+                            <li>Home Station:  {this.props.currentUser.home_station}</li>
+                        </ul>
+                    </div>
+                    </div>
+                </div>
+                </div>
             </div>
         )
     }
