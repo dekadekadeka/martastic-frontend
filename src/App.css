@@ -133,6 +133,42 @@ h3{
 .stations{
   margin-top: 10vh;
 }
+.station-pic {
+  box-shadow: var(--lightShadow);
+  transition: var(--mainTransition);
+}
+.station-pic:hover {
+  box-shadow: var(--darkShadow);
+}
+.img-container-stations {
+  position: relative;
+}
+.img-container-stations img {
+  width: 100%;
+  height: 12rem;
+  display: block;
+  transition: var(--mainTransition);
+}
+.img-container-stations:hover {
+  background: rgba(255, 255, 255, 0.8);
+}
+.img-container-stations:hover img {
+  opacity: 0.3;
+}
+.station-text{
+  -webkit-animation: colorchange 5s infinite;
+  animation: colorchange 5s infinite;
+  font-size: 4rem;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: scale(0);
+  transition: all 0.3s linear;
+  z-index: 1;
+}
+.img-container-stations:hover .station-text {
+  transform: translate(-50%, -50%) scale(1);
+}
 /* end stations */
 /* single station */
 .single-station{
