@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { fetchSchedule } from '../actions/scheduleActions'
 
 class Schedule extends Component {
-    componentWillMount(){
+    componentDidMount(){
         this.props.fetchSchedule()
     }
 
