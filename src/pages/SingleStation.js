@@ -8,7 +8,6 @@ class SingleStation extends Component {
     }
 
     render() {
-        if(this.props.selected === undefined) return null
         console.log(this.props.selected)
         return (
             <div className="single-station">
@@ -20,7 +19,7 @@ class SingleStation extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        selected: state.stations.selected
+        selected: state.stations.selected || {}
     }
 }
 
