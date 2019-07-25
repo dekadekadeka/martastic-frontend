@@ -23,28 +23,30 @@ class Login extends Component {
   render() {
     return (
         <div className="log-in">
-        {this.props.redirect}
-      <form onSubmit={this.handleSubmit}>
         <h1>Login</h1>
-
+        {this.props.redirect}
+      <form onSubmit={this.handleSubmit}
+      className="ui large form">
+        <div className="two fields">
+        <div class="field">
         <label>Username</label>
         <input
           name='username'
           placeholder='Username'
           value={this.state.username}
-          onChange={this.handleChange}
-          /><br/>
-
+          onChange={this.handleChange}/>
+          </div>
+          <div class="field">
         <label>Password</label>
         <input
           type='password'
           name='password'
           placeholder='Password'
           value={this.state.password}
-          onChange={this.handleChange}
-          /><br/>
-
-        <input type='submit'/>
+          onChange={this.handleChange}/>
+          </div>
+        </div>
+        <div class="ui submit button">Submit</div>
       </form>
       <hr />
       <Signup />
