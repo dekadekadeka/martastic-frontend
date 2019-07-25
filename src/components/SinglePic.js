@@ -5,13 +5,13 @@ class SinglePic extends Component {
     render() {
         const allComments = this.props.pic.comments.map(comment => (
             <div className="comment">
-    <a className="avatar">
+    <span className="avatar">
       <img src={{...comment.user}.profile_pic_url} alt="Yay Marta"/>
-    </a>
+    </span>
     <div className="content">
-      <a className="author">{{...comment.user}.name}</a>
+      <span className="author">{{...comment.user}.name}</span>
       <div className="metadata">
-        <span className="date">{{...comment.user}.location}</span>
+        <span className="date">{{...comment.user}.home_station}</span>
       </div>
       <div className="text">
         {comment.content}

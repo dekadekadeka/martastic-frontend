@@ -2,23 +2,23 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import defaultImg from '../images/404.jpg';
 import { fetchStations } from '../actions/stationActions';
+import CommentForm from '../components/CommentForm'
 
 class SingleStation extends Component {
-
+  
     componentDidMount(){
         this.props.fetchStations()
     }
-
     render() {
         const allComments = this.props.station.comments.map(comment => (
             <div className="comment">
-    <a className="avatar">
+    <span className="avatar">
       <img src={{...comment.user}.profile_pic_url} alt="Yay Marta"/>
-    </a>
+    </span>
     <div className="content">
-      <a className="author">{{...comment.user}.name}</a>
+      <span className="author">{{...comment.user}.name}</span>
       <div className="metadata">
-        <span className="date">{{...comment.user}.location}</span>
+        <span className="date">{{...comment.user}.home_station}</span>
       </div>
       <div className="text">
         {comment.content}
@@ -28,7 +28,7 @@ class SingleStation extends Component {
         ))
         return (
             <div className="single-station">
-                {this.props.station.name}
+                <h1>{this.props.station.name}</h1>
                 <img className="big-pic" src={{...this.props.station.pics[0]}.pic_url ? {...this.props.station.pics[0]}.pic_url : defaultImg } alt=""/>
             
             <div className="ui comments">
@@ -36,14 +36,7 @@ class SingleStation extends Component {
 
             {allComments}
 
-            <form className="ui reply form">
-                <div className="field">
-                <textarea></textarea>
-                </div>
-                <div className="ui blue labeled submit icon button">
-                <i className="icon edit"></i> Add Reply
-                </div>
-            </form>
+            <CommentForm station={this.props.station} type={"Station"}/>
             </div>
             </div>
         )
