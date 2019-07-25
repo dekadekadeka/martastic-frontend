@@ -17,7 +17,7 @@ class Profile extends Component {
                     alt="profile pic"/>
                     </div>
                     <div className="content">
-                    <a className="header">{this.props.currentUser.name}</a>
+                    <span className="header">{this.props.currentUser.name}</span>
                     <div className="meta">
                         <span>About Me</span>
                     </div>

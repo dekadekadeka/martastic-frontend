@@ -46,7 +46,7 @@ class Login extends Component {
           onChange={this.handleChange}/>
           </div>
         </div>
-        <div class="ui submit button">Submit</div>
+        <input type='submit' className="ui submit button"/>
       </form>
       <hr />
       <Signup />
