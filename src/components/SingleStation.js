@@ -36,7 +36,7 @@ class SingleStation extends Component {
 
             {allComments}
 
-            <CommentForm station={this.props.station} type={"Station"}/>
+            <CommentForm item={this.props.station} type={"Station"} id={this.props.station.id}/>
             </div>
             </div>
         )

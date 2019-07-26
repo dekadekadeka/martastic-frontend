@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
+import CommentForm from './CommentForm'
 
 class SinglePic extends Component {
     render() {
@@ -29,14 +30,7 @@ class SinglePic extends Component {
 
             {allComments}
 
-            <form className="ui reply form">
-                <div className="field">
-                <textarea></textarea>
-                </div>
-                <div className="ui blue labeled submit icon button">
-                <i className="icon edit"></i> Add Reply
-                </div>
-            </form>
+            <CommentForm item={this.props.pic} type={"Pic"} id={this.props.pic.id}/>
             </div>
         </div>
         )
