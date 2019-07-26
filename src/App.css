@@ -201,7 +201,7 @@ h3{
   transition: var(--mainTransition);
 }
 .all-pics{
-  margin-top: 10vh;
+  margin: 10vh;
 }
 .picslist {
   padding: 5rem 0;

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import PicList from '../components/PicList'
+import PicForm from'../components/PicForm'
 
 class Pics extends Component {
     render() {
@@ -12,6 +13,8 @@ class Pics extends Component {
                     <PicList pics={this.props.pics} />
                     </div>
                 </section>
+                <h1>Add A Pic</h1>
+                <PicForm />
             </div>
         )
     }

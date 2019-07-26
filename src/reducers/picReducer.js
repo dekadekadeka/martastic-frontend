@@ -1,7 +1,8 @@
 import { sample } from 'lodash';
 
 const initialState = {
-    pics: []
+    pics: [],
+    newPic: {}
 }
 export default function(state = initialState, action){
     switch(action.type){
@@ -9,6 +10,11 @@ export default function(state = initialState, action){
             return {
                 ...state,
                 pics: action.payload
+            }
+        case 'NEW_PIC':
+            return {
+                ...state,
+                newPic: action.payload
             }
         default:
             return state
