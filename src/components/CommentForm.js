@@ -4,10 +4,7 @@ import { createComment } from '../actions/commentActions'
 
 class CommentForm extends Component {
     state = {
-        user: {},
-        commentable_type: '',
         content: '',
-        commentable: {}
     }
 
     onChange = (e) => {
@@ -20,16 +17,12 @@ class CommentForm extends Component {
             user_id: this.props.currentUser.id,
             commentable_type: this.props.type,
             content: this.state.content,
-            commentable: {
-                type: this.props.type.toLowerCase(),
-                [this.props.type.toLowerCase()]: this.props.station
-            }
+            commentable_id: this.props.id
         }
         this.props.createComment(comment)
         console.log("submit", comment)
     }
     render() {
-        console.log(this.props.station)
         return (
             <form className="ui reply form" onSubmit={this.onSubmit}>
                 <div className="field">
