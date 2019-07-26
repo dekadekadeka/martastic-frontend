@@ -1,4 +1,4 @@
-export const createUser = user => {
+export const createUser = (user, history) => {
     return async dispatch => {
     const resp = await fetch("http://localhost:3000/users", {
             method: "POST",
@@ -17,6 +17,7 @@ export const createUser = user => {
         else {
             localStorage.setItem("token", data.jwt);
             dispatch(loginUser(data.user));
+            history.push("/profile")
         }
     }
 }
@@ -38,8 +39,8 @@ export function userLoginFetch(user, history){
               // This assumes your Rails API will return a JSON object with a key of
               // 'message' if there is an error
             } else {
-            localStorage.setItem("token", data.jwt)
-            dispatch(loginUser(data.user))
+            localStorage.setItem("token", data.jwt);
+            dispatch(loginUser(data.user));
             history.push("/profile")
             }
         })

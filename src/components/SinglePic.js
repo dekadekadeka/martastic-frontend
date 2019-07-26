@@ -23,8 +23,7 @@ class SinglePic extends Component {
 
         return (
             <div className="single-pic">
-                <img className="big-pic" src={this.props.pic.pic_url} alt=""/>
-            
+              <img className="big-pic" src={this.props.pic.pic_url} alt=""/>
             <div className="ui comments">
             <h3 className="ui dividing header">Comments</h3>
 
