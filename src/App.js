@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {fetchPics} from './actions/picActions'
+import {initState} from './actions/authActions'
 
 import { Route, Switch } from 'react-router-dom'
 
@@ -25,12 +26,16 @@ class App extends Component {
 
 componentDidMount(){
     this.props.fetchPics()
+    if (localStorage.token){
+      this.props.initState()
+    }
 }
 
   render() {
   return (
     <div>
       <Navbar />
+      {localStorage.token && !this.props.user_id ? null :
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/users/" component={Users} />
@@ -45,9 +50,12 @@ componentDidMount(){
         <Route exact path="/profile" component={Profile} />
         <Route component={Error} />
         </Switch>
+      }
     </div>
     )
   }
 }
 
-export default connect(null, {fetchPics})(App);
+let mapStateToProps = state => ({user_id: state.currentUser.currentUser.id })
+
+export default connect(mapStateToProps, {initState, fetchPics})(App);
