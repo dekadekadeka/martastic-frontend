@@ -28,7 +28,7 @@ class Login extends Component {
       <form onSubmit={this.handleSubmit}
       className="ui large form">
         <div className="two fields">
-        <div class="field">
+        <div className="field">
         <label>Username</label>
         <input
           name='username'
@@ -36,7 +36,7 @@ class Login extends Component {
           value={this.state.username}
           onChange={this.handleChange}/>
           </div>
-          <div class="field">
+          <div className="field">
         <label>Password</label>
         <input
           type='password'
@@ -49,12 +49,12 @@ class Login extends Component {
         <input type='submit' className="ui submit button"/>
       </form>
       <hr />
-      <Signup />
+      <Signup history={this.props.history}/>
       </div>
     )
   }
 }
-
+//yay!
 const mapDispatchToProps = dispatch => ({
   userLoginFetch: (userInfo, history) => dispatch(userLoginFetch(userInfo, history))
 });

@@ -21,10 +21,11 @@ class Signup extends Component {
 
   handleSubmit = event => {
     event.preventDefault()
-    this.props.fetchUser(this.state)
+    this.props.fetchUser(this.state, this.props.history)
   }
 
   render() {
+    console.log(this.props.history)
     return (
       <form onSubmit={this.handleSubmit}
       className="ui equal width large form">
@@ -138,7 +139,7 @@ class Signup extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  fetchUser: userInfo => dispatch(createUser(userInfo))
+  fetchUser: (userInfo, history) => dispatch(createUser(userInfo, history))
 })
 
 export default connect(null, mapDispatchToProps)(Signup);
