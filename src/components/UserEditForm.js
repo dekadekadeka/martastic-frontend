@@ -7,7 +7,7 @@ class EditForm extends Component {
     id: this.props.user.id,
     name: this.props.user.name,
     username: this.props.user.username,
-    profile_pic_url: "",
+    profile_pic_url: this.props.user.profile_pic_url,
     home_station: this.props.user.home_station,
     location: this.props.user.location,
     bio: this.props.user.bio

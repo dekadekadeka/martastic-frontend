@@ -7,10 +7,10 @@ class Signup extends Component {
     name: "",
     username: "",
     password: "",
-    profile_pic_url: "",
     home_station: "",
     location: "",
-    bio: ""
+    bio: "",
+    profile_pic_url: "http://localhost:3000/generic_profile.jpg"
   }
 
   handleChange = event => {
@@ -58,14 +58,6 @@ class Signup extends Component {
           </div>
           </div>
           <div className="fields">
-          <div className="field">
-        <label>Profile Pic</label>
-          <input
-            name='profile_pic_url'
-            placeholder='Profile Pic URL (optional)'
-            value={this.state.profile_pic_url}
-            onChange={this.handleChange}/>
-            </div>
             {/* station dropdown */}
             <div className="field">
             <label>Home Station</label>
