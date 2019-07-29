@@ -249,9 +249,7 @@ h3{
 /* end sign up */
 /* profile */
 .profile{
-  margin-top: 10vh;
-  margin-left: 10vh;
-  margin-right: 10vh;
+  margin: 10vh;
 }
 .header{
     font-family: 'Roboto', sans-serif !important ; 
@@ -260,6 +258,22 @@ h3{
   font-size: x-large;
 }
 
+.danger-box{
+	border:5px solid red;
+  padding:10px;
+  color: red;
+  margin: 10vh;
+}
+
+#butt{
+  margin: 5vh 0% 2vh 50%;
+}
+.danger-text{
+	float:left;
+	padding:0 5px;
+	margin:-30px 0 0 30px;
+	background:#fff;
+}
 /* end profile */
 /* about */
 .about{

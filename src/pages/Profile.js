@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {getProfileFetch} from '../actions/authActions';
 import genericProfile from '../images/generic_profile.jpg'
 import UserEditForm from '../components/UserEditForm'
+import {deleteUser} from '../actions/authActions'
 
 class Profile extends Component {
 
@@ -34,7 +35,18 @@ class Profile extends Component {
                     </div>
                 </div>
                 </div>
+                <h1>My Friends</h1>
+                <h1>My Pics</h1>
                 <UserEditForm user={this.props.currentUser}/>
+                <div className="danger-box">
+                <div className="danger-text"><h1>Danger Zone</h1></div>
+                This is an irreversible action. Please make sure you actually 
+                want to delete your profile before proceeding.
+                <div id="butt">
+                <button className="ui red button"
+                onClick={deleteUser(this.props.currentUser, this.props.history)}>Delete Me!</button>
+                </div>
+                </div>
             </div>
         )
     }
@@ -45,4 +57,4 @@ const mapStateToProps = state => ({
     currentUser: state.currentUser.currentUser
 })
 
-export default connect(mapStateToProps, {getProfileFetch})(Profile);
+export default connect(mapStateToProps, {getProfileFetch, deleteUser})(Profile);
