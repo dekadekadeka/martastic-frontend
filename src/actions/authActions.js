@@ -117,15 +117,15 @@ export const initState = ()=> {
 // }
 
 //function works as intended but will not change state.
+//User must still log out manually.
 export const deleteUser = (userHash, history) => dispatch => {
     fetch(`http://localhost:3000/users/${userHash.id}`, {
         method: 'DELETE',
     })
     .then(resp => resp.json())
     .then(user => dispatch(
-        {
-        type: 'LOGOUT_USER'
-    }),
+        logoutUser()
+        ),
     console.log("user deleted"),
     localStorage.removeItem("token"),
     history.push("/"))
