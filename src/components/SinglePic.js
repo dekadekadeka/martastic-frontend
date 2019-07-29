@@ -1,16 +1,19 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import CommentForm from './CommentForm'
+import { FaRegFrown } from "react-icons/fa";
 
 class SinglePic extends Component {
     render() {
         const allComments = this.props.pic.comments.map(comment => (
             <div className="comment">
     <span className="avatar">
-      <img src={{...comment.user}.profile_pic_url} alt="Yay Marta"/>
+    {{...comment.user}.profile_pic_url === undefined ? <span className="sad"><FaRegFrown /></span>
+      : <img src={{...comment.user}.profile_pic_url} alt="Yay Marta"/>}
     </span>
     <div className="content">
-      <span className="author">{{...comment.user}.name}</span>
+    {{...comment.user}.name === undefined? "[user deleted]" : 
+    <span className="author">{{...comment.user}.name}</span>}
       <div className="metadata">
         <span className="date">{{...comment.user}.home_station}</span>
       </div>

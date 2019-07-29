@@ -90,6 +90,47 @@ export const initState = ()=> {
     }
 }
 
+// export const deleteUser = (userHash, history) => {
+//     console.log(userHash)
+//     return async dispatch => {
+//         const token = localStorage.token;
+//         if (token) {
+//         const resp = await fetch(`http://localhost:3000/users/${userHash.id}`, {
+//             method: "DELETE"
+//         });
+//         const data = await resp.json();
+//         if (data.message) {
+//               // An error will occur if the token is invalid.
+//               // If this happens, you may want to remove the invalid token.
+//             console.log(data.message)
+//             localStorage.removeItem("token")
+//             history.push("/")
+//         }
+//         else {
+//             dispatch(logoutUser(data.user))
+//             console.log("removed")
+//             history.push("/")
+//             localStorage.removeItem("token")
+//     }
+//     }
+// }
+// }
+
+//function works as intended but will not change state.
+//User must still log out manually.
+export const deleteUser = (userHash, history) => dispatch => {
+    fetch(`http://localhost:3000/users/${userHash.id}`, {
+        method: 'DELETE',
+    })
+    .then(resp => resp.json())
+    .then(user => dispatch(
+        logoutUser()
+        ),
+    console.log("user deleted"),
+    localStorage.removeItem("token"),
+    history.push("/"))
+}
+
 const loginUser = userObj => ({
     type: 'LOGIN_USER',
     payload: userObj

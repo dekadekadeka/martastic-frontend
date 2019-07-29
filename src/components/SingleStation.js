@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import defaultImg from '../images/404.jpg';
 import { fetchStations } from '../actions/stationActions';
 import CommentForm from '../components/CommentForm'
+import { FaRegFrown } from "react-icons/fa";
 
 class SingleStation extends Component {
   
@@ -13,10 +14,11 @@ class SingleStation extends Component {
         const allComments = this.props.station.comments.map(comment => (
             <div className="comment">
     <span className="avatar">
-      <img src={{...comment.user}.profile_pic_url} alt="Yay Marta"/>
+      {{...comment.user}.profile_pic_url === undefined ? <span className="sad"><FaRegFrown /></span>
+      : <img src={{...comment.user}.profile_pic_url} alt="Yay Marta"/>}
     </span>
     <div className="content">
-      <span className="author">{{...comment.user}.name}</span>
+      {{...comment.user}.name === undefined? "[user deleted]" : <span className="author">{{...comment.user}.name}</span>}
       <div className="metadata">
         <span className="date">{{...comment.user}.home_station}</span>
       </div>

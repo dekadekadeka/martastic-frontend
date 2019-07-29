@@ -182,6 +182,9 @@ h3{
 .single-station{
   margin: 20vh;
 }
+.sad{
+  font-size: 3rem;
+}
 /* end single station */
 /* all pics */
 .pic {
@@ -249,9 +252,7 @@ h3{
 /* end sign up */
 /* profile */
 .profile{
-  margin-top: 10vh;
-  margin-left: 10vh;
-  margin-right: 10vh;
+  margin: 10vh;
 }
 .header{
     font-family: 'Roboto', sans-serif !important ; 
@@ -260,9 +261,70 @@ h3{
   font-size: x-large;
 }
 
+.danger-box{
+	border:5px solid red;
+  padding:10px;
+  color: red;
+  margin: 10vh;
+}
+
+#butt{
+  margin: 2vh 0% 2vh 50%;
+}
+.danger-text{
+	float:left;
+	padding:0 5px;
+	margin:-30px 0 0 30px;
+	background:#fff;
+}
 /* end profile */
 /* about */
 .about{
-  margin-top: 10vh;
+  margin: 20vh 10vh 10vh 10vh;
+}
+/* .about-container{
+  position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%)
+} */
+.about-box{
+	border:5px solid var(--martaBlue);
+  padding:10px;
+  margin: 10vh;
+}
+
+.about-text{
+	float:left;
+	padding:0 5px;
+	margin:-30px 0 0 30px;
+	background:#fff;
+}
+
+.stack-box{
+	border:5px solid var(--martaGold);
+  padding:10px;
+  margin: 10vh;
+}
+.stack-box-center {
+  width: 90vw;
+  margin: 0 auto;
+  display: flex;
+  grid-column-gap: 50px;
+}
+.stack-box h4{
+  margin: 0px;
+}
+.stack-box span {
+  color: var(--martaGold);
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.deka-box{
+	border:5px solid var(--martaOrange);
+  padding:10px;
+  margin: 10vh;
 }
 /* end about */

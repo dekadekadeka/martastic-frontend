@@ -1,16 +1,16 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {createUser} from '../actions/authActions';
+import {editUser} from '../actions/userActions';
 
-class Signup extends Component {
+class EditForm extends Component {
   state = {
-    name: "",
-    username: "",
-    password: "",
-    home_station: "",
-    location: "",
-    bio: "",
-    profile_pic_url: "http://localhost:3000/generic_profile.jpg"
+    id: this.props.user.id,
+    name: this.props.user.name,
+    username: this.props.user.username,
+    profile_pic_url: this.props.user.profile_pic_url,
+    home_station: this.props.user.home_station,
+    location: this.props.user.location,
+    bio: this.props.user.bio
   }
 
   handleChange = event => {
@@ -21,15 +21,14 @@ class Signup extends Component {
 
   handleSubmit = event => {
     event.preventDefault()
-    this.props.fetchUser(this.state, this.props.history)
+    this.props.editUser(this.state)
   }
 
   render() {
-    console.log(this.props.history)
     return (
       <form onSubmit={this.handleSubmit}
       className="ui equal width large form">
-        <h1>Sign Up For An Account</h1>
+        <h1>Edit Your Info</h1>
         <div className="fields">
           <div className="field">
         <label>Name</label>
@@ -47,17 +46,16 @@ class Signup extends Component {
           value={this.state.username}
           onChange={this.handleChange}/>
           </div>
-          <div className="field">
-        <label>Password</label>
-        <input
-          type='password'
-          name='password'
-          placeholder='Password'
-          value={this.state.password}
-          onChange={this.handleChange}/>
-          </div>
           </div>
           <div className="fields">
+          <div className="field">
+        <label>Profile Pic</label>
+          <input
+            name='profile_pic_url'
+            placeholder='Profile Pic URL (optional)'
+            value={this.state.profile_pic_url}
+            onChange={this.handleChange}/>
+            </div>
             {/* station dropdown */}
             <div className="field">
             <label>Home Station</label>
@@ -131,7 +129,7 @@ class Signup extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  fetchUser: (userInfo, history) => dispatch(createUser(userInfo, history))
+  editUser: (userInfo) => dispatch(editUser(userInfo))
 })
 
-export default connect(null, mapDispatchToProps)(Signup);
+export default connect(null, mapDispatchToProps)(EditForm);
