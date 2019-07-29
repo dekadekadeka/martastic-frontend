@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux';
 import {getProfileFetch} from '../actions/authActions';
 import genericProfile from '../images/generic_profile.jpg'
+import UserEditForm from '../components/UserEditForm'
 
 class Profile extends Component {
 
@@ -33,6 +34,7 @@ class Profile extends Component {
                     </div>
                 </div>
                 </div>
+                <UserEditForm user={this.props.currentUser}/>
             </div>
         )
     }
