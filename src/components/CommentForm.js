@@ -20,6 +20,7 @@ class CommentForm extends Component {
             commentable_id: this.props.id
         }
         this.props.createComment(comment)
+        e.target.reset()
         console.log("submit", comment)
     }
     render() {

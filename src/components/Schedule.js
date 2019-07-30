@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchSchedule } from '../actions/scheduleActions'
+import ScheduleList from './ScheduleList'
+import ScheduleFilter from './ScheduleFilter'
 
 class Schedule extends Component {
     componentDidMount(){
@@ -9,30 +11,29 @@ class Schedule extends Component {
     }
 
     render() {
-        const allTrains = this.props.trains.map(train => (
-            <div>
-                <h3>Destination: {train.DESTINATION}</h3>
-                <p>{train.LINE} Line </p>
-                <p>Current station: {train.STATION}</p>
-                <p>Waiting Time: {train.WAITING_TIME}</p>
-            </div>
-        ))
-        console.log(this.props.trains)
         return (
             <div className="schedule">
-                {allTrains}
+                <ScheduleFilter trains={this.props.trains} 
+                time={this.props.time}
+                minWait={this.props.minWait}
+                maxWait={this.props.maxWait}/>
+                <ScheduleList trains={this.props.sortedTrains}/>
             </div>
         )
     }
 }
 
-Schedule.propTypes = {
-    fetchSchedule: PropTypes.func.isRequired,
-    trains: PropTypes.array.isRequired
-}
+// Schedule.propTypes = {
+//     fetchSchedule: PropTypes.func.isRequired,
+//     trains: PropTypes.array.isRequired
+// }
 
 const mapStateToProps = state => ({
-    trains: state.schedule.trains
+    trains: state.schedule.trains,
+    time: state.schedule.time,
+    minWait: state.schedule.minWait,
+    maxWait: state.schedule.maxWait,
+    sortedTrains: state.schedule.sortedTrains
 })
 
 export default connect(mapStateToProps, { fetchSchedule })(Schedule)
