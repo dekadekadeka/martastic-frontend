@@ -134,7 +134,23 @@ h3{
 /* end error */
 /* schedule */
 .schedule{
-  margin-top: 10vh;
+  margin: 10vh;
+}
+.empty-search {
+  text-align: center;
+  margin: 2rem 0;
+  padding: 1rem;
+  letter-spacing: var(--mainSpacing);
+}
+.form-group label {
+  display: block;
+  letter-spacing: var(--mainSpacing);
+  margin-bottom: 0.5rem;
+}
+.form-control {
+  width: 100%;
+  background: transparent;
+  font-size: 1rem;
 }
 /* end schedule */
 /* stations */

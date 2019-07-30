@@ -51,7 +51,8 @@ function mapStateToProps(state, ownProps){
     if(state.stations.stations.length > 0){
         station = Object.assign({}, state.stations.stations.find(station => station.slug === slug))
     }
-    return {station: station}
+    return {station: station,
+    comments: state.comments}
 }
 
 export default connect(mapStateToProps, { fetchStations })(SingleStation)

@@ -1,0 +1,33 @@
+import React from 'react'
+
+const ScheduleList = ({trains}) => {
+    if(trains.length === 0){
+        return (
+            <div className="empty-search">
+                <h3>Unfortunately, no trains matched your search parameters</h3>
+            </div>
+        )
+    }
+    return (
+        <div className="picslist-center">
+        {trains.map(train => (
+            <div class="ui raised link card">
+            <div class="content">
+            <div class="header">Destination: {train.DESTINATION}</div>
+            <div class="meta">
+                <span class="category">{train.LINE} Line </span>
+                <span class="category">{train.DIRECTION}</span>
+            </div>
+            <div class="description">
+                <p>Next arrival: {train.NEXT_ARR}</p>
+                <p>Current station: {train.STATION}</p>
+                <p>Waiting Time: {train.WAITING_TIME}</p>
+            </div>
+            </div>
+        </div>
+        ))}  
+        </div>
+    )
+}
+
+export default ScheduleList

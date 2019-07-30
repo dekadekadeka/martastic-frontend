@@ -12,7 +12,7 @@ export const createComment = (commentData) => dispatch => {
     })
     .then(resp => resp.json())
     .then(comment => dispatch({
-        type: "NEW_COMMENT",
+        type: 'NEW_COMMENT',
         payload: comment
     }))
 }
