@@ -14,34 +14,31 @@ export const fetchSchedule = () => dispatch => {
     );
 }
 
-export const filterTrains = (state) => dispatch => {
+export const filterTrains = (trains, state) => dispatch => {
     let {
-        line, direction, destination, station, waiting_seconds
+        line, destination, station, waiting_seconds
     } = state
 // all the trains
-    let tempTrains = [state]
+    let tempTrains = [...trains]
 //filter by LINE
     if(line !== "all"){
         tempTrains = tempTrains.filter(train => train.LINE === line)
     }
 
-//filter by DIRECTION
-if(direction !== "all"){
-    tempTrains = tempTrains.filter(train => train.DIRECTION === direction)
-}
-
 //filter by DESTINATION
-if(destination !== "all"){
-    tempTrains = tempTrains.filter(train => train.DESTINATION === destination)
+if(destination !=="all"){
+tempTrains = tempTrains.filter(train => train.DESTINATION === destination)
 }
 
 //filter by CURRENT STATION
-if(station !== "all"){
-    tempTrains = tempTrains.filter(train => train.STATION === station)
+if(station !=="all"){
+    tempTrains = tempTrains.filter(train => train.STATION === station.toUpperCase())
 }
 
-//filter by waiting seconds
+// //filter by waiting seconds
+if(waiting_seconds){
     tempTrains = tempTrains.filter(train => train.WAITING_SECONDS <= waiting_seconds)
+}
 
 //finally change state
     dispatch({

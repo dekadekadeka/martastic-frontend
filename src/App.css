@@ -152,6 +152,9 @@ h3{
   background: transparent;
   font-size: 1rem;
 }
+.schedule-filter{
+  margin-right: 10vh;
+}
 /* end schedule */
 /* stations */
 .stations{

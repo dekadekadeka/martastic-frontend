@@ -8,11 +8,10 @@ const getUnique = (items, value) => {
 class ScheduleFilter extends Component{
 
     state={
-        line: '',
-        direction: '',
-        destination: '',
-        station: '',
-        waiting_time: ''
+        line: "all",
+        destination: 'all',
+        station: 'all',
+        waiting_seconds: 0
     }
 
     handleChange = e => {
@@ -21,13 +20,12 @@ class ScheduleFilter extends Component{
         const name =  e.target.name
         this.setState({
             [name]:value
-        }, this.props.filterTrains(this.state)
+        }, this.props.filterTrains(this.props.trains, this.state)
         )
         console.log(this.state)
     }
 
     render() {
-        console.log(this.props)
     //get unique lines
     let lines = getUnique(this.props.trains, "LINE")
     
@@ -36,13 +34,6 @@ class ScheduleFilter extends Component{
     //map to jsx
     lines = lines.map((item, index) => {
         return <option value={item} key={index}>{item}</option>
-    })
-
-    //direction getUnique
-    let direction = getUnique(this.props.trains, "DIRECTION")
-    direction = ["all", ...direction]
-    direction = direction.map((item, index) =>{
-        return <option key={index} value={item}>{item}</option>
     })
 
     //destination getUnique
@@ -57,10 +48,10 @@ class ScheduleFilter extends Component{
     station = station.map((item, index) =>{
         return <option key={index} value={item}>{item}</option>
     })
-        const {DESTINATION, DIRECTION, LINE, STATION,
+        const {DESTINATION, LINE, STATION,
             WAITING_SECONDS} = this.props.trains
     return (
-        <div>
+        <div className="schedule-filter">
             <form className="ui form">
                 <div className="fields">
                 {/* lines */}
@@ -75,18 +66,6 @@ class ScheduleFilter extends Component{
                 </select>
                 </div>
                 {/* end lines */}
-                {/* direction */}
-                <div className="field">
-                <label htmlFor="direction">Direction</label>
-                <select name="direction" 
-                id="direction" 
-                value={DIRECTION}
-                className="form-control"
-                onChange={this.handleChange}>
-                    {direction}
-                </select>
-                </div>
-                {/* end direction */}
                 {/* destination */}
                 <div className="field">
                 <label htmlFor="destination">Destination</label>
@@ -114,7 +93,7 @@ class ScheduleFilter extends Component{
                 {/* waiting seconds */}
                 <div className="field">
                 <label htmlFor="waiting_seconds">
-                    Max Waiting Time {this.props.time} seconds
+                    Max Waiting Time {this.state.waiting_seconds} seconds
                     <input type="range" name="waiting_seconds"
                     min={this.props.minWait} max={this.props.maxWait} id="waiting_time"
                     value={WAITING_SECONDS}
@@ -130,4 +109,8 @@ class ScheduleFilter extends Component{
     }
 }
 
-export default connect(null, { filterTrains })(ScheduleFilter)
+const mapStateToProps = state => ({
+    trains: state.schedule.trains
+})
+
+export default connect(mapStateToProps, { filterTrains })(ScheduleFilter)
