@@ -123,9 +123,10 @@ export const deleteUser = (userHash, history) => dispatch => {
         method: 'DELETE',
     })
     .then(resp => resp.json())
-    .then(user => dispatch(
-        logoutUser()
-        ),
+    .then(
+        // user => dispatch(
+        // logoutUser()
+        // ),
     console.log("user deleted"),
     localStorage.removeItem("token"),
     history.push("/"))

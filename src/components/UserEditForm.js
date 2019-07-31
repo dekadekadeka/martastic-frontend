@@ -26,6 +26,7 @@ class EditForm extends Component {
 
   render() {
     return (
+      <div className="user-edit">
       <form onSubmit={this.handleSubmit}
       className="ui equal width large form">
         <h1>Edit Your Info</h1>
@@ -124,6 +125,7 @@ class EditForm extends Component {
             <br/>
         <input type='submit' className="ui submit button"/>
       </form>
+      </div>
     )
   }
 }

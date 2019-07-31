@@ -17,7 +17,7 @@ class Schedule extends Component {
                 time={this.props.time}
                 minWait={this.props.minWait}
                 maxWait={this.props.maxWait}/>
-                <ScheduleList trains={this.props.sortedTrains}/>
+                <ScheduleList trains={this.props.sortedTrains} loading={this.props.loading}/>
             </div>
         )
     }
@@ -33,7 +33,8 @@ const mapStateToProps = state => ({
     time: state.schedule.time,
     minWait: state.schedule.minWait,
     maxWait: state.schedule.maxWait,
-    sortedTrains: state.schedule.sortedTrains
+    sortedTrains: state.schedule.sortedTrains,
+    loading: state.schedule.loading
 })
 
 export default connect(mapStateToProps, { fetchSchedule })(Schedule)

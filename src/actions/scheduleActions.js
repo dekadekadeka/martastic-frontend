@@ -10,6 +10,10 @@ export const fetchSchedule = () => dispatch => {
         dispatch({
             type: 'WAIT',
             payload: maxWait
+        })
+        dispatch({
+            type: 'SORT_TRAINS',
+            payload: trains
         })}
     );
 }

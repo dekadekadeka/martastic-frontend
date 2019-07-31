@@ -1,3 +1,18 @@
+export const fetchComments = () => dispatch => (
+    fetch("http://localhost:3000/comments", {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json'
+        }
+    })
+    .then(resp => resp.json())
+    .then(comments => dispatch({
+        type: 'ALL_COMMENTS',
+        payload: comments
+    }))
+)
+
 export const createComment = (commentData) => dispatch => {
     console.log(commentData)
     const token = localStorage.token;

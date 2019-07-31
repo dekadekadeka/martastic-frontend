@@ -1,21 +1,21 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux';
 import {getProfileFetch} from '../actions/authActions';
-import genericProfile from '../images/generic_profile.jpg'
 import UserEditForm from '../components/UserEditForm'
 import {deleteUser} from '../actions/authActions'
+import { Link } from 'react-router-dom';
 
 class Profile extends Component {
 
     render() {
-        console.log(this.props.currentUser)
+        console.log(this.props.currentUser.pics.length)
         return (
             <div className="profile">
                 <h1>My Profile</h1>
                 <div className="ui items">
                 <div className="item">
                     <div className="image">
-                    <img src={this.props.currentUser.profile_pic_url ? this.props.currentUser.profile_pic_url : genericProfile} 
+                    <img src={this.props.currentUser.profile_pic_url} 
                     alt="profile pic"/>
                     </div>
                     <div className="content">
@@ -35,8 +35,21 @@ class Profile extends Component {
                     </div>
                 </div>
                 </div>
-                <h1>My Friends</h1>
+                {/* <h1>My Friends</h1> */}
                 <h1>My Pics</h1>
+                <div className="picslist-center">
+                {this.props.currentUser.pics.length === 0 ? "You don't have any pics yet! :(" : 
+                this.props.currentUser.pics.map(pic => (
+                    <article className="pic">
+                        <div className="img-container">
+                            <Link to={`/pics/${pic.id}`}>
+                            <img src={pic.pic_url} 
+                            alt="" key={pic.id}/>
+                            </Link>
+                        </div>
+                    </article>
+                    ))}
+                </div>
                 <UserEditForm user={this.props.currentUser}/>
                 <div className="danger-box">
                 <div className="danger-text"><h1>Danger Zone</h1></div>
