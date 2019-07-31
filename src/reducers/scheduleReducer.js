@@ -3,7 +3,8 @@ const initialState = {
     sortedTrains: [],
     time: 0,
     minWait: 0,
-    maxWait: 0
+    maxWait: 0,
+    loading: true
 }
 
 export default function(state = initialState, action){
@@ -20,10 +21,10 @@ export default function(state = initialState, action){
                     maxWait: action.payload
                 }
         case 'SORT_TRAINS':
-
             return{
                 ...state,
-                sortedTrains: action.payload
+                sortedTrains: action.payload,
+                loading: false
             }
         default:
             return state

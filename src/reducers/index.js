@@ -11,6 +11,6 @@ export default combineReducers({
     pics: picReducer,
     currentUser: authReducer,
     stations: stationReducer,
-    comment: commentReducer,
+    comments: commentReducer,
     user: userReducer
 })

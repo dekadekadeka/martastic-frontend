@@ -153,7 +153,8 @@ h3{
   font-size: 1rem;
 }
 .schedule-filter{
-  margin-right: 10vh;
+  margin-left: 30vh;
+  margin-right: 30vh;
 }
 /* end schedule */
 /* stations */
@@ -279,7 +280,9 @@ h3{
 .bio{
   font-size: x-large;
 }
-
+.user-edit{
+  margin-top: 5vh;
+}
 .danger-box{
 	border:5px solid red;
   padding:10px;

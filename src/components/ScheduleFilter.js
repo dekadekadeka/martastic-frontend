@@ -22,7 +22,6 @@ class ScheduleFilter extends Component{
             [name]:value
         }, this.props.filterTrains(this.props.trains, this.state)
         )
-        console.log(this.state)
     }
 
     render() {
@@ -110,7 +109,7 @@ class ScheduleFilter extends Component{
 }
 
 const mapStateToProps = state => ({
-    trains: state.schedule.trains
+    sortedTrains: state.schedule.sortedTrains
 })
 
 export default connect(mapStateToProps, { filterTrains })(ScheduleFilter)

@@ -1,6 +1,15 @@
 import React from 'react'
 
-const ScheduleList = ({trains}) => {
+const ScheduleList = ({trains, loading}) => {
+
+    if(loading){
+        return (
+            <div className="empty-search">
+                <h3>Please wait for the schedule to load...</h3>
+            </div>
+        )
+    }
+    
     if(trains.length === 0){
         return (
             <div className="empty-search">

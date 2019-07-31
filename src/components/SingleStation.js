@@ -10,6 +10,8 @@ class SingleStation extends Component {
     componentDidMount(){
         this.props.fetchStations()
     }
+
+    
     render() {
         const allComments = this.props.station.comments.map(comment => (
             <div className="comment">
@@ -52,7 +54,7 @@ function mapStateToProps(state, ownProps){
         station = Object.assign({}, state.stations.stations.find(station => station.slug === slug))
     }
     return {station: station,
-    comments: state.comments}
+    comments: state.newComments}
 }
 
 export default connect(mapStateToProps, { fetchStations })(SingleStation)
