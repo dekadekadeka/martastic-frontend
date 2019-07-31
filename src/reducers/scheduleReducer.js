@@ -20,6 +20,7 @@ export default function(state = initialState, action){
                     maxWait: action.payload
                 }
         case 'SORT_TRAINS':
+
             return{
                 ...state,
                 sortedTrains: action.payload

@@ -8,12 +8,21 @@ const ScheduleList = ({trains}) => {
             </div>
         )
     }
+
+const color_key ={
+    BLUE: '#0b75b3',
+    GREEN: '#07a550',
+    GOLD: '#d7aa31',
+    RED: '#cc2329'
+}
+
+
     return (
         <div className="picslist-center">
         {trains.map(train => (
             <div class="ui raised link card">
             <div class="content">
-            <div class="header">Destination: {train.DESTINATION}</div>
+            <div style={{ color: color_key[train.LINE] }}class="header">Destination: {train.DESTINATION}</div>
             <div class="meta">
                 <span class="category">{train.LINE} Line </span>
                 <span class="category">{train.DIRECTION}</span>
