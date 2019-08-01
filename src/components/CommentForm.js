@@ -1,24 +1,21 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { createComment  } from '../actions/commentActions'
+import { createComment } from '../actions/commentActions'
 
 
 class CommentForm extends Component {
-
-    // componentDidMount(){
-    //     this.props.fetchComments()
-    // }
+    
     state = {
         content: '',
     }
+    
 
     handleChange = (e) => {
         this.setState({[e.target.name]: e.target.value})
     }
 
-    handleSubmit = (e) => {
+    onSubmit = (e) => {
         e.preventDefault();
-        console.log(e.target)
         const comment = {
             user_id: this.props.currentUser.id,
             commentable_type: this.props.type,
@@ -26,16 +23,15 @@ class CommentForm extends Component {
             commentable_id: this.props.id
         }
         this.props.createComment(comment)
-        e.target.reset();
     }
     render() {
         return (
-            <form className="ui reply form" onSubmit={this.handleSubmit}>
+            <form className="ui reply form" onSubmit={this.onSubmit}>
                 <div className="field">
                 <textarea type="content" name="content" className="form-control"
                 value={this.state.content} onChange={this.handleChange}/>
                 </div>
-                <button type='submit' 
+                <button type="submit" 
                 className="ui blue labeled submit icon button">
                 <i className="icon edit"></i>Add Comment</button>
             </form>

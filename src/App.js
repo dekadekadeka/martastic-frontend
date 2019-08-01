@@ -32,9 +32,6 @@ componentDidMount(){
 }
 
   render() {
-    console.log("Made with 💙💛🧡 by Deka")
-    console.log("https://github.com/dekadekadeka/")
-    console.log("Have a MARTASTIC day!! 🚇")
   return (
     <div>
       <Navbar />
