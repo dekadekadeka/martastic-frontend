@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { createComment, fetchComments } from '../actions/commentActions'
+import { createComment  } from '../actions/commentActions'
 
 
 class CommentForm extends Component {
 
-    componentDidMount(){
-        this.props.fetchComments()
-    }
+    // componentDidMount(){
+    //     this.props.fetchComments()
+    // }
     state = {
         content: '',
     }
@@ -35,7 +35,8 @@ class CommentForm extends Component {
                 <textarea type="content" name="content" className="form-control"
                 value={this.state.content} onChange={this.handleChange}/>
                 </div>
-                <button type='submit' className="ui blue labeled submit icon button">
+                <button type='submit' 
+                className="ui blue labeled submit icon button">
                 <i className="icon edit"></i>Add Comment</button>
             </form>
         )
@@ -46,4 +47,4 @@ const mapStateToProps = state => ({
     currentUser: state.currentUser.currentUser
 })
 
-export default connect(mapStateToProps, { createComment, fetchComments })(CommentForm);
+export default connect(mapStateToProps, { createComment })(CommentForm);
