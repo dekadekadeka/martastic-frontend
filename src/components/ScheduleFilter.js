@@ -92,7 +92,7 @@ class ScheduleFilter extends Component{
                 {/* waiting seconds */}
                 <div className="field">
                 <label htmlFor="waiting_seconds">
-                    Max Waiting Time {this.state.waiting_seconds} seconds
+                    Max Waiting Time {Math.floor(this.state.waiting_seconds / 60)} minutes
                     <input type="range" name="waiting_seconds"
                     min={this.props.minWait} max={this.props.maxWait} id="waiting_time"
                     value={WAITING_SECONDS}
