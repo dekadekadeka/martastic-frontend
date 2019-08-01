@@ -4,17 +4,19 @@ import defaultImg from '../images/404.jpg';
 import { fetchStations } from '../actions/stationActions';
 import CommentForm from '../components/CommentForm'
 import { FaRegFrown } from "react-icons/fa";
+import { fetchComments } from '../actions/commentActions'
 
 class SingleStation extends Component {
   
-    componentDidMount(){
-        this.props.fetchStations()
+    async componentDidMount(){
+      await this.props.fetchStations()
+      await this.props.fetchComments()
     }
-
     
     render() {
+      console.log(this.props)
         const allComments = this.props.station.comments.map(comment => (
-            <div className="comment">
+            <div className="comment"  key={comment.id}>
     <span className="avatar">
       {{...comment.user}.profile_pic_url === undefined ? <span className="sad"><FaRegFrown /></span>
       : <img src={{...comment.user}.profile_pic_url} alt="Yay Marta"/>}
@@ -54,7 +56,7 @@ function mapStateToProps(state, ownProps){
         station = Object.assign({}, state.stations.stations.find(station => station.slug === slug))
     }
     return {station: station,
-    comments: state.newComments}
+            comments: station.comments}
 }
 
-export default connect(mapStateToProps, { fetchStations })(SingleStation)
+export default connect(mapStateToProps, { fetchStations, fetchComments })(SingleStation)

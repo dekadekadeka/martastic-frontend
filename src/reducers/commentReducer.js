@@ -5,7 +5,7 @@ const initialState = {
 
 export default function(state = initialState, action){
     switch(action.type){
-        case 'ALL_COMMENTS':
+        case 'FETCH_COMMENTS':
             return{
                 ...state,
                 comments: action.payload
@@ -13,9 +13,10 @@ export default function(state = initialState, action){
         case 'NEW_COMMENT':
             return {
                 ...state,
-                comment: action.payload
+                comments: [...state.comments,
+                    action.payload]
             }
         default:
-            return state;
+            return state
     }
 }

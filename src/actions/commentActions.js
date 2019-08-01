@@ -1,17 +1,13 @@
-export const fetchComments = () => dispatch => (
-    fetch("http://localhost:3000/comments", {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json'
-        }
-    })
-    .then(resp => resp.json())
-    .then(comments => dispatch({
-        type: 'ALL_COMMENTS',
-        payload: comments
-    }))
-)
+export const fetchComments = () => {
+    return async dispatch => {
+        const resp = await fetch("http://localhost:3000/comments");
+        const comments = await resp.json();
+            dispatch({
+                type: 'FETCH_COMMENTS',
+                payload: comments
+            })
+    }
+}
 
 export const createComment = (commentData) => dispatch => {
     console.log(commentData)
