@@ -22,6 +22,7 @@ export const filterTrains = (trains, state) => dispatch => {
     let {
         line, destination, station, waiting_seconds
     } = state
+    
 // all the trains
     let tempTrains = [...trains]
 //filter by LINE
@@ -31,7 +32,8 @@ export const filterTrains = (trains, state) => dispatch => {
 
 //filter by DESTINATION
 if(destination !=="all"){
-tempTrains = tempTrains.filter(train => train.DESTINATION === destination)
+tempTrains = tempTrains.filter(train => 
+    train.DESTINATION === destination)
 }
 
 //filter by CURRENT STATION
