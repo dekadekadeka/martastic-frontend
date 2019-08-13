@@ -28,6 +28,7 @@ class SinglePic extends Component {
             <div className="single-pic">
               <img className="big-pic" src={this.props.pic.pic_url} alt=""/>
             <div className="ui comments">
+            <h3>Likes: {this.props.pic.likes}</h3>
             <h3 className="ui dividing header">Comments</h3>
 
             {allComments}

@@ -20,7 +20,8 @@ export default function(state = initialState, action){
                     time: action.payload,
                     maxWait: action.payload
                 }
-        case 'SORT_TRAINS':
+                case 'SORT_TRAINS':
+                        console.log(action.payload)
             return{
                 ...state,
                 sortedTrains: action.payload,

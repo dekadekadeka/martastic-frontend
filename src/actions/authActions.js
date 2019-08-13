@@ -119,14 +119,18 @@ export const initState = ()=> {
 //function works as intended but will not change state.
 //User must still log out manually.
 export const deleteUser = (userHash, history) => dispatch => {
+    const token = localStorage.token;
     fetch(`http://localhost:3000/users/${userHash.id}`, {
         method: 'DELETE',
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
     })
     .then(resp => resp.json())
     .then(
-        // user => dispatch(
-        // logoutUser()
-        // ),
+        user => dispatch({
+            type: 'DELETE_USER'
+        }),
     console.log("user deleted"),
     localStorage.removeItem("token"),
     history.push("/"))
