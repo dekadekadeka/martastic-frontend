@@ -18,7 +18,7 @@ class PicForm extends Component {
             user_id: this.props.currentUser.id,
             station_id: this.state.station_id,
             pic_url: this.state.pic_url,
-            rating: 1
+            likes: 0
         }
         this.props.createPic(pic)
         console.log("submit", pic)

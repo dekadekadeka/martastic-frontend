@@ -20,12 +20,7 @@ class ScheduleFilter extends Component{
         const name =  e.target.name
         this.setState({
             [name]:value
-        // line: value,
-        // destination: value,
-        // station: value,
-        // waiting_seconds: 0
         }, () => {
-            console.log("before filter:", this.state);
             this.props.filterTrains(this.props.trains, this.state);
         }
         )
