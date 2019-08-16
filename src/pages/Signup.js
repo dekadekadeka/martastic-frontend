@@ -217,7 +217,7 @@ class Signup extends Component {
         <Grid item xs={12} md={6}>
         <TextField
         select
-        label="Select"
+        label="Home Station"
         name="home_station"
         value={this.state.home_station}
         onChange={this.handleChange}
@@ -251,7 +251,9 @@ class Signup extends Component {
         </Grid>
             <br/>
             <br/>
-        <input type='submit' className="ui submit button"/>
+        <Grid container justify="center">
+          <input type='submit' className="ui submit button"/>
+        </Grid>
     </Grid>
       </form>
     </div>
