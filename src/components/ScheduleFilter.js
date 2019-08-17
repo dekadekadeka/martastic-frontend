@@ -3,6 +3,8 @@ import {connect} from 'react-redux';
 import {filterTrains} from '../actions/scheduleActions';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
+import Slider from '@material-ui/core/Slider';
+import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 
 const getUnique = (items, value) => {
@@ -18,8 +20,7 @@ class ScheduleFilter extends Component{
     }
 
     handleChange = e => {
-        const target = e.target
-        const value = target.value
+        const value = e.target.value
         const name =  e.target.name
         this.setState({
             [name]:value
@@ -27,7 +28,38 @@ class ScheduleFilter extends Component{
             this.props.filterTrains(this.props.trains, this.state);
         }
         )
+        console.log("name", name, "value", value)
     }
+
+    TimeSlider = withStyles({
+        root: {
+        color: '#0193cf',
+        height: 8,
+        },
+        thumb: {
+        height: 24,
+        width: 24,
+        backgroundColor: '#fff',
+        border: '2px solid currentColor',
+        marginTop: -8,
+        marginLeft: -12,
+        '&:focus,&:hover,&$active': {
+            boxShadow: 'inherit',
+        },
+        },
+        active: {},
+        valueLabel: {
+        left: 'calc(-50% + 4px)',
+        },
+        track: {
+        height: 8,
+        borderRadius: 4,
+        },
+        rail: {
+        height: 8,
+        borderRadius: 4,
+        },
+    })(Slider);
 
     render() {
     //get unique lines
@@ -50,7 +82,6 @@ class ScheduleFilter extends Component{
     station = station.map((item, index) =>
         <MenuItem key={index} value={item}>{item}</MenuItem>)
 
-        const {WAITING_SECONDS} = this.props.trains
     return (
             <div className="flexGrow: 1">
             <form>
@@ -99,14 +130,22 @@ class ScheduleFilter extends Component{
                 {/* end current station */}
                 {/* waiting seconds */}
                 <Grid item xs={12} md={3}>
+                <br/>
                 <label htmlFor="waiting_seconds">
                     Max Waiting Time {Math.floor(this.state.waiting_seconds / 60)} minutes
                     <input type="range" name="waiting_seconds"
                     min={this.props.minWait} max={this.props.maxWait} id="waiting_time"
-                    value={WAITING_SECONDS}
+                    value={this.state.waiting_seconds}
                     onChange={this.handleChange}
                     className="form-control" />
                 </label>
+            {/* <this.TimeSlider 
+            name="waiting_seconds"
+            min={Math.floor(this.props.minWait)/60} 
+            max={30}
+            value={0}
+            onChange={this.handleChange}
+            valueLabelDisplay="auto"/> */}
                 </Grid>
                 {/* end waiting seconds */}
                 </Grid>
