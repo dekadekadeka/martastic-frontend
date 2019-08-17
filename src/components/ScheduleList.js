@@ -29,14 +29,14 @@ const color_key ={
     return (
         <div className="picslist-center">
         {trains.map(train => (
-            <div class="ui raised link card">
-            <div class="content">
-            <div style={{ color: color_key[train.LINE] }}class="header">Destination: {train.DESTINATION}</div>
-            <div class="meta">
-                <span class="category">{train.LINE} Line </span>
-                <span class="category">{train.DIRECTION}</span>
+            <div className="ui raised link card">
+            <div className="content">
+            <div style={{ color: color_key[train.LINE] }}className="header">Destination: {train.DESTINATION}</div>
+            <div className="meta">
+                <span className="category">{train.LINE} Line </span>
+                <span className="category">{train.DIRECTION}</span>
             </div>
-            <div class="description">
+            <div className="description">
                 <p>Next arrival: {train.NEXT_ARR}</p>
                 <p>Current station: {train.STATION}</p>
                 <p>Waiting Time: {train.WAITING_TIME}</p>

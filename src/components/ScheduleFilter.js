@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {filterTrains} from '../actions/scheduleActions';
+import TextField from '@material-ui/core/TextField';
+import MenuItem from '@material-ui/core/MenuItem';
+import Grid from '@material-ui/core/Grid';
 
 const getUnique = (items, value) => {
     return [...new Set(items.map(item => item[value]))]
@@ -33,66 +36,69 @@ class ScheduleFilter extends Component{
     //add all
     lines = ["all", ...lines]
     //map to jsx
-    lines = lines.map((item, index) => {
-        return <option value={item} key={index}>{item}</option>
-    })
+    lines = lines.map((item, index) => 
+        <MenuItem key={index} value={item}>{item}</MenuItem>)
 
     //destination getUnique
     let destination = getUnique(this.props.trains, "DESTINATION")
     destination = ["all", ...destination]
-    destination = destination.map((item, index) =>{
-        return <option key={index} value={item}>{item}</option>
-    })
+    destination = destination.map((item, index) =>
+        <MenuItem key={index} value={item}>{item}</MenuItem>)
     //current station getUnique
     let station = getUnique(this.props.trains, "STATION")
     station = ["all", ...station]
-    station = station.map((item, index) =>{
-        return <option key={index} value={item}>{item}</option>
-    })
-        const {DESTINATION, LINE, STATION,
-            WAITING_SECONDS} = this.props.trains
+    station = station.map((item, index) =>
+        <MenuItem key={index} value={item}>{item}</MenuItem>)
+
+        const {WAITING_SECONDS} = this.props.trains
     return (
-        <div className="schedule-filter">
-            <form className="ui form">
-                <div className="fields">
+            <div className="flexGrow: 1">
+            <form>
+            <Grid container spacing={5}>
                 {/* lines */}
-                <div className="field">
-                <label htmlFor="line">Line</label>
-                <select name="line" 
-                id="line" 
-                value={LINE}
-                className="form-control"
-                onChange={this.handleChange}>
+                <Grid item xs={12} md={3}>
+                    <TextField
+                    select
+                    label="Line"
+                    name="line"
+                    value={this.state.line}
+                    onChange={this.handleChange}
+                    fullWidth
+                    margin="normal">
                     {lines}
-                </select>
-                </div>
+                    </TextField>
+                </Grid>
                 {/* end lines */}
                 {/* destination */}
-                <div className="field">
-                <label htmlFor="destination">Destination</label>
-                <select name="destination" 
-                id="destination" 
-                value={DESTINATION}
-                className="form-control"
-                onChange={this.handleChange}>
+                <Grid item xs={12} md={3}>
+                    <TextField
+                    select
+                    label="Destination"
+                    name="destination"
+                    value={this.state.destination}
+                    onChange={this.handleChange}
+                    fullWidth
+                    margin="normal">
                     {destination}
-                </select>
-                </div>
+                    </TextField>
+                </Grid>
                 {/* end destination */}
                 {/* current station */}
-                <div className="field">
-                <label htmlFor="station">Current Station</label>
-                <select name="station" 
-                id="station" 
-                value={STATION}
-                className="form-control"
-                onChange={this.handleChange}>
+                <Grid item xs={12} md={3}>
+                    <TextField
+                    select
+                    label="Current Station"
+                    name="station"
+                    value={this.state.station}
+                    onChange={this.handleChange}
+                    fullWidth
+                    margin="normal">
                     {station}
-                </select>
-                </div>
+                    </TextField>
+                </Grid>
                 {/* end current station */}
                 {/* waiting seconds */}
-                <div className="field">
+                <Grid item xs={12} md={3}>
                 <label htmlFor="waiting_seconds">
                     Max Waiting Time {Math.floor(this.state.waiting_seconds / 60)} minutes
                     <input type="range" name="waiting_seconds"
@@ -101,11 +107,11 @@ class ScheduleFilter extends Component{
                     onChange={this.handleChange}
                     className="form-control" />
                 </label>
-                </div>
+                </Grid>
                 {/* end waiting seconds */}
-                </div>
+                </Grid>
                 </form>
-        </div>
+            </div>
     )
     }
 }
