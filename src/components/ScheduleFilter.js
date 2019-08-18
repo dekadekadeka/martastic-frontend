@@ -3,8 +3,6 @@ import {connect} from 'react-redux';
 import {filterTrains} from '../actions/scheduleActions';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
-import Slider from '@material-ui/core/Slider';
-import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 
 const getUnique = (items, value) => {
@@ -28,38 +26,7 @@ class ScheduleFilter extends Component{
             this.props.filterTrains(this.props.trains, this.state);
         }
         )
-        console.log("name", name, "value", value)
     }
-
-    TimeSlider = withStyles({
-        root: {
-        color: '#0193cf',
-        height: 8,
-        },
-        thumb: {
-        height: 24,
-        width: 24,
-        backgroundColor: '#fff',
-        border: '2px solid currentColor',
-        marginTop: -8,
-        marginLeft: -12,
-        '&:focus,&:hover,&$active': {
-            boxShadow: 'inherit',
-        },
-        },
-        active: {},
-        valueLabel: {
-        left: 'calc(-50% + 4px)',
-        },
-        track: {
-        height: 8,
-        borderRadius: 4,
-        },
-        rail: {
-        height: 8,
-        borderRadius: 4,
-        },
-    })(Slider);
 
     render() {
     //get unique lines
@@ -139,13 +106,6 @@ class ScheduleFilter extends Component{
                     onChange={this.handleChange}
                     className="form-control" />
                 </label>
-            {/* <this.TimeSlider 
-            name="waiting_seconds"
-            min={Math.floor(this.props.minWait)/60} 
-            max={30}
-            value={0}
-            onChange={this.handleChange}
-            valueLabelDisplay="auto"/> */}
                 </Grid>
                 {/* end waiting seconds */}
                 </Grid>
