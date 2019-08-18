@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { createPic } from '../actions/picActions'
+import TextField from '@material-ui/core/TextField';
+import MenuItem from '@material-ui/core/MenuItem';
+import Grid from '@material-ui/core/Grid';
 
 class PicForm extends Component {
     state = {
@@ -18,76 +21,213 @@ class PicForm extends Component {
             user_id: this.props.currentUser.id,
             station_id: this.state.station_id,
             pic_url: this.state.pic_url,
-            rating: 1
+            likes: 0
         }
         this.props.createPic(pic)
         console.log("submit", pic)
     }
+
+    stations = [
+        {
+        value: '1',
+        label: 'Five Points'
+        },
+        {
+        value: '2',
+        label: 'Airport'
+        },
+        {
+        value: '3',
+        label: 'College Park'
+        },
+        {
+        value: '4',
+        label: 'Lindbergh Center'
+        },
+        {
+        value: '5',
+        label: 'Peachtree Center'
+        },
+        {
+        value: '6',
+        label: 'H. E. Holmes'
+        },
+        {
+        value: '7',
+        label: 'Kensington'
+        },
+        {
+        value: '8',
+        label: 'West End'
+        },
+        {
+        value: '9',
+        label: 'Arts Center'
+        },
+        {
+        value: '10',
+        label: 'North Springs'
+        },
+        {
+        value: '11',
+        label: 'North Avenue'
+        },
+        {
+        value: '12',
+        label: 'Indian Creek'
+        },
+        {
+        value: '13',
+        label: 'Midtown'
+        },
+        {
+        value: '14',
+        label: 'Avondale'
+        },
+        {
+        value: '15',
+        label: 'Doraville'
+        },
+        {
+        value: '16',
+        label: 'East Point'
+        },
+        {
+        value: '17',
+        label: 'Oakland City'
+        },
+        {
+        value: '18',
+        label: 'Georgia State'
+        },
+        {
+        value: '19',
+        label: 'Decatur'
+        },
+        {
+        value: '20',
+        label: 'Chamblee'
+        },
+        {
+        value: '21',
+        label: 'Lenox'
+        },
+        {
+        value: '22',
+        label: 'Dunwoody'
+        },
+        {
+        value: '23',
+        label: 'Inman Park/Reynoldstown'
+        },
+        {
+        value: '24',
+        label: 'Civic Center'
+        },
+        {
+        value: '25',
+        label: 'Brookhaven/Oglethorpe University'
+        },
+        {
+        value: '26',
+        label: 'Sandy Springs'
+        },
+        {
+        value: '27',
+        label: 'West Lake'
+        },
+        {
+        value: '28',
+        label: 'Buckhead'
+        },
+        {
+        value: '29',
+        label: 'Dome/GWCC/Philips/CNN'
+        },
+        {
+        value: '30',
+        label: 'Ashby'
+        },
+        {
+        value: '31',
+        label: 'Lakewood/Ft. McPherson'
+        },
+        {
+        value: '32',
+        label: 'Bankhead'
+        },
+        {
+        value: '33',
+        label: 'King Memorial'
+        },
+        {
+        value: '34',
+        label: 'Garnett'
+        },
+        {
+        value: '35',
+        label: 'Medical Center'
+        },
+        {
+        value: '36',
+        label: 'Vine City'
+        },
+        {
+        value: '37',
+        label: 'Edgewood/Candler Park'
+        },
+        {
+        value: '38',
+        label: 'East Lake'
+        }
+    ]
+
+
     render() {
         return (
-            <form className="ui equal width form" onSubmit={this.onSubmit}>
-                <div className="fields">
-                <div className="field">
-                    <label>Pic URL</label>
+            <div className="flexGrow: 1">
+            <form onSubmit={this.onSubmit}>
+            <Grid container spacing={5}>
+                <Grid item xs={12} md={4}>
+                <TextField label="Pic URL" 
+                name='pic_url'
+                value={this.state.pic_url}
+                onChange={this.handleChange}
+                fullWidth
+                margin="normal"/>
+                </Grid>
+                <Grid item xs={12} md={4} align="center">
+                    <br/>
+                    <br/>
                     <input
-                    name='pic_url'
-                    placeholder='Pic URL (be nice please)'
-                    value={this.state.pic_url}
-                    onChange={this.handleChange}/>
-                </div>
-                {/* station dropdown */}
-            <div className="field">
-            <label>Station</label>
-            <select className="ui fluid search selection dropdown"
-            name="station_id"
-            value={this.state.station_id}
-            onChange={this.handleChange}>
-            <option value="1">Five Points</option>
-            <option value="2">Airport</option>
-            <option value="3">College Park</option>
-            <option value="4">Lindbergh Center</option>
-            <option value="5">Peachtree Center</option>
-            <option value="6">H. E. Holmes</option>
-            <option value="7">Kensington</option>
-            <option value="8">West End</option>
-            <option value="9">Arts Center</option>
-            <option value="10">North Springs</option>
-            <option value="11">North Avenue</option>
-            <option value="12">Indian Creek</option>
-            <option value="13">Midtown</option>
-            <option value="14">Avondale</option>
-            <option value="15">Doraville</option>
-            <option value="16">East Point</option>
-            <option value="17">Oakland City</option>
-            <option value="18">Georgia State</option>
-            <option value="19">Decatur</option>
-            <option value="20">Chamblee</option>
-            <option value="21">Lenox</option>
-            <option value="22">Dunwoody</option>
-            <option value="23">Inman Park/Reynoldstown</option>
-            <option value="24">Civic Center</option>
-            <option value="25">Brookhaven/Oglethorpe University</option>
-            <option value="26">Sandy Springs</option>
-            <option value="27">West Lake</option>
-            <option value="28">Buckhead</option>
-            <option value="29">Dome/GWCC/Philips/CNN</option>
-            <option value="30">Ashby</option>
-            <option value="31">Lakewood/Ft. McPherson</option>
-            <option value="32">Bankhead</option>
-            <option value="33">King Memorial</option>
-            <option value="34">Garnett</option>
-            <option value="35">Medical Center</option>
-            <option value="36">Vine City</option>
-            <option value="37">Edgewood/Candler Park</option>
-            <option value="38">East Lake</option>
-            </select>
-            </div>
-            {/* end station dropdown */}
-            </div>
-                <button type="submit" className="ui blue labeled submit icon button">
-                <i className="icon edit"></i> Add Pic
-                </button>
+                    accept="image/*"
+                    multiple
+                    type="file"/>
+                </Grid>
+                <Grid item xs={12} md={4}>
+                    <TextField
+                    select
+                    label="Station"
+                    name="station_id"
+                    value={this.state.station_id}
+                    onChange={this.handleChange}
+                    fullWidth
+                    margin="normal">
+                    {this.stations.map(option => (
+                    <MenuItem key={option.value} value={option.value}>
+                        {option.label}
+                    </MenuItem>
+                    ))}
+                </TextField>
+                    </Grid>
+                <Grid container justify="center">
+                    <button type="submit" className="ui blue labeled submit icon button">
+                    <i className="icon edit"></i> Add Pic
+                    </button>
+                </Grid>
+                </Grid>
             </form>
+        </div>
         )
     }
 }

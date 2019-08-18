@@ -21,7 +21,6 @@ export default function(state = initialState, action){
                     maxWait: action.payload
                 }
                 case 'SORT_TRAINS':
-                        console.log(action.payload)
             return{
                 ...state,
                 sortedTrains: action.payload,
