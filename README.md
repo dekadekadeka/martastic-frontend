@@ -4,6 +4,16 @@ Martastic Frontend
 
 Goes along with [Martastic Backend](https://github.com/dekadekadeka/martastic-backend). Please get both for the full experience.
 
+TODO:
+
+* Add optimistic rendering for pic and station comments
+* Add modals with user information
+* Add ability to make friends
+* Add likes
+
+MAYBE SOMEDAY:
+* Add bus information
+
 ## Available Scripts
 
 In the project directory, you can run:
