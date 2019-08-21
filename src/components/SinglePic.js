@@ -1,29 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
+import Comments from './Comments'
 import CommentForm from './CommentForm'
-import { FaRegFrown } from "react-icons/fa";
+
 
 class SinglePic extends Component {
-    render() {
-        const allComments = this.props.pic.comments.map(comment => (
-            <div className="comment">
-    <span className="avatar">
-    {{...comment.user}.profile_pic_url === undefined ? <span className="sad"><FaRegFrown /></span>
-      : <img src={{...comment.user}.profile_pic_url} alt="Yay Marta"/>}
-    </span>
-    <div className="content">
-    {{...comment.user}.name === undefined? "[user deleted]" : 
-    <span className="author">{{...comment.user}.name}</span>}
-      <div className="metadata">
-        <span className="date">{{...comment.user}.home_station}</span>
-      </div>
-      <div className="text">
-        {comment.content}
-      </div>
-    </div>
-  </div>
-        ))
-
+  render() {
         return (
             <div className="single-pic">
               <img className="big-pic" src={this.props.pic.pic_url} alt=""/>
@@ -31,7 +13,7 @@ class SinglePic extends Component {
             <h3>Likes: {this.props.pic.likes}</h3>
             <h3 className="ui dividing header">Comments</h3>
 
-            {allComments}
+            <Comments comments = {this.props.pic.comments}/>
 
             <CommentForm item={this.props.pic} type={"Pic"} id={this.props.pic.id}/>
             </div>

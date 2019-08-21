@@ -28,7 +28,7 @@ class CommentForm extends Component {
         return (
             <form className="ui reply form" onSubmit={this.onSubmit}>
                 <div className="field">
-                <textarea type="content" name="content" className="form-control"
+                <textarea type="content" name="content"
                 value={this.state.content} onChange={this.handleChange}/>
                 </div>
                 <button type="submit" 

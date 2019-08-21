@@ -24,7 +24,6 @@ class PicForm extends Component {
             likes: 0
         }
         this.props.createPic(pic)
-        console.log("submit", pic)
     }
 
     stations = [
