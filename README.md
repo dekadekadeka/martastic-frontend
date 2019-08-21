@@ -2,7 +2,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Martastic Frontend
 
-Goes along with [https://github.com/dekadekadeka/martastic-backend/](Martastic Backend). Please get both for the full experience.
+Goes along with [Martastic Backend](https://github.com/dekadekadeka/martastic-backend). Please get both for the full experience.
 
 ## Available Scripts
 
