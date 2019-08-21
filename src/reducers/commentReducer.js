@@ -6,7 +6,7 @@ const initialState = {
 export default function(state = initialState, action){
     switch(action.type){
         case 'FETCH_COMMENTS':
-            return{
+            return {
                 ...state,
                 comments: action.payload
             }

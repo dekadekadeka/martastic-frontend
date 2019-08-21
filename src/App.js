@@ -24,7 +24,7 @@ import "./App.css"
 
 class App extends Component {
 
-componentDidMount(){
+  componentDidMount(){
     this.props.fetchPics()
     if (localStorage.token){
       this.props.initState()
@@ -58,4 +58,4 @@ componentDidMount(){
 
 let mapStateToProps = state => ({user_id: state.currentUser.currentUser.id })
 
-export default connect(mapStateToProps, {initState, fetchPics})(App);
+export default connect(mapStateToProps, {initState, fetchPics })(App);
