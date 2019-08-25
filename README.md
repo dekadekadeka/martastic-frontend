@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/cd063d89-1886-42b5-a748-fa6b0a806f5a/deploy-status)](https://app.netlify.com/sites/martastic/deploys)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 Martastic Frontend
