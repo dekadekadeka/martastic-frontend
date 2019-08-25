@@ -1,6 +1,6 @@
 export const fetchComments = () => {
     return async dispatch => {
-        const resp = await fetch("http://localhost:3000/comments");
+        const resp = await fetch("https://martastic.herokuapp.com/comments");
         const comments = await resp.json();
             dispatch({
                 type: 'FETCH_COMMENTS',
@@ -12,7 +12,7 @@ export const fetchComments = () => {
 export const createComment = (commentData) => dispatch => {
     console.log(commentData)
     const token = localStorage.token;
-    fetch("http://localhost:3000/comments", {
+    fetch("https://martastic.herokuapp.com/comments", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

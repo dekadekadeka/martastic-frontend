@@ -3,7 +3,7 @@ export const editUser = (userHash) => {
     return async dispatch => {
         const token = localStorage.token;
         if (token) {
-        const resp = await fetch(`http://localhost:3000/users/${userHash.id}`, {
+        const resp = await fetch(`https://martastic.herokuapp.com/users/${userHash.id}`, {
             method: "PATCH",
             headers: {
                 'Content-Type': 'application/json',
