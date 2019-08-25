@@ -1,5 +1,6 @@
 {
   "name": "martastic-frontend",
+  "homepage": "https://www.martastic.net",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
