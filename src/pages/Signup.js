@@ -13,7 +13,7 @@ class Signup extends Component {
     home_station: "",
     location: "",
     bio: "",
-    profile_pic_url: "http://localhost:3000/generic_profile.jpg"
+    profile_pic_url: "https://martastic.herokuapp.com/generic_profile.jpg"
   }
 
 

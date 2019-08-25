@@ -1,6 +1,6 @@
 export const createUser = (user, history) => {
     return async dispatch => {
-    const resp = await fetch("http://localhost:3000/users", {
+    const resp = await fetch("https://martastic.herokuapp.com/users", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
@@ -24,7 +24,7 @@ export const createUser = (user, history) => {
 
 export function userLoginFetch(user, history){
     return dispatch => {
-    return fetch("http://localhost:3000/login", {
+    return fetch("https://martastic.herokuapp.com/login", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
@@ -50,7 +50,7 @@ export function userLoginFetch(user, history){
 export const initState = ()=> {
     return async dispatch => {
 
-        const resp = await fetch("http://localhost:3000/init-state", {
+        const resp = await fetch("https://martastic.herokuapp.com/init-state", {
             headers: { Authorization: `Bearer ${localStorage.token}` }
         })
         const data = await resp.json();
@@ -69,7 +69,7 @@ export const initState = ()=> {
     return async dispatch => {
         const token = localStorage.token;
         if (token) {
-        const resp = await fetch("http://localhost:3000/profile", {
+        const resp = await fetch("https://martastic.herokuapp.com/profile", {
             method: "GET",
             headers: {
                 'Content-Type': 'application/json',
@@ -120,7 +120,7 @@ export const initState = ()=> {
 //User must still log out manually.
 export const deleteUser = (userHash, history) => dispatch => {
     const token = localStorage.token;
-    fetch(`http://localhost:3000/users/${userHash.id}`, {
+    fetch(`https://martastic.herokuapp.com/${userHash.id}`, {
         method: 'DELETE',
         headers: {
             'Authorization': `Bearer ${token}`

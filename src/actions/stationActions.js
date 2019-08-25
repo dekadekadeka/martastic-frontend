@@ -1,5 +1,5 @@
 export const fetchStations = () => dispatch => {
-    fetch("http://localhost:3000/stations")
+    fetch("https://martastic.herokuapp.com/stations")
     .then(resp => resp.json())
     .then(stations =>
         dispatch({
