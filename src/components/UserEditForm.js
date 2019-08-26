@@ -252,7 +252,7 @@ class EditForm extends Component {
             <br/>
             <br/>
         <Grid container justify="center">
-          <input type='submit' className="ui submit button"/>
+          <input type='submit' className="ui blue basic button"/>
         </Grid>
     </Grid>
       </form>

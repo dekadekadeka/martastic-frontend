@@ -220,12 +220,13 @@ class PicForm extends Component {
                 </TextField>
                     </Grid>
                 <Grid container justify="center">
-                    <button type="submit" className="ui blue labeled submit icon button">
-                    <i className="icon edit"></i> Add Pic
+                    <button type="submit" className="ui blue basic button">
+                    <i className="iconify icon:emojione-monotone:up-right-arrow icon-inline:false"></i> Add Pic
                     </button>
                 </Grid>
                 </Grid>
             </form>
+            <br/>
         </div>
         )
     }

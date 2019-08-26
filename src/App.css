@@ -38,17 +38,37 @@ h3{
   z-index: 1;
 }
 
+.nav-header{
+  margin-left: 47%;
+  margin-top: 1rem;
+  padding-left: 0;
+}
+
+.nav-btn {
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+.nav-icon {
+  font-size: 1.5rem;
+  color: #fff;
+}
+
 .nav-links{
-  list-style-type: none;
-  display: flex;
-  justify-content: space-around;
+  overflow: hidden;
   font-size: 1.25em;
+  list-style-type: none;
+  padding-left: 0;
 }
 
 .nav-links a{
+  display: block;
   text-decoration: none;
+  padding: 1rem 0;
   color: #fff;
   transition: var(--mainTransition);
+  text-align: center;
 }
 
 .blue a:hover{
@@ -103,6 +123,30 @@ h3{
     color: var(--martaBlue);
   }
 }
+
+.show-nav {
+  height: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .nav-btn {
+    display: none;
+  }
+
+  .nav-links a{
+    padding: 0;
+  }
+
+  .nav-links {
+    height: auto;
+    display: flex;
+    justify-content: space-around;
+  }
+  .nav-links a {
+    margin: 0 1rem;
+  }
+}
+
 /* end navbar */
 /* home */
 .pic-info {
@@ -134,8 +178,13 @@ h3{
 /* end error */
 /* schedule */
 .schedule{
-  margin: 10vh;
+  margin: 10vh auto;
 }
+
+.filter{
+  margin: 5rem 5rem;
+}
+
 .empty-search {
   text-align: center;
   margin: 2rem 0;
@@ -155,6 +204,12 @@ h3{
 .schedule-filter{
   margin-left: 30vh;
   margin-right: 30vh;
+}
+
+@media screen and (min-width: 992px) {
+  .filter {
+    margin: 5rem 9rem;
+  }
 }
 /* end schedule */
 /* stations */
@@ -224,7 +279,7 @@ h3{
   transition: var(--mainTransition);
 }
 .all-pics{
-  margin: 10vh;
+  margin-top: 10vh;
 }
 .picslist {
   padding: 5rem 0;
@@ -238,11 +293,6 @@ h3{
   grid-column-gap: 30px;
 }
 
-@media screen and (min-width: 776px) {
-  .picslist-center {
-    width: 90vw;
-  }
-}
 @media screen and (min-width: 992px) {
   .picslist-center {
     width: 95vw;
