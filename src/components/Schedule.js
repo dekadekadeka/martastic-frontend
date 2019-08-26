@@ -13,10 +13,12 @@ class Schedule extends Component {
     render() {
         return (
             <div className="schedule">
+                <div className="filter">
                 <ScheduleFilter trains={this.props.trains} 
                 time={this.props.time}
                 minWait={this.props.minWait}
                 maxWait={this.props.maxWait}/>
+                </div>
                 <ScheduleList trains={this.props.sortedTrains} loading={this.props.loading}/>
             </div>
         )

@@ -173,8 +173,13 @@ h3{
 /* end error */
 /* schedule */
 .schedule{
-  margin: 10vh;
+  margin: 10vh auto;
 }
+
+.filter{
+  margin: 5rem 5rem;
+}
+
 .empty-search {
   text-align: center;
   margin: 2rem 0;
@@ -194,6 +199,12 @@ h3{
 .schedule-filter{
   margin-left: 30vh;
   margin-right: 30vh;
+}
+
+@media screen and (min-width: 992px) {
+  .filter {
+    margin: 5rem 9rem;
+  }
 }
 /* end schedule */
 /* stations */
@@ -263,7 +274,7 @@ h3{
   transition: var(--mainTransition);
 }
 .all-pics{
-  margin: 10vh;
+  margin-top: 10vh;
 }
 .picslist {
   padding: 5rem 0;
@@ -277,11 +288,6 @@ h3{
   grid-column-gap: 30px;
 }
 
-@media screen and (min-width: 776px) {
-  .picslist-center {
-    width: 90vw;
-  }
-}
 @media screen and (min-width: 992px) {
   .picslist-center {
     width: 95vw;
