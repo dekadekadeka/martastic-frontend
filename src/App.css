@@ -38,17 +38,37 @@ h3{
   z-index: 1;
 }
 
+.nav-header{
+  margin-left: 45%;
+  margin-top: 1rem;
+  padding-left: 0;
+}
+
+.nav-btn {
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+.nav-icon {
+  font-size: 1.5rem;
+  color: #fff;
+}
+
 .nav-links{
+  overflow: hidden;
+  font-size: 1.35em;
   list-style-type: none;
-  display: flex;
-  justify-content: space-around;
-  font-size: 1.25em;
+  padding-left: 0;
 }
 
 .nav-links a{
+  display: block;
   text-decoration: none;
+  padding: 1rem 0;
   color: #fff;
   transition: var(--mainTransition);
+  text-align: center;
 }
 
 .blue a:hover{
@@ -103,6 +123,25 @@ h3{
     color: var(--martaBlue);
   }
 }
+
+.show-nav {
+  height: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .nav-btn {
+    display: none;
+  }
+  .nav-links {
+    height: auto;
+    display: flex;
+    justify-content: space-around;
+  }
+  .nav-links a {
+    margin: 0 1rem;
+  }
+}
+
 /* end navbar */
 /* home */
 .pic-info {
