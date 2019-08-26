@@ -30,7 +30,6 @@ class Navbar extends Component {
         console.log("Have a MARTASTIC day!! 🚇")
         return (
             <div className="navbar">
-                <div className="nav-center">
                     <div className="nav-header">
                     <button type="button" className="nav-btn"
                     onClick={this.handleOpen}>
@@ -52,7 +51,6 @@ class Navbar extends Component {
                     }
                     <span className="orange"><Link to="/about">About</Link></span>
                 </ul> 
-                </div>
             </div>
         )
     }
