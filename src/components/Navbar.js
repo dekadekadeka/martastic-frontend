@@ -36,7 +36,7 @@ class Navbar extends Component {
                     <FaArrowAltCircleDown className="nav-icon"/>
                     </button>
                     </div>
-                <ul className={this.state.isOpen ? "nav-links show-nav" : "nav-links"}>
+                <ul className={this.state.isOpen ? "nav-links" : "nav-links show-nav"}>
                     {this.props.currentUser.username ? 
                     <Link to="/profile" className="profile-nav">My Profile</Link>
                     : null }

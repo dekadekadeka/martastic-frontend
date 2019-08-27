@@ -39,7 +39,7 @@ h3{
 }
 
 .nav-header{
-  margin-left: 47%;
+  margin-left: 47.5%;
   margin-top: 1rem;
   padding-left: 0;
 }
@@ -48,6 +48,7 @@ h3{
   background: transparent;
   border: none;
   outline: none;
+  padding: 0;
 }
 
 .nav-icon {
@@ -352,15 +353,9 @@ h3{
 /* end profile */
 /* about */
 .about{
-  margin: 20vh 10vh 10vh 10vh;
+  margin: 10vh 0;
 }
-/* .about-container{
-  position: absolute;
-        top: 50%;
-        left: 50%;
-        margin-right: -50%;
-        transform: translate(-50%, -50%)
-} */
+
 .about-box{
 	border:5px solid var(--martaBlue);
   padding:10px;
@@ -379,12 +374,7 @@ h3{
   padding:10px;
   margin: 10vh;
 }
-.stack-box-center {
-  width: 90vw;
-  margin: 0 auto;
-  display: flex;
-  grid-column-gap: 50px;
-}
+
 .stack-box h4{
   margin: 0px;
 }

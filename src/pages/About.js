@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import { DiJsBadge } from "react-icons/di";
+import { FaLinkedin, FaGithub } from "react-icons/fa";
+import Grid from '@material-ui/core/Grid';
 
 export default class About extends Component {
     render() {
         return (
             <div className="about">
+                <div className="flexGrow: 1">
                 <div className="about-box">
                 <div className="about-text"><h1>About Martastic</h1></div>
                 <br/>
@@ -13,40 +16,56 @@ export default class About extends Component {
                 While the two things are not related in any way other than they came into my life at around the same time 20 years ago,
                 I thought this was a good way to both end the program and come back to the path I should have stayed on back then.
                 </p>
+                <p>
+                I am probably legally obligated to inform you that I am not in any way affiliated with the real 
+                Metropolitan Atlanta Rapid Transit Authority (although I really appreciate their work!)
+                </p>
                 </div>
 
                 <div className="stack-box">
-                <div className="stack-box-center">
                 <div className="about-text"><h1>The Stack</h1></div>
-                <br/>
-                <br/>
-                <article>
-                    <span>
-                        <span class="iconify" data-icon="logos:ruby" data-inline="false"></span>
-                        <span class="iconify" data-icon="logos:rails" data-inline="false"></span>
-                        <span class="iconify" data-icon="logos:postgresql" data-inline="false"></span>
-                        </span>
-                    <h4>Ruby on Rails Backend</h4>
-                    <h4>PostgreSQL DB</h4>
-                </article>
+                <Grid
+                    container
+                    direction="row"
+                    justify="space-evenly"
+                    alignItems="center"
+                    spacing={3}
+                    >
+                    <Grid item l={4}>
+                    <article>
+                        <span>
+                            <span className="iconify" data-icon="logos:ruby" data-inline="false"></span>
+                            <span className="iconify" data-icon="logos:rails" data-inline="false"></span>
+                            <span className="iconify" data-icon="logos:postgresql" data-inline="false"></span>
+                            </span>
+                        <h4>Ruby on Rails Backend</h4>
+                        <h4>PostgreSQL DB</h4>
+                    </article>
+                    </Grid>
+                    <Grid item l={4}>
                 <article>
                     <span>
                         <DiJsBadge/>
-                        <span class="iconify" data-icon="logos:react" data-inline="false"></span>
-                        <span class="iconify" data-icon="logos:redux" data-inline="false"></span>
+                        <span className="iconify" data-icon="logos:react" data-inline="false"></span>
+                        <span className="iconify" data-icon="logos:redux" data-inline="false"></span>
                         </span>
                     <h4>JS/React/Redux Frontend</h4>
                 </article>
+                </Grid>
+                <Grid item l={4}>
                 <article>
                     <span>
-                        <span class="iconify" data-icon="logos:html-5" data-inline="false"></span>
-                        <span class="iconify" data-icon="logos:css-3" data-inline="false"></span>
-                        <span class="iconify" data-icon="logos:semantic-ui" data-inline="false"></span>
+                        <span className="iconify" data-icon="logos:html-5" data-inline="false"></span>
+                        <span className="iconify" data-icon="logos:css-3" data-inline="false"></span>
+                        <span className="iconify" data-icon="logos:semantic-ui" data-inline="false"></span>
+                        <span className="iconify" data-icon="mdi:material-ui" data-inline="false"></span>
                         </span>
                     <h4>HTML5/Custom CSS</h4>
                     <h4>+ Semantic UI</h4>
+                    <h4>+ Material UI</h4>
                 </article>
-                </div>
+                </Grid>
+                </Grid>
                 </div>
 
                 <div className="deka-box">
@@ -74,7 +93,14 @@ export default class About extends Component {
                 <p>I joined Flatiron School on April 22, 2019 and officially began my coding journey. It's a real thing now, and this time
                     I hope to stick with it as a career for a very long time.
                 </p>
+                <p style={{ "text-align": "center" }}>
+                <a href="https://github.com/dekadekadeka/">
+                    <FaGithub/></a>
+                <a href="https://www.linkedin.com/in/renee-ambia-96731773/">
+                    <FaLinkedin/></a>
+                </p>
                 </div>
+            </div>
             </div>
         )
     }
