@@ -12,6 +12,7 @@ TODO:
 * Add modals with user information
 * Add ability to make friends
 * Add likes
+* Validation on forms (from backend)
 
 MAYBE SOMEDAY:
 * Add bus information
