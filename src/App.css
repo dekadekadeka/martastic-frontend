@@ -1,7 +1,7 @@
 :root {
-  --martaBlue: #0193cf;
-  --martaGold: #fcb117;
-  --martaOrange: #f37521;
+  --martaBlue: #0092D0;
+  --martaGold: #FDBE43;
+  --martaOrange: #FF7500;
   --mainTransition: all 0.3s linear;
   --mainSpacing: 3px;
   --lightShadow: 2px 5px 3px 0px rgba(0, 0, 0, 0.5);

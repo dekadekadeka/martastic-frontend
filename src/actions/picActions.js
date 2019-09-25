@@ -1,16 +1,24 @@
-export const fetchPics = () => {
-    return async dispatch => {
-        const resp = await fetch("https://martastic.herokuapp.com/pics");
-        const pics = await resp.json();
-            dispatch({
-                type: 'FETCH_PICS',
-                payload: pics
-            })
-    }
+// export const fetchPics = () => {
+//     return async dispatch => {
+//         const resp = await fetch("https://martastic.herokuapp.com/pics");
+//         const pics = await resp.json();
+//             dispatch({
+//                 type: 'FETCH_PICS',
+//                 payload: pics
+//             })
+//     }
+// }
+
+export const fetchPics = () => dispatch => {
+    fetch("https://martastic.herokuapp.com/pics")
+    .then(resp => resp.json())
+    .then(pics => dispatch({
+        type: 'FETCH_PICS',
+        payload: pics
+    }))
 }
 
 export const createPic = (picData) => dispatch => {
-    console.log(picData)
     const token = localStorage.token;
     fetch("https://martastic.herokuapp.com/pics", {
         method: 'POST',
