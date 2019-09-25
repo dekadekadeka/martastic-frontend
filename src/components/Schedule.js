@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchSchedule } from '../actions/scheduleActions'
 import ScheduleList from './ScheduleList'
@@ -24,11 +23,6 @@ class Schedule extends Component {
         )
     }
 }
-
-// Schedule.propTypes = {
-//     fetchSchedule: PropTypes.func.isRequired,
-//     trains: PropTypes.array.isRequired
-// }
 
 const mapStateToProps = state => ({
     trains: state.schedule.trains,

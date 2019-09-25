@@ -16,6 +16,12 @@ export default function(state = initialState, action){
                 pics: [...state.pics,
                     action.payload]
             }
+        // case 'NEW_COMMENT':
+        //     return {
+        //         ...state,
+        //         pics: [...state.pics.comments,
+        //             action.payload]
+        //     }
         default:
             return state
         }
