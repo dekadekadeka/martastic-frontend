@@ -390,3 +390,29 @@ h3{
   margin: 10vh;
 }
 /* end about */
+/* loading */
+.loading-text{
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+}
+
+.loading-text h1{
+  font-size: 150px;
+  background: linear-gradient(to right, #0092D0, #FDBE43, #FF7500);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.loading-text h3{
+  margin-top: 0%;
+  margin-bottom: 0%;
+  font-size: 50px;
+  letter-spacing: 10px;
+}
+/* end loading */
