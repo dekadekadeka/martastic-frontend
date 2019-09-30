@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux';
 import {logoutUser} from '../actions/authActions';
-import {FaArrowAltCircleDown} from 'react-icons/fa'
+import {FaArrowAltCircleDown, FaArrowAltCircleUp} from 'react-icons/fa'
 
 class Navbar extends Component {
 
@@ -33,7 +33,8 @@ class Navbar extends Component {
                     <div className="nav-header">
                     <button type="button" className="nav-btn"
                     onClick={this.handleOpen}>
-                    <FaArrowAltCircleDown className="nav-icon"/>
+                    {this.state.isOpen ? <FaArrowAltCircleUp className="nav-icon"/>
+                    :<FaArrowAltCircleDown className="nav-icon"/>}
                     </button>
                     </div>
                 <ul className={this.state.isOpen ? "nav-links" : "nav-links show-nav"}>
