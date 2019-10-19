@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getRandomPic } from '../reducers/picReducer';
 import HomeDiv from '../components/HomeDiv';
-import MainLoading from '../components/MainLoading'
+import Schedule from '../components/Schedule'
 
 
 class Home extends Component {
 
 
     render(){
-        if(this.props.pic === undefined) return <MainLoading />
+        if(this.props.pic === undefined) return <Schedule />
         return (
             <HomeDiv img={this.props.pic.pic_url}>
                 <div className="pic-info">
