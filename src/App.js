@@ -37,7 +37,8 @@ class App extends Component {
       <Navbar />
       {localStorage.token && !this.props.user_id ? null :
       <Switch>
-        <Route exact path="/" component={Home} />
+        <Route exact path="/" component={Schedule} />
+        <Route exact path="/home/" component={Home} />
         <Route exact path="/users/" component={Users} />
         <Route exact path="/schedule/" component={Schedule} />
         <Route exact path="/stations/" component={Stations} />

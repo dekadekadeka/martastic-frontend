@@ -41,7 +41,7 @@ class Navbar extends Component {
                     {this.props.currentUser.username ? 
                     <Link to="/profile" className="profile-nav">My Profile</Link>
                     : null }
-                    <span className="blue"><Link to="/">Home</Link></span>
+                    <span className="blue"><Link to="/home">Home</Link></span>
                     <span className="blue"><Link to="/schedule">Schedule</Link></span>
                     <span className="gold"><Link to="/stations">Stations</Link></span>
                     <span className="gold"><Link to="/pics">All Pictures</Link></span>
