@@ -256,10 +256,22 @@ h3{
 /* end stations */
 /* single station */
 .single-station{
-  margin: 20vh;
+  margin: 20vw 5vw 5vw;
 }
 .sad{
   font-size: 3rem;
+}
+
+@media screen and (min-width: 600px) {
+  .single-station{
+    margin: 10vw 5vw 5vw;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .single-station{
+    margin: 5vw 5vw 5vw;
+  }
 }
 /* end single station */
 /* all pics */
@@ -303,14 +315,36 @@ h3{
 /* end all pics */
 /* single pic */
 .single-pic{
-  margin: 20vh;
+  margin: 15vw 5vw 5vw;
 }
+
 .big-pic{
   display: block;
   margin-left: auto;
   margin-right: auto;
-  max-width: 150vh;
+  max-width: 90vw;
 }
+
+@media screen and (min-width: 600px) {
+  .single-pic{
+    margin: 10vw 5vw 5vw;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .single-pic{
+    margin: 5vw;
+  }
+
+  .big-pic{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 90vw;
+  }
+}
+
+
 /* end single pic */
 /* log in */
 .log-in{

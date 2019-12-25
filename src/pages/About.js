@@ -93,12 +93,12 @@ export default class About extends Component {
                 <p>I joined Flatiron School on April 22, 2019 and officially began my coding journey. It's a real thing now, and this time
                     I hope to stick with it as a career for a very long time.
                 </p>
-                <p style={{ "text-align": "center" }}>
+                <h1 style={{ "text-align": "center", "font-size": "30px"}}>
                 <a href="https://github.com/dekadekadeka/">
                     <FaGithub/></a>
                 <a href="https://www.linkedin.com/in/renee-ambia-96731773/">
                     <FaLinkedin/></a>
-                </p>
+                </h1>
                 </div>
             </div>
             </div>
