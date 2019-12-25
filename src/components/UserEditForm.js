@@ -249,6 +249,17 @@ class EditForm extends Component {
           fullWidth
           margin="normal"/>
         </Grid>
+        <Grid item xs={12}>
+          <TextField
+          name='profile_pic_url'
+          label="Profile Pic URL (optional)"
+          multiline
+          rowsMax="4"
+          value={this.state.profile_pic_url}
+          onChange={this.handleChange}
+          fullWidth
+          margin="normal"/>
+        </Grid>
             <br/>
             <br/>
         <Grid container justify="center">

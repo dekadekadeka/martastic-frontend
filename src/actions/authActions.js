@@ -59,9 +59,7 @@ export const initState = ()=> {
         })
         const data = await resp.json();
         if (data.message) {
-            // Here you should have logic to handle invalid creation of a user.
-            // This assumes your Rails API will return a JSON object with a key of
-            // 'message' if there is an error with creating the user, i.e. invalid username
+            console.log(data.message)
         }
         else {
             dispatch(loginUser(data.user));
@@ -83,8 +81,6 @@ export const initState = ()=> {
         });
         const data = await resp.json();
         if (data.message) {
-              // An error will occur if the token is invalid.
-              // If this happens, you may want to remove the invalid token.
             localStorage.removeItem("token");
         }
         else {
@@ -94,8 +90,6 @@ export const initState = ()=> {
     }
 }
 
-//function works as intended but will not change state.
-//User must still log out manually.
 export const deleteUser = (userHash, history) => dispatch => {
     const token = localStorage.token;
     fetch(`https://martastic.herokuapp.com/${userHash.id}`, {

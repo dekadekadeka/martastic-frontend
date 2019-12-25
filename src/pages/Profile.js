@@ -8,7 +8,6 @@ import { Link } from 'react-router-dom';
 class Profile extends Component {
 
     render() {
-        console.log(this.props.currentUser.pics.length)
         return (
             <div className="profile">
                 <h1>My Profile</h1>
@@ -40,11 +39,11 @@ class Profile extends Component {
                 <div className="picslist-center">
                 {this.props.currentUser.pics.length === 0 ? "You don't have any pics yet! :(" : 
                 this.props.currentUser.pics.map(pic => (
-                    <article className="pic">
+                    <article className="pic" key={pic.id}>
                         <div className="img-container">
                             <Link to={`/pics/${pic.id}`}>
                             <img src={pic.pic_url} 
-                            alt="" key={pic.id}/>
+                            alt=""/>
                             </Link>
                         </div>
                     </article>
