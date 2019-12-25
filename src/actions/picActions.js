@@ -1,14 +1,3 @@
-// export const fetchPics = () => {
-//     return async dispatch => {
-//         const resp = await fetch("https://martastic.herokuapp.com/pics");
-//         const pics = await resp.json();
-//             dispatch({
-//                 type: 'FETCH_PICS',
-//                 payload: pics
-//             })
-//     }
-// }
-
 export const fetchPics = () => dispatch => {
     fetch("https://martastic.herokuapp.com/pics")
     .then(resp => resp.json())
@@ -30,8 +19,17 @@ export const createPic = (picData) => dispatch => {
         body: JSON.stringify({pic: picData})
     })
     .then(resp => resp.json())
-    .then(pic => dispatch({
-        type: "NEW_PIC",
-        payload: pic
-    }))
+    .then(pic => {
+        if (pic.error) {
+            dispatch({
+                type: 'PIC_FAIL',
+                payload: pic.error
+            })
+        } else {
+            dispatch({
+                type: "NEW_PIC",
+                payload: pic
+            })
+        }
+    })
 }

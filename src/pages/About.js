@@ -96,7 +96,7 @@ export default class About extends Component {
                 <h1 style={{ "text-align": "center", "font-size": "30px"}}>
                 <a href="https://github.com/dekadekadeka/">
                     <FaGithub/></a>
-                <a href="https://www.linkedin.com/in/renee-ambia-96731773/">
+                <a href="https://www.linkedin.com/in/renee-deka-ambia-96731773/">
                     <FaLinkedin/></a>
                 </h1>
                 </div>

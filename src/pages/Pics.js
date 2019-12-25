@@ -13,7 +13,7 @@ class Pics extends Component {
                     <PicList pics={this.props.pics} />
                     </div>
                 </section>
-                <h1>Add A Pic</h1>
+                <h1 style={{marginLeft: '5rem'}}>Add A Pic</h1>
                 <PicForm />
             </div>
         )

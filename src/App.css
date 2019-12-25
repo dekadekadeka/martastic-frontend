@@ -291,9 +291,7 @@ h3{
   display: block;
   transition: var(--mainTransition);
 }
-.all-pics{
-  margin-top: 10vh;
-}
+
 .picslist {
   padding: 5rem 0;
 }
@@ -304,6 +302,10 @@ h3{
   grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
   grid-row-gap: 2rem;
   grid-column-gap: 30px;
+}
+
+.pic-form{
+  margin: 0rem 5rem 5rem;
 }
 
 @media screen and (min-width: 992px) {
