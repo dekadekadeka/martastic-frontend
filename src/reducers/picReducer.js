@@ -1,7 +1,8 @@
 import { sample } from 'lodash';
 
 const initialState = {
-    pics: []
+    pics: [],
+    error: ''
 }
 export default function(state = initialState, action){
     switch(action.type){
@@ -16,12 +17,11 @@ export default function(state = initialState, action){
                 pics: [...state.pics,
                     action.payload]
             }
-        // case 'NEW_COMMENT':
-        //     return {
-        //         ...state,
-        //         pics: [...state.pics.comments,
-        //             action.payload]
-        //     }
+        case 'PIC_FAIL':
+            return{
+                ...state,
+                error: action.payload
+            }
         default:
             return state
         }

@@ -17,6 +17,7 @@ class PicForm extends Component {
 
     onSubmit = (e) => {
         e.preventDefault();
+        // const pic = new FormData(e.target)
         const pic = {
             user_id: this.props.currentUser.id,
             station_id: this.state.station_id,
@@ -183,27 +184,41 @@ class PicForm extends Component {
 
 
     render() {
+        console.log(this.props.error)
         return (
-            <div className="flexGrow: 1">
+            <div className="pic-form">
             <form onSubmit={this.onSubmit}>
             <Grid container spacing={5}>
-                <Grid item xs={12} md={4}>
+                {!this.props.error? 
+                (<Grid item xs={12} md={6}>
                 <TextField label="Pic URL" 
                 name='pic_url'
                 value={this.state.pic_url}
                 onChange={this.handleChange}
                 fullWidth
                 margin="normal"/>
-                </Grid>
-                <Grid item xs={12} md={4} align="center">
+                </Grid>)
+                :(<Grid item xs={12} md={6}>
+                <TextField label="Pic URL" 
+                error
+                helperText={this.props.error}
+                name='pic_url'
+                value={this.state.pic_url}
+                onChange={this.handleChange}
+                fullWidth
+                margin="normal"/>
+                </Grid>)
+                }
+                {/* <Grid item xs={12} md={4} align="center">
                     <br/>
                     <br/>
                     <input
                     accept="image/*"
-                    multiple
+                    name='pic_url'
+                    onChange={this.handleChange}
                     type="file"/>
-                </Grid>
-                <Grid item xs={12} md={4}>
+                </Grid> */}
+                <Grid item xs={12} md={6}>
                     <TextField
                     select
                     label="Station"
@@ -233,7 +248,8 @@ class PicForm extends Component {
 }
 
 const mapStateToProps = state => ({
-    currentUser: state.currentUser.currentUser
+    currentUser: state.currentUser.currentUser,
+    error: state.pics.error
 })
 
 export default connect(mapStateToProps, { createPic })(PicForm);
