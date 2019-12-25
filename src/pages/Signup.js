@@ -25,7 +25,7 @@ class Signup extends Component {
 
   handleSubmit = event => {
     event.preventDefault()
-    this.props.fetchUser(this.state, this.props.history)
+    this.props.createUser(this.state, this.props.history)
   }
 
   stations = [
@@ -190,56 +190,111 @@ class Signup extends Component {
         <form onSubmit={this.handleSubmit}>
       <Grid container spacing={5}>
         <Grid item xs={12} md={4}>
-          <TextField label="Name" 
+        {!this.props.message?
+          (<TextField label="Name" 
           name='name'
           value={this.state.name}
           onChange={this.handleChange}
           fullWidth
-          margin="normal"/>
+          margin="normal"/>)
+          :(<TextField label="Name" 
+          error
+          name='name'
+          value={this.state.name}
+          onChange={this.handleChange}
+          fullWidth
+          margin="normal"/>)
+        } 
         </Grid>
         <Grid item xs={12} md={4}>
-          <TextField label="Username" 
+        {!this.props.message?
+          (<TextField label="Username" 
           name='username'
           value={this.state.username}
           onChange={this.handleChange}
           fullWidth
-          margin="normal"/>
+          margin="normal"/>)
+          :(<TextField label="Username" 
+          error
+          name='username'
+          value={this.state.username}
+          onChange={this.handleChange}
+          fullWidth
+          margin="normal"/>)
+        }
         </Grid>
         <Grid item xs={12} md={4}>
-        <TextField label="Password" 
+        {!this.props.message?
+        (<TextField label="Password" 
           name='password'
           type="password"
           value={this.state.password}
           onChange={this.handleChange}
           fullWidth
-          margin="normal"/>
+          margin="normal"/>)
+          :(<TextField label="Password" 
+          error
+          name='password'
+          type="password"
+          value={this.state.password}
+          onChange={this.handleChange}
+          fullWidth
+          margin="normal"/>)
+        }
         </Grid>
         <Grid item xs={12} md={6}>
-        <TextField
-        select
-        label="Home Station"
-        name="home_station"
-        value={this.state.home_station}
-        onChange={this.handleChange}
-        fullWidth
-        margin="normal">
-        {this.stations.map(option => (
-          <MenuItem key={option.value} value={option.value}>
-            {option.label}
-          </MenuItem>
-        ))}
-      </TextField>
+        {!this.props.message?
+          (<TextField
+          select
+          label="Home Station"
+          name="home_station"
+          value={this.state.home_station}
+          onChange={this.handleChange}
+          fullWidth
+          margin="normal">
+          {this.stations.map(option => (
+            <MenuItem key={option.value} value={option.value}>
+              {option.label}
+            </MenuItem>
+          ))}
+        </TextField>)
+        :(<TextField
+          select
+          error
+          label="Home Station"
+          name="home_station"
+          value={this.state.home_station}
+          onChange={this.handleChange}
+          fullWidth
+          margin="normal">
+          {this.stations.map(option => (
+            <MenuItem key={option.value} value={option.value}>
+              {option.label}
+            </MenuItem>
+          ))}
+        </TextField>)
+        }
         </Grid>
         <Grid item xs={12} md={6}>
-          <TextField label="Neighborhood" 
+        {!this.props.message? 
+          (<TextField label="Neighborhood" 
           name='location'
           value={this.state.location}
           onChange={this.handleChange}
           fullWidth
-          margin="normal"/>
+          margin="normal"/>)
+          :(<TextField label="Neighborhood"
+          error
+          name='location'
+          value={this.state.location}
+          onChange={this.handleChange}
+          fullWidth
+          margin="normal"/>)
+        }
         </Grid>
         <Grid item xs={12}>
-          <TextField
+        {!this.props.message?
+          (<TextField
           name='bio'
           label="Short Bio"
           multiline
@@ -247,7 +302,19 @@ class Signup extends Component {
           value={this.state.bio}
           onChange={this.handleChange}
           fullWidth
-          margin="normal"/>
+          margin="normal"/>)
+          :(<TextField
+            name='bio'
+            label="Short Bio"
+            error
+            helperText={this.props.message}
+            multiline
+            rowsMax="4"
+            value={this.state.bio}
+            onChange={this.handleChange}
+            fullWidth
+            margin="normal"/>)
+          }
         </Grid>
             <br/>
             <br/>
@@ -262,7 +329,11 @@ class Signup extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  fetchUser: (userInfo, history) => dispatch(createUser(userInfo, history))
+  createUser: (userInfo, history) => dispatch(createUser(userInfo, history))
 })
 
-export default connect(null, mapDispatchToProps)(Signup);
+const mapStateToProps = state => ({
+  message: state.currentUser.message
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);

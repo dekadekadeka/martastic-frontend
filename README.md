@@ -14,8 +14,6 @@ TODO:
 * Add modals with user information
 * Add ability to make friends
 * Add likes
-* Validation on forms (from backend)
-* There is a bug where if a user already exists, if they try to "sign up" again the whole page locks down and shows a white screen. There is no way to go back unless the cookie is cleared manually. Fix so it gives an error message ("You are already a member!") instead.
 
 MAYBE SOMEDAY:
 * Add bus information
