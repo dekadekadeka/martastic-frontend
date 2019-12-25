@@ -9,7 +9,6 @@ class EditForm extends Component {
   state = {
     id: this.props.user.id,
     name: this.props.user.name,
-    username: this.props.user.username,
     profile_pic_url: this.props.user.profile_pic_url,
     home_station: this.props.user.home_station,
     location: this.props.user.location,
@@ -189,27 +188,10 @@ class EditForm extends Component {
       <h1>Edit My Info</h1>
         <form onSubmit={this.handleSubmit}>
       <Grid container spacing={5}>
-        <Grid item xs={12} md={4}>
+        <Grid item xs={12} md={6}>
           <TextField label="Name" 
           name='name'
           value={this.state.name}
-          onChange={this.handleChange}
-          fullWidth
-          margin="normal"/>
-        </Grid>
-        <Grid item xs={12} md={4}>
-          <TextField label="Username" 
-          name='username'
-          value={this.state.username}
-          onChange={this.handleChange}
-          fullWidth
-          margin="normal"/>
-        </Grid>
-        <Grid item xs={12} md={4}>
-        <TextField label="Password" 
-          name='password'
-          type="password"
-          value={this.state.password}
           onChange={this.handleChange}
           fullWidth
           margin="normal"/>
@@ -238,6 +220,14 @@ class EditForm extends Component {
           fullWidth
           margin="normal"/>
         </Grid>
+        <Grid item xs={12} md={6}>
+          <TextField label="Profile Pic URL" 
+          name='profile_pic_url'
+          value={this.state.profile_pic_url}
+          onChange={this.handleChange}
+          fullWidth
+          margin="normal"/>
+        </Grid>
         <Grid item xs={12}>
           <TextField
           name='bio'
@@ -245,17 +235,6 @@ class EditForm extends Component {
           multiline
           rowsMax="4"
           value={this.state.bio}
-          onChange={this.handleChange}
-          fullWidth
-          margin="normal"/>
-        </Grid>
-        <Grid item xs={12}>
-          <TextField
-          name='profile_pic_url'
-          label="Profile Pic URL (optional)"
-          multiline
-          rowsMax="4"
-          value={this.state.profile_pic_url}
           onChange={this.handleChange}
           fullWidth
           margin="normal"/>
