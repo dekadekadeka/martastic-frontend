@@ -1,5 +1,5 @@
 export const fetchSchedule = () => dispatch => {
-    fetch("https://cors-anywhere.herokuapp.com/http://developer.itsmarta.com/RealtimeTrain/RestServiceNextTrain/GetRealtimeArrivals?apikey=aa224864-8131-4464-aab9-49aaf1288834")
+    fetch("https://delicious-cobb.netlify.com/.netlify/functions/stations")
     .then(resp => resp.json())
     .then(trains =>{
         let maxWait = Math.max(...trains.map(item => item.WAITING_SECONDS))
