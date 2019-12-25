@@ -13,9 +13,8 @@ export const editUser = (userHash) => {
                 body: JSON.stringify({ user: userHash })
         });
         const user = await resp.json();
-        if (user.message) {
-              // An error will occur if the token is invalid.
-              // If this happens, you may want to remove the invalid token.
+        if (user.error) {
+            console.log(user.error)
         }
         else {
             dispatch({
