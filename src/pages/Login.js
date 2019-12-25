@@ -31,21 +31,41 @@ class Login extends Component {
       <form onSubmit={this.handleSubmit}>
       <Grid container spacing={5}>
         <Grid item xs={12} md={6}>
-            <TextField label="Username" 
+            {!this.props.message ?
+            (<TextField label="Username" 
             name='username'
             value={this.state.username}
             onChange={this.handleChange}
             fullWidth
-            margin="normal"/>
+            margin="normal"/>)
+            : (<TextField label="Username" 
+            error
+            helperText={this.props.message}
+            name='username'
+            value={this.state.username}
+            onChange={this.handleChange}
+            fullWidth
+            margin="normal"/>)
+            }
           </Grid>
           <Grid item xs={12} md={6}>
-            <TextField label="Password" 
+          {!this.props.message ?
+            (<TextField label="Password" 
             name='password'
             type="password"
             value={this.state.password}
             onChange={this.handleChange}
             fullWidth
-            margin="normal"/>
+            margin="normal"/>)
+            :(<TextField label="Password" 
+            error
+            name='password'
+            type="password"
+            value={this.state.password}
+            onChange={this.handleChange}
+            fullWidth
+            margin="normal"/>)
+          }
           </Grid>
           <Grid container justify="center">
             <input type='submit' className="ui blue basic button"/>
@@ -66,4 +86,8 @@ const mapDispatchToProps = dispatch => ({
   userLoginFetch: (userInfo, history) => dispatch(userLoginFetch(userInfo, history))
 });
 
-export default connect(null, mapDispatchToProps)(Login);
+const mapStateToProps = state => ({
+  message: state.currentUser.message
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
