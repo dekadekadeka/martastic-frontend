@@ -2,15 +2,19 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import Comments from './Comments'
 import CommentForm from './CommentForm'
-
+import { MdFavorite } from "react-icons/md";
+import { MdFavoriteBorder } from "react-icons/md"
 
 class SinglePic extends Component {
   render() {
         return (
             <div className="single-pic">
-              <img className="big-pic" src={this.props.pic.pic_url} alt=""/>
-            <div className="ui comments">
+            <img className="big-pic" src={this.props.pic.pic_url} alt=""/>
+            <div className="likes">
+            <MdFavoriteBorder/>
             <h3>Likes: {this.props.pic.likes}</h3>
+            </div>
+            <div className="ui comments">
             <h3 className="ui dividing header">Comments</h3>
 
             <Comments comments = {this.props.pic.comments}/>
