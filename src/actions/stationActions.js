@@ -9,15 +9,15 @@ export const fetchStations = () => dispatch => {
     );
 }
 
-export const editLikes = (id, likes) => {
+export const editLikes = (station) => {
     return dispatch => {
-    return fetch(`https://martastic.herokuapp.com/stations/${id}`, {
+    return fetch(`https://martastic.herokuapp.com/stations/${station.id}`, {
             method: "PATCH",
             headers: {
                 'Content-Type': 'application/json',
                 Accept: 'application/json'
             },
-            body: JSON.stringify({ likes: likes })
+            body: JSON.stringify({likes: ++station.likes})
         })
         .then(resp => resp.json())
         .then(data => {
@@ -26,12 +26,13 @@ export const editLikes = (id, likes) => {
                     type: 'LIKE_FAIL',
                     payload: data.error
                 })
-            } else {
-            dispatch({
-                type: 'ADD_LIKE',
-                payload: likes
-            });
-            }
+            } 
+            // else {
+            // dispatch({
+            //     type: 'ADD_LIKE',
+            //     payload: data
+            // })
+            // }
         })
     }
 }

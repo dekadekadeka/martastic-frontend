@@ -9,15 +9,18 @@ import { MdFavoriteBorder } from "react-icons/md"
 
 class SingleStation extends Component {
 
-    
+    componentDidMount(){
+        this.props.fetchStations()
+    }
+
     state = {
-        liked: false
+        liked: false,
+        pending: true
     }
 
     addLikes = () => {
-        this.setState({liked: !this.state.liked
-        })
-        this.props.editLikes(this.props.station.id, this.props.station.likes)
+        this.props.editLikes(this.props.station)
+        this.setState({liked: !this.state.liked, pending: false})
     }
     
     render() {
@@ -27,10 +30,10 @@ class SingleStation extends Component {
             <h1>{this.props.station.name}</h1>
             <img className="big-pic" src={{...this.props.station.pics[0]}.pic_url ? {...this.props.station.pics[0]}.pic_url : defaultImg } alt=""/>
             <div className="likes">
-                <div className="heart" onClick={this.addLikes}>
+                <div className="heart" onClick={this.state.pending ? this.addLikes : null}>
                 {this.state.liked ? <MdFavorite/> : <MdFavoriteBorder/>}
                 </div>
-            <h3>Likes: {++this.props.station.likes}</h3>
+            <h3>Likes: {this.props.station.likes}</h3>
             </div>
             <div className="ui comments">
             <h3 className="ui dividing header">Comments</h3>
@@ -44,19 +47,21 @@ class SingleStation extends Component {
     }
 }
 function mapStateToProps(state, ownProps){
-    let station = {id:'', name:'', slug:'', likes:'', pics:[], users: [], comments:[]};
+    let station = {id:'', name:'', slug:'', likes:'', address: '', coords: '', description: '', pics:[], users: [], comments:[]};
     const slug = ownProps.match.params.slug;
     if(state.stations.stations.length > 0){
         station = Object.assign({}, state.stations.stations.find(station => station.slug === slug))
     }
-    return {station: station,
+    return {station,
             comments: station.comments}
 }
 
 const mapDispatchToProps = dispatch => ({
-    editLikes: (id, station) => dispatch(editLikes(id, station)),
-    fetchStations: dispatch(fetchStations())
+    fetchStations: () => dispatch(fetchStations()),
+    editLikes: (station) => dispatch(editLikes(station))
 })
+
+// const mapDispatchToProps = { fetchStations, editLikes }
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(SingleStation)
