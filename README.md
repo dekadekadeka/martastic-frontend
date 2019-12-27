@@ -13,7 +13,6 @@ TODO:
 * Add optimistic rendering for pic and station comments
 * Add modals with user information
 * Add ability to make friends
-* Add likes
 
 MAYBE SOMEDAY:
 * Add bus information

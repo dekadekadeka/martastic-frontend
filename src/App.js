@@ -59,4 +59,4 @@ class App extends Component {
 
 let mapStateToProps = state => ({user_id: state.currentUser.currentUser.id })
 
-export default connect(mapStateToProps, {initState, fetchPics })(App);
+export default connect(mapStateToProps, {initState, fetchPics})(App);

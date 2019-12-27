@@ -9,6 +9,11 @@ export default function(state = initialState, action){
                 ...state,
                 stations: action.payload
             }
+        case 'LIKE_FAIL':
+            return {
+                ...state,
+                stations: action.payload
+            }
         default:
             return state
     }

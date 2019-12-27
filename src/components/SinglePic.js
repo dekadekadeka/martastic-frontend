@@ -1,16 +1,34 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
+import { editLikes } from '../actions/picActions';
 import Comments from './Comments'
 import CommentForm from './CommentForm'
-
+import { MdFavorite } from "react-icons/md";
+import { MdFavoriteBorder } from "react-icons/md"
 
 class SinglePic extends Component {
+
+    state = {
+        liked: false,
+        pending: true
+    }
+
+    addLikes = () => {
+        this.props.editLikes(this.props.pic)
+        this.setState({liked: !this.state.liked, pending: false})
+    }
+
   render() {
         return (
             <div className="single-pic">
-              <img className="big-pic" src={this.props.pic.pic_url} alt=""/>
-            <div className="ui comments">
+            <img className="big-pic" src={this.props.pic.pic_url} alt=""/>
+            <div className="likes">
+                <div className="pics-heart" onClick={this.state.pending ? this.addLikes : null}>
+                {this.state.liked ? <MdFavorite/> : <MdFavoriteBorder/>}
+                </div>
             <h3>Likes: {this.props.pic.likes}</h3>
+            </div>
+            <div className="ui comments">
             <h3 className="ui dividing header">Comments</h3>
 
             <Comments comments = {this.props.pic.comments}/>
@@ -31,4 +49,8 @@ function mapStateToProps(state, ownProps){
     return {pic: pic}
 }
 
-export default connect(mapStateToProps)(SinglePic)
+const mapDispatchToProps = dispatch => ({
+    editLikes: (pic) => dispatch(editLikes(pic))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(SinglePic)
