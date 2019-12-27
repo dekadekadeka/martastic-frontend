@@ -22,6 +22,11 @@ export default function(state = initialState, action){
                 ...state,
                 error: action.payload
             }
+        case 'LIKE_FAIL':
+            return {
+                ...state,
+                pics: action.payload
+            }
         default:
             return state
         }

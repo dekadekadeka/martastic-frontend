@@ -27,12 +27,6 @@ export const editLikes = (station) => {
                     payload: data.error
                 })
             } 
-            // else {
-            // dispatch({
-            //     type: 'ADD_LIKE',
-            //     payload: data
-            // })
-            // }
         })
     }
 }

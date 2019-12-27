@@ -33,3 +33,25 @@ export const createPic = (picData) => dispatch => {
         }
     })
 }
+
+export const editLikes = (pic) => {
+    return dispatch => {
+    return fetch(`https://martastic.herokuapp.com/pics/${pic.id}`, {
+            method: "PATCH",
+            headers: {
+                'Content-Type': 'application/json',
+                Accept: 'application/json'
+            },
+            body: JSON.stringify({likes: ++pic.likes})
+        })
+        .then(resp => resp.json())
+        .then(data => {
+            if (data.message) {
+                dispatch({
+                    type: 'LIKE_FAIL',
+                    payload: data.error
+                })
+            } 
+        })
+    }
+}

@@ -24,7 +24,6 @@ class SingleStation extends Component {
     }
     
     render() {
-        console.log(this.props)
         return (
             <div className="single-station">
             <h1>{this.props.station.name}</h1>
