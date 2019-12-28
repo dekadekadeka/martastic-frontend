@@ -190,7 +190,7 @@ class Signup extends Component {
         <form onSubmit={this.handleSubmit}>
       <Grid container spacing={5}>
         <Grid item xs={12} md={4}>
-        {!this.props.message?
+        {!this.props.error?
           (<TextField label="Name" 
           name='name'
           value={this.state.name}
@@ -207,7 +207,7 @@ class Signup extends Component {
         } 
         </Grid>
         <Grid item xs={12} md={4}>
-        {!this.props.message?
+        {!this.props.error?
           (<TextField label="Username" 
           name='username'
           value={this.state.username}
@@ -224,7 +224,7 @@ class Signup extends Component {
         }
         </Grid>
         <Grid item xs={12} md={4}>
-        {!this.props.message?
+        {!this.props.error?
         (<TextField label="Password" 
           name='password'
           type="password"
@@ -243,7 +243,7 @@ class Signup extends Component {
         }
         </Grid>
         <Grid item xs={12} md={6}>
-        {!this.props.message?
+        {!this.props.error?
           (<TextField
           select
           label="Home Station"
@@ -276,7 +276,7 @@ class Signup extends Component {
         }
         </Grid>
         <Grid item xs={12} md={6}>
-        {!this.props.message? 
+        {!this.props.error? 
           (<TextField label="Neighborhood" 
           name='location'
           value={this.state.location}
@@ -293,7 +293,7 @@ class Signup extends Component {
         }
         </Grid>
         <Grid item xs={12}>
-        {!this.props.message?
+        {!this.props.error?
           (<TextField
           name='bio'
           label="Short Bio"
@@ -307,7 +307,7 @@ class Signup extends Component {
             name='bio'
             label="Short Bio"
             error
-            helperText={this.props.message}
+            helperText={this.props.error}
             multiline
             rowsMax="4"
             value={this.state.bio}
@@ -333,7 +333,7 @@ const mapDispatchToProps = dispatch => ({
 })
 
 const mapStateToProps = state => ({
-  message: state.currentUser.message
+  error: state.currentUser.error
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Signup);

@@ -1,6 +1,7 @@
 const initialState = {
     currentUser: {},
-    message: ''
+    message: '',
+    error: ''
 }
 
 export default function reducer(state = initialState, action) {
@@ -12,6 +13,9 @@ export default function reducer(state = initialState, action) {
       case 'LOGIN_FAIL':
         return {...state, 
           message: action.payload}
+      case 'SIGNUP_FAIL':
+        return {...state, 
+          error: action.payload}
       case 'DELETE_USER':
         return {...state, currentUser: {}}
       default:
