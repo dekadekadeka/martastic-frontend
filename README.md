@@ -10,7 +10,7 @@ Goes along with [Martastic Backend](https://github.com/dekadekadeka/martastic-ba
 
 TODO:
 
-* Add optimistic rendering for pic and station comments
+* Load comments directly from state upon the user submitting them instead of a forced reload to render them.
 * Add modals with user information
 * Add ability to make friends
 

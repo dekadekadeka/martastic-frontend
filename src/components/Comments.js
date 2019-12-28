@@ -1,6 +1,5 @@
 import React from 'react';
 import { FaRegFrown } from "react-icons/fa";
-import PropTypes from 'prop-types';
 
 const Comments = ({comments}) => {
     return (
@@ -24,10 +23,6 @@ const Comments = ({comments}) => {
     ))}
     </>
     )
-}
-
-Comments.propTypes = {
-    comments: PropTypes.array.isRequired
 }
 
 export default Comments;

@@ -9,6 +9,11 @@ export default function(state = initialState, action){
                 ...state,
                 comments: action.payload
             }
+        case 'COMMENT_FAIL':
+            return {
+                ...state,
+                comments: action.payload
+            }
         case 'NEW_COMMENT':
             return {
                 ...state,

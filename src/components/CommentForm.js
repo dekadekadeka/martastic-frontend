@@ -4,7 +4,7 @@ import { createComment } from '../actions/commentActions'
 
 
 class CommentForm extends Component {
-    
+
     state = {
         content: '',
     }
@@ -24,6 +24,7 @@ class CommentForm extends Component {
         }
         this.props.createComment(comment)
     }
+    
     render() {
         return (
             <form className="ui reply form" onSubmit={this.onSubmit}>
@@ -32,7 +33,8 @@ class CommentForm extends Component {
                 value={this.state.content} onChange={this.handleChange}/>
                 </div>
                 <button type="submit" 
-                className="ui blue basic button">
+                className="ui blue basic button"
+                onClick={() => document.location.reload()}>
                 <i className="iconify icon:emojione-monotone:up-right-arrow icon-inline:false"></i>Add Comment</button>
             </form>
         )
