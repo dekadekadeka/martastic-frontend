@@ -1,12 +1,10 @@
-export const fetchComments = () => {
-    return async dispatch => {
-        const resp = await fetch("https://martastic.herokuapp.com/comments");
-        const comments = await resp.json();
-            dispatch({
-                type: 'FETCH_COMMENTS',
-                payload: comments
-            })
-    }
+export const fetchComments = () => dispatch => {
+    fetch("https://martastic.herokuapp.com/comments")
+    .then(resp => resp.json())
+    .then(comments => dispatch({
+        type: 'FETCH_COMMENTS',
+        payload: comments
+    }))
 }
 
 export const createComment = (commentData) => dispatch => {
@@ -22,8 +20,17 @@ export const createComment = (commentData) => dispatch => {
         body: JSON.stringify({comment: commentData})
     })
     .then(resp => resp.json())
-    .then(comment => dispatch({
-        type: 'NEW_COMMENT',
-        payload: comment
-    }))
+    .then(comment => {
+        if (comment.error) {
+            dispatch({
+                type: 'COMMENT_FAIL',
+                payload: comment.error
+            })
+        } else{
+            dispatch({
+                type: 'NEW_COMMENT',
+                payload: comment
+            })
+        }
+    })
 }

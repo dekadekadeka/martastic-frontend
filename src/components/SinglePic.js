@@ -41,7 +41,7 @@ class SinglePic extends Component {
 }
 
 function mapStateToProps(state, ownProps){
-    let pic = {id:'', user_id:'', station_id:'', pic_url:'', rating:'', user:{}, station: {}, comments:[]};
+    let pic = {id:'', user_id:'', station_id:'', pic_url:'', likes:'', user:{}, station: {}, comments:[]};
     const picId = ownProps.match.params.id;
     if(state.pics.pics.length > 0){
         pic = Object.assign({}, state.pics.pics.find(pic => pic.id === parseInt(picId)))

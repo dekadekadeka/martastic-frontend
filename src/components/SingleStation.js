@@ -36,9 +36,7 @@ class SingleStation extends Component {
             </div>
             <div className="ui comments">
             <h3 className="ui dividing header">Comments</h3>
-
-            <Comments comments = {this.props.comments}/>
-
+            <Comments comments = {this.props.station.comments}/>
             <CommentForm item={this.props.station} type={"Station"} id={this.props.station.id}/>
             </div>
             </div>
@@ -51,16 +49,13 @@ function mapStateToProps(state, ownProps){
     if(state.stations.stations.length > 0){
         station = Object.assign({}, state.stations.stations.find(station => station.slug === slug))
     }
-    return {station,
-            comments: station.comments}
+    return {station}
 }
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
     fetchStations: () => dispatch(fetchStations()),
     editLikes: (station) => dispatch(editLikes(station))
 })
-
-// const mapDispatchToProps = { fetchStations, editLikes }
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(SingleStation)
