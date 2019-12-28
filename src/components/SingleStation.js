@@ -37,7 +37,9 @@ class SingleStation extends Component {
             <div className="ui comments">
             <h3 className="ui dividing header">Comments</h3>
             <Comments comments = {this.props.station.comments}/>
+            {localStorage.token ? 
             <CommentForm item={this.props.station} type={"Station"} id={this.props.station.id}/>
+            : null }
             </div>
             </div>
         )

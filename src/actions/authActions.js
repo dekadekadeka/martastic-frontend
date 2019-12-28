@@ -12,7 +12,7 @@ export const createUser = (user, history) => {
         .then(data => {
             if (data.error) {
                 dispatch({
-                    type: 'LOGIN_FAIL',
+                    type: 'SIGNUP_FAIL',
                     payload: data.error
                 })
                 localStorage.removeItem("token");

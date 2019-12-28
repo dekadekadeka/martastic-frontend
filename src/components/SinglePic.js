@@ -30,10 +30,10 @@ class SinglePic extends Component {
             </div>
             <div className="ui comments">
             <h3 className="ui dividing header">Comments</h3>
-
             <Comments comments = {this.props.pic.comments}/>
-
+            {localStorage.token ? 
             <CommentForm item={this.props.pic} type={"Pic"} id={this.props.pic.id}/>
+            : null }
             </div>
         </div>
         )
