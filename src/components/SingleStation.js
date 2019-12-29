@@ -34,7 +34,7 @@ class SingleStation extends Component {
             <div className="likes">
                 <div className="heart" onClick={this.state.pending ? this.addLikes : null}>
                 {this.state.liked ? <MdFavorite/> : <MdFavoriteBorder/>}
-            <h3>Likes: {this.props.station.likes}</h3>
+                <h3>Likes: {this.props.station.likes}</h3>
                 </div>
             <h3>{this.props.station.address}</h3>
             </div>
