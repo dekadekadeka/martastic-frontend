@@ -55,3 +55,30 @@ export const editLikes = (pic) => {
         })
     }
 }
+
+export const addFriend = (friend) => dispatch => {
+    const token = localStorage.token;
+    fetch("https://martastic.herokuapp.com/friendships", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify(friend)
+    })
+    .then(resp => resp.json())
+    .then(data => {
+        if (data.error) {
+            dispatch({
+                type: 'ADD_FRIEND_FAIL',
+                payload: data.error
+            })
+        } else {
+            dispatch({
+                type: "ADD_FRIEND",
+                payload: data
+            })
+        }
+    })
+}
