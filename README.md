@@ -9,7 +9,6 @@ Goes along with [Martastic Backend](https://github.com/dekadekadeka/martastic-ba
 TODO:
 
 * Load comments directly from state upon the user submitting them instead of a forced reload to render them.
-* Add ability to make friends
 
 MAYBE SOMEDAY:
 * Add bus information
