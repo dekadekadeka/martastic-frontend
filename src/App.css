@@ -262,9 +262,31 @@ h3{
   font-size: 3rem;
 }
 
+.location{
+  display: flex;
+  justify-content: space-between;
+}
+.mapouter{
+  position:relative;
+  text-align:right;
+}
+
+.gmap_canvas {overflow:hidden;
+  background:none!important;
+}
+
+.gmap_canvas iframe{
+  width: 90vw;
+  height: 50vh;
+}
+
 @media screen and (min-width: 600px) {
   .single-station{
     margin: 10vw 5vw 5vw;
+  }
+  .gmap_canvas iframe{
+    width: 90vw;
+    height: 75vh;
   }
 }
 
@@ -327,8 +349,13 @@ h3{
   max-width: 90vw;
 }
 
+.heart, .pics-heart{
+  display: flex;
+}
+
 .likes{
   display: flex;
+  justify-content: space-between;
 }
 
 .likes h3{

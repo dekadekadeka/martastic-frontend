@@ -25,8 +25,8 @@ class SinglePic extends Component {
             <div className="likes">
                 <div className="pics-heart" onClick={this.state.pending ? this.addLikes : null}>
                 {this.state.liked ? <MdFavorite/> : <MdFavoriteBorder/>}
-                </div>
-            <h3>Likes: {this.props.pic.likes}</h3>
+                <h3>Likes: {this.props.pic.likes}</h3>
+            </div>
             </div>
             <div className="ui comments">
             <h3 className="ui dividing header">Comments</h3>

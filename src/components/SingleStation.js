@@ -6,6 +6,9 @@ import Comments from './Comments'
 import CommentForm from '../components/CommentForm'
 import { MdFavorite } from "react-icons/md";
 import { MdFavoriteBorder } from "react-icons/md"
+// import GoogleMapReact from 'google-map-react';
+
+import StationMap from '../components/StationMap'
 
 class SingleStation extends Component {
 
@@ -31,8 +34,15 @@ class SingleStation extends Component {
             <div className="likes">
                 <div className="heart" onClick={this.state.pending ? this.addLikes : null}>
                 {this.state.liked ? <MdFavorite/> : <MdFavoriteBorder/>}
-                </div>
             <h3>Likes: {this.props.station.likes}</h3>
+                </div>
+            <h3>{this.props.station.address}</h3>
+            </div>
+            <h3 className="ui dividing header">Location</h3>
+            <div className="location">
+                {this.props.station.coords === "" ?
+                <h1>Loading....</h1>
+                : <StationMap coords={this.props.station.coords}/>}
             </div>
             <div className="ui comments">
             <h3 className="ui dividing header">Comments</h3>
