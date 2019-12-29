@@ -3,6 +3,10 @@ import { connect } from 'react-redux';
 import { editLikes } from '../actions/picActions';
 import Comments from './Comments'
 import CommentForm from './CommentForm'
+import Tooltip from '@material-ui/core/Tooltip';
+import CardHeader from '@material-ui/core/CardHeader';
+import Avatar from '@material-ui/core/Avatar';
+import Button from '@material-ui/core/Button';
 import { MdFavorite } from "react-icons/md";
 import { MdFavoriteBorder } from "react-icons/md"
 
@@ -19,6 +23,7 @@ class SinglePic extends Component {
     }
 
   render() {
+      console.log(this.props.pic.user)
         return (
             <div className="single-pic">
             <img className="big-pic" src={this.props.pic.pic_url} alt=""/>
@@ -26,7 +31,32 @@ class SinglePic extends Component {
                 <div className="pics-heart" onClick={this.state.pending ? this.addLikes : null}>
                 {this.state.liked ? <MdFavorite/> : <MdFavoriteBorder/>}
                 <h3>Likes: {this.props.pic.likes}</h3>
-            </div>
+                </div>
+                <Tooltip
+                title={
+                    <>
+                    <CardHeader
+                        titleTypographyProps={{variant: 'h5', color: '#fff'}}
+                        subheaderTypographyProps={{variant: 'body1', color: '#fff'}}
+                        avatar={
+                        <Avatar 
+                        style={{width: '7rem', height: '7rem',borderRadius: '4px'}} 
+                        src={this.props.pic.user.profile_pic_url}/>
+                        }
+                        title={this.props.pic.user.name}
+                        subheader={this.props.pic.user.bio}
+                    />
+                    <h4 style={{margin: '0px 0px 0px 10px'}}>Home Station: {this.props.pic.user.home_station}</h4>
+                    <h4 style={{margin: '0px 0px 10px 10px'}}>Neighborhood: {this.props.pic.user.location}</h4>
+                    <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem'}}>
+                        <Button variant="outlined" color="primary">Add Friend</Button>
+                    </div>
+                    </>
+                }
+                interactive
+                >
+                    <h3>Picture by {this.props.pic.user.name}</h3>
+                </Tooltip>
             </div>
             <div className="ui comments">
             <h3 className="ui dividing header">Comments</h3>
