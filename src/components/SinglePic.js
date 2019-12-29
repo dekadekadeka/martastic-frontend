@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { editLikes } from '../actions/picActions';
+import { editLikes, addFriend } from '../actions/picActions';
 import Comments from './Comments'
 import CommentForm from './CommentForm'
 import Tooltip from '@material-ui/core/Tooltip';
@@ -14,7 +14,8 @@ class SinglePic extends Component {
 
     state = {
         liked: false,
-        pending: true
+        pending: true,
+        friends: false
     }
 
     addLikes = () => {
@@ -22,8 +23,14 @@ class SinglePic extends Component {
         this.setState({liked: !this.state.liked, pending: false})
     }
 
-  render() {
-      console.log(this.props.pic.user)
+    addFriend = () => {
+        const friend = {user_id: this.props.currentUser.id,
+            friend_id: this.props.pic.user.id}
+        this.props.addFriend(friend)
+        this.setState({friends: true})
+    }
+    
+    render() {
         return (
             <div className="single-pic">
             <img className="big-pic" src={this.props.pic.pic_url} alt=""/>
@@ -36,7 +43,7 @@ class SinglePic extends Component {
                 title={
                     <>
                     <CardHeader
-                        titleTypographyProps={{variant: 'h5', color: '#fff'}}
+                        titleTypographyProps={{variant: 'h5'}}
                         subheaderTypographyProps={{variant: 'body1', color: '#fff'}}
                         avatar={
                         <Avatar 
@@ -48,9 +55,14 @@ class SinglePic extends Component {
                     />
                     <h4 style={{margin: '0px 0px 0px 10px'}}>Home Station: {this.props.pic.user.home_station}</h4>
                     <h4 style={{margin: '0px 0px 10px 10px'}}>Neighborhood: {this.props.pic.user.location}</h4>
+                    {localStorage.token ? 
                     <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem'}}>
-                        <Button variant="outlined" color="primary">Add Friend</Button>
+                        {!this.state.friends && !this.props.currentUser.friends.some(friend => friend.name === this.props.pic.user.name)?
+                        <Button variant="outlined" color="primary" onClick={this.addFriend}>Add Friend</Button>
+                        : <Button variant="contained" disabled>We're already friends</Button>}
                     </div>
+                    :null
+                    }
                     </>
                 }
                 interactive
@@ -76,11 +88,13 @@ function mapStateToProps(state, ownProps){
     if(state.pics.pics.length > 0){
         pic = Object.assign({}, state.pics.pics.find(pic => pic.id === parseInt(picId)))
     }
-    return {pic: pic}
+    return {pic: pic,
+        currentUser: state.currentUser.currentUser}
 }
 
 const mapDispatchToProps = dispatch => ({
-    editLikes: (pic) => dispatch(editLikes(pic))
+    editLikes: (pic) => dispatch(editLikes(pic)),
+    addFriend: (friend) => dispatch(addFriend(friend))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(SinglePic)
