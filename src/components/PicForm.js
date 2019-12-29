@@ -184,7 +184,6 @@ class PicForm extends Component {
 
 
     render() {
-        console.log(this.props.error)
         return (
             <div className="pic-form">
             <form onSubmit={this.onSubmit}>

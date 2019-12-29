@@ -14,7 +14,8 @@ class SinglePic extends Component {
 
     state = {
         liked: false,
-        pending: true
+        pending: true,
+        friends: false
     }
 
     addLikes = () => {
@@ -26,9 +27,10 @@ class SinglePic extends Component {
         const friend = {user_id: this.props.currentUser.id,
             friend_id: this.props.pic.user.id}
         this.props.addFriend(friend)
+        this.setState({friends: true})
     }
-
-  render() {
+    
+    render() {
         return (
             <div className="single-pic">
             <img className="big-pic" src={this.props.pic.pic_url} alt=""/>
@@ -53,12 +55,14 @@ class SinglePic extends Component {
                     />
                     <h4 style={{margin: '0px 0px 0px 10px'}}>Home Station: {this.props.pic.user.home_station}</h4>
                     <h4 style={{margin: '0px 0px 10px 10px'}}>Neighborhood: {this.props.pic.user.location}</h4>
+                    {localStorage.token ? 
                     <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem'}}>
-                        <Button variant="outlined" 
-                        color="primary" 
-                        onClick={this.addFriend}>Add Friend
-                        </Button>
+                        {!this.state.friends && !this.props.currentUser.friends.some(friend => friend.name === this.props.pic.user.name)?
+                        <Button variant="outlined" color="primary" onClick={this.addFriend}>Add Friend</Button>
+                        : <Button variant="contained" disabled>We're already friends</Button>}
                     </div>
+                    :null
+                    }
                     </>
                 }
                 interactive
