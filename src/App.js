@@ -8,7 +8,6 @@ import { Route, Switch } from 'react-router-dom'
 import Navbar from './components/Navbar'
 
 import Home from './pages/Home'
-import Users from './pages/Users'
 import Schedule from './components/Schedule'
 import Stations from './pages/Stations'
 import SingleStation from './components/SingleStation'
@@ -39,7 +38,6 @@ class App extends Component {
       <Switch>
         <Route exact path="/" component={Schedule} />
         <Route exact path="/home/" component={Home} />
-        <Route exact path="/users/" component={Users} />
         <Route exact path="/schedule/" component={Schedule} />
         <Route exact path="/stations/" component={Stations} />
         <Route exact path="/stations/:slug" component={SingleStation} />

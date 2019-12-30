@@ -25,3 +25,23 @@ export const editUser = (userHash) => {
     }
     }
 }
+
+export const deleteFriend = (user, friend) => dispatch => {
+    const token = localStorage.token;
+    fetch("https://martastic.herokuapp.com/friendships")
+    .then(resp => resp.json())
+    .then(data => {
+        let toBeDeleted = (data.find(friendObj => friendObj.user_id === user && friendObj.friend_id === friend))
+        fetch(`https://martastic.herokuapp.com/friendships/${toBeDeleted.id}`, {
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+        .then(
+            dispatch({
+                type: 'DELETE_FRIEND'
+            })
+        )
+    })
+}
