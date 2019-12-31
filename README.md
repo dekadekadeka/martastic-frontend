@@ -7,8 +7,8 @@ Martastic Frontend
 Goes along with [Martastic Backend](https://github.com/dekadekadeka/martastic-backend). Please get both for the full experience.
 
 TODO:
-
-* Load comments directly from state upon the user submitting them instead of a forced reload to render them.
+* Work on validation for user edit form.
+* Optimistically delete friends as you delete them from profile page (currently, you have to reload to show changes)
 
 MAYBE SOMEDAY:
 * Add bus information

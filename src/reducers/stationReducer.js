@@ -1,5 +1,6 @@
 const initialState ={
-    stations: []
+    stations: [],
+    error: ''
 }
 
 export default function(state = initialState, action){
@@ -12,7 +13,7 @@ export default function(state = initialState, action){
         case 'LIKE_FAIL':
             return {
                 ...state,
-                stations: action.payload
+                error: action.payload
             }
         default:
             return state
