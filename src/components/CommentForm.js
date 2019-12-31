@@ -34,7 +34,7 @@ class CommentForm extends Component {
                 </div>
                 <button type="submit" 
                 className="ui blue basic button"
-                onClick={() => document.location.reload()}>
+                >
                 <i className="iconify icon:emojione-monotone:up-right-arrow icon-inline:false"></i>Add Comment</button>
             </form>
         )

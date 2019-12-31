@@ -21,8 +21,4 @@ const StationList = ({stations}) => {
     )
 }
 
-// StationList.propTypes = {
-//     stations: PropTypes.object.isRequired
-// }
-
 export default StationList

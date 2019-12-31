@@ -72,7 +72,7 @@ class SinglePic extends Component {
             </div>
             <div className="ui comments">
             <h3 className="ui dividing header">Comments</h3>
-            <Comments comments = {this.props.pic.comments}/>
+            <Comments comments = {this.props.comments}/>
             {localStorage.token ? 
             <CommentForm item={this.props.pic} type={"Pic"} id={this.props.pic.id}/>
             : null }
@@ -88,8 +88,12 @@ function mapStateToProps(state, ownProps){
     if(state.pics.pics.length > 0){
         pic = Object.assign({}, state.pics.pics.find(pic => pic.id === parseInt(picId)))
     }
+    if(pic.comments.length >= 0){
+        pic.comments = pic.comments.concat(state.comments.comments)
+    }
     return {pic: pic,
-        currentUser: state.currentUser.currentUser}
+        currentUser: state.currentUser.currentUser,
+        comments: pic.comments}
 }
 
 const mapDispatchToProps = dispatch => ({

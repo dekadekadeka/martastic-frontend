@@ -25,6 +25,12 @@ class SingleStation extends Component {
         this.props.editLikes(this.props.station)
         this.setState({liked: !this.state.liked, pending: false})
     }
+
+    // addComment = () => {
+    //     if(state.stations.stations.comment > 0){
+
+    //     }
+    // }
     
     render() {
         return (
@@ -46,7 +52,7 @@ class SingleStation extends Component {
             </div>
             <div className="ui comments">
             <h3 className="ui dividing header">Comments</h3>
-            <Comments comments = {this.props.station.comments}/>
+            <Comments comments={this.props.comments}/>
             {localStorage.token ? 
             <CommentForm item={this.props.station} type={"Station"} id={this.props.station.id}/>
             : null }
@@ -61,7 +67,11 @@ function mapStateToProps(state, ownProps){
     if(state.stations.stations.length > 0){
         station = Object.assign({}, state.stations.stations.find(station => station.slug === slug))
     }
-    return {station}
+    if(station.comments.length >= 0){
+        station.comments = station.comments.concat(state.comments.comments)
+    }
+    return {station,
+    comments: station.comments}
 }
 
 const mapDispatchToProps = (dispatch) => ({
