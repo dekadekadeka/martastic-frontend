@@ -7,7 +7,8 @@ Martastic Frontend
 Goes along with [Martastic Backend](https://github.com/dekadekadeka/martastic-backend). Please get both for the full experience.
 
 TODO:
-* Make the comment box submit comment on click button, push enter, and clear the comment box after submit.
+* Work on validation for user edit form.
+* Optimistically delete friends as you delete them from profile page (currently, you have to reload to show changes)
 
 MAYBE SOMEDAY:
 * Add bus information
