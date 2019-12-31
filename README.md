@@ -7,8 +7,7 @@ Martastic Frontend
 Goes along with [Martastic Backend](https://github.com/dekadekadeka/martastic-backend). Please get both for the full experience.
 
 TODO:
-
-* Load comments directly from state upon the user submitting them instead of a forced reload to render them.
+* Make the comment box submit comment on click button, push enter, and clear the comment box after submit.
 
 MAYBE SOMEDAY:
 * Add bus information
