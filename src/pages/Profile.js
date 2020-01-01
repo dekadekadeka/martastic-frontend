@@ -16,6 +16,7 @@ class Profile extends Component {
 
   removeFriend = (deletedFriend) => {
     this.props.deleteFriend(this.props.currentUser.id, deletedFriend)
+    // this.props.currentUser.friends = this.props.currentUser.friends.filter(friend => friend.id !== deletedFriend.id)
   }
   
   render() {
@@ -46,9 +47,10 @@ class Profile extends Component {
             </div>
           </div>
             <h1>My Friends</h1>
-              <div className="picslist-center">
-                {this.props.currentUser.friends.length === 0 ? <h2>You don't have any friends yet! :(</h2> :
-                this.props.currentUser.friends.map(friend => (
+              {this.props.currentUser.friends.length === 0 ? 
+              <h2>You don't have any friends yet! :( </h2>
+              :<div className="picslist-center">
+                {this.props.currentUser.friends.map(friend => (
                   <Card key={friend.id}>
                     <CardActionArea>
                       <CardMedia 
@@ -68,9 +70,9 @@ class Profile extends Component {
                       </Button>
                     </CardActions>
                   </Card>
-                  )
-                  )}
+                ))}
               </div>
+              }
             <h1>My Pics</h1>
               <div className="picslist-center">
                 {this.props.currentUser.pics.length === 0 ? "You don't have any pics yet! :(" : 
@@ -90,8 +92,10 @@ class Profile extends Component {
               This is an irreversible action. Please make sure you actually 
               want to delete your profile before proceeding.
                 <div id="butt">
-                <button className="ui red button"
-                onClick={deleteUser(this.props.currentUser, this.props.history)}>Delete Me!</button>
+                <Button style={{color: '#fff', backgroundColor: 'red'}}
+                  onClick={deleteUser(this.props.currentUser, this.props.history)}>
+                    Delete Me!
+                  </Button>
               </div>
             </div>
       </div>

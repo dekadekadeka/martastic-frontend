@@ -14,7 +14,10 @@ export const editUser = (userHash) => {
         });
         const user = await resp.json();
         if (user.error) {
-            console.log(user.error)
+            dispatch({
+                type: 'EDIT_USER_ERROR',
+                payload: user
+            });
         }
         else {
             dispatch({
