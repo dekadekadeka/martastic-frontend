@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {userLoginFetch} from '../actions/authActions';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
 
 class Login extends Component {
   state = {
@@ -68,7 +69,11 @@ class Login extends Component {
           }
           </Grid>
           <Grid container justify="center">
-            <input type='submit' className="ui blue basic button"/>
+            <Button type="submit" 
+            variant="outlined"
+            style={{color: '#0092D0', borderColor: '#0092D0'}}>
+              Come on In!
+            </Button>
           </Grid>
       </Grid>
       </form>

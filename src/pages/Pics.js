@@ -13,8 +13,13 @@ class Pics extends Component {
                     <PicList pics={this.props.pics} />
                     </div>
                 </section>
+                {localStorage.token ?
+                <>
                 <h1 style={{marginLeft: '5rem'}}>Add A Pic</h1>
                 <PicForm />
+                </>
+                : null
+                }
             </div>
         )
     }

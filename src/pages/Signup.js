@@ -4,6 +4,7 @@ import {createUser} from '../actions/authActions';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
 
 class Signup extends Component {
   state = {
@@ -185,8 +186,9 @@ class Signup extends Component {
 
   render() {
     return (
-      <div className="flexGrow: 1">
+      <div>
       <h1>Sign Up For An Account</h1>
+      <h3>If you sign up, you can add pics, add comments, and make friends.</h3>
         <form onSubmit={this.handleSubmit}>
       <Grid container spacing={5}>
         <Grid item xs={12} md={4}>
@@ -319,7 +321,11 @@ class Signup extends Component {
             <br/>
             <br/>
         <Grid container justify="center">
-          <input type='submit' className="ui blue basic button"/>
+          <Button type="submit" 
+            variant="outlined"
+            style={{color: '#FF7500', borderColor: '#FF7500'}}>
+              One of Us!
+          </Button>
         </Grid>
     </Grid>
       </form>

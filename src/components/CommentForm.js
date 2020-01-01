@@ -32,20 +32,15 @@ class CommentForm extends Component {
         return (
             <form className="ui reply form" onSubmit={this.onSubmit}>
                 <div className="field">
-                {/* <textarea type="content" name="content"
-                value={this.state.content} onChange={this.handleChange}/> */}
                     <TextField 
                     name="content"
+                    label="Add Comment"
                     type="content"
                     value={this.state.content}
                     onChange={this.handleChange}
                     fullWidth
                     margin="normal"/>
                 </div>
-                {/* <button type="submit" 
-                className="ui blue basic button"
-                >
-                <i className="iconify icon:emojione-monotone:up-right-arrow icon-inline:false"></i>Add Comment</button> */}
                 {this.state.content === '' ? 
                 <Button variant="outlined" disabled >Write Something First</Button>
                 : <Button type="submit" variant="outlined">Add Comment</Button>}

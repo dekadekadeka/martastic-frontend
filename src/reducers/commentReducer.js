@@ -17,8 +17,7 @@ export default function(state = initialState, action){
         case 'NEW_COMMENT':
             return {
                 ...state,
-                comments: [...state.comments,
-                    action.payload]
+                comments: action.payload
             }
         default:
             return state

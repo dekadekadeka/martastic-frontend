@@ -4,6 +4,7 @@ import {editUser} from '../actions/userActions';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
 
 class EditForm extends Component {
   state = {
@@ -184,7 +185,7 @@ class EditForm extends Component {
   render() {
     return (
       <div className="user-edit">
-      <div className="flexGrow: 1">
+      <div>
       <h1>Edit My Info</h1>
         <form onSubmit={this.handleSubmit}>
       <Grid container spacing={5}>
@@ -242,7 +243,11 @@ class EditForm extends Component {
             <br/>
             <br/>
         <Grid container justify="center">
-          <input type='submit' className="ui blue basic button"/>
+        <Button type="submit" 
+          variant="outlined"
+          style={{color: '#0092D0', borderColor: '#0092D0'}}>
+            Edit Me!
+        </Button>
         </Grid>
     </Grid>
       </form>

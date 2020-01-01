@@ -1,4 +1,7 @@
 import React from 'react'
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
 
 const ScheduleList = ({trains, loading}) => {
 
@@ -25,24 +28,26 @@ const color_key ={
     RED: '#cc2329'
 }
 
-
     return (
         <div className="picslist-center">
         {trains.map(train => (
-            <div className="ui raised link card">
-            <div className="content">
-            <div style={{ color: color_key[train.LINE] }}className="header">Destination: {train.DESTINATION}</div>
-            <div className="meta">
-                <span className="category">{train.LINE} Line </span>
-                <span className="category">{train.DIRECTION}</span>
-            </div>
-            <div className="description">
-                <p>Next arrival: {train.NEXT_ARR}</p>
-                <p>Current station: {train.STATION}</p>
-                <p>Waiting Time: {train.WAITING_TIME}</p>
-            </div>
-            </div>
-        </div>
+            <Card>
+                <CardContent>
+                <Typography variant="h6" style={{ color: color_key[train.LINE], fontWeight: "bold"}}>
+                    Destination: {train.DESTINATION}
+                </Typography>
+                <Typography color="textSecondary">
+                    {train.LINE} Line {train.DIRECTION}
+                </Typography>
+                <Typography variant="body1" component="p">
+                    Next arrival: {train.NEXT_ARR}
+                    <br />
+                    Current station: {train.STATION}
+                    <br />
+                    Waiting Time: {train.WAITING_TIME}
+                </Typography>
+                </CardContent>
+            </Card>
         ))}  
         </div>
     )

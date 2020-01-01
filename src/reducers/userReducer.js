@@ -1,5 +1,6 @@
 const initialState = {
-    user: {}
+    user: {},
+    error: ''
 }
 
 export default function(state = initialState, action){
@@ -12,6 +13,11 @@ export default function(state = initialState, action){
         case 'DELETE_FRIEND':
             return{
                 ...state
+            }
+        case 'EDIT_USER_ERROR':
+            return{
+                ...state,
+                error: action.payload
             }
         default:
             return state

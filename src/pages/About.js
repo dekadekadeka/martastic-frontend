@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { DiJsBadge } from "react-icons/di";
-import { FaLinkedin, FaGithub } from "react-icons/fa";
+import { FaLinkedin, FaGithub, FaMediumM, FaTwitter } from "react-icons/fa";
 import Grid from '@material-ui/core/Grid';
 
 export default class About extends Component {
@@ -93,12 +93,12 @@ export default class About extends Component {
                 <p>I joined Flatiron School on April 22, 2019 and officially began my coding journey. It's a real thing now, and this time
                     I hope to stick with it as a career for a very long time.
                 </p>
-                <h1 style={{ "text-align": "center", "font-size": "30px"}}>
-                <a href="https://github.com/dekadekadeka/">
-                    <FaGithub/></a>
-                <a href="https://www.linkedin.com/in/renee-deka-ambia-96731773/">
-                    <FaLinkedin/></a>
-                </h1>
+                <div className="social">
+                    <a href="https://github.com/dekadekadeka/"><FaGithub/></a>
+                    <a href="https://www.linkedin.com/in/renee-deka-ambia-96731773/"><FaLinkedin/></a>
+                    <a href="https://medium.com/@dekadekadeka"><FaMediumM/></a>
+                    <a href="https://twitter.com/dekadekadeka/"><FaTwitter/></a>
+                </div>
                 </div>
             </div>
             </div>

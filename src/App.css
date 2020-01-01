@@ -16,7 +16,7 @@ h1{
   font-family: 'Vampiro One', cursive !important ;
 }
 
-h3{
+h2, h3, h4, h5{
   font-family: 'Roboto', cursive !important ;
 }
 
@@ -430,8 +430,12 @@ h3{
 }
 
 #butt{
-  margin: 2vh 0% 2vh 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem;
 }
+
 .danger-text{
 	float:left;
 	padding:0 5px;
@@ -476,6 +480,16 @@ h3{
 	border:5px solid var(--martaOrange);
   padding:10px;
   margin: 10vh;
+}
+
+.social{
+  font-size: 3rem;
+  display: flex;
+  justify-content: space-around;
+}
+
+.social a{
+  color: #000000;
 }
 /* end about */
 /* loading */
