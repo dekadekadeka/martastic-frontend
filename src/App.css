@@ -481,6 +481,16 @@ h2, h3, h4, h5{
   padding:10px;
   margin: 10vh;
 }
+
+.social{
+  font-size: 3rem;
+  display: flex;
+  justify-content: space-around;
+}
+
+.social a{
+  color: #000000;
+}
 /* end about */
 /* loading */
 .loading-text{
