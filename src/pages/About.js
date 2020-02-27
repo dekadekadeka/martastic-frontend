@@ -101,7 +101,6 @@ export default class About extends Component {
                 </div>
                 </div>
             </div>
-            <p>meow</p>
             </div>
         )
     }
