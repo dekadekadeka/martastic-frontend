@@ -101,7 +101,6 @@ export default class About extends Component {
                 </div>
                 </div>
             </div>
-            <p>we are all MARTASTIC</p>
             </div>
         )
     }
