@@ -3,13 +3,14 @@ import { connect } from 'react-redux'
 import {fetchPics} from './actions/picActions'
 import {initState} from './actions/authActions'
 
-import { Route, Switch } from 'react-router-dom'
+import { Redirect, Route, Switch } from 'react-router-dom'
 
 import Navbar from './components/Navbar'
 
 import Home from './pages/Home'
 import Schedule from './components/Schedule'
 import Stations from './pages/Stations'
+import Cobb from './pages/Cobb'
 import SingleStation from './components/SingleStation'
 import Pics from './pages/Pics'
 import SinglePic from './components/SinglePic'
@@ -47,6 +48,8 @@ class App extends Component {
         <Route exact path="/about" component={About} />
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/profile" component={Profile} />
+        <Route exact path="/cobb" component={Cobb} />
+        <Redirect from="/cobbme" to="/cobb" />
         <Route component={Error} />
         </Switch>
       }
