@@ -1,5 +1,5 @@
 export const fetchSchedule = () => dispatch => {
-    fetch("https://delicious-cobb.netlify.com/.netlify/functions/stations")
+    fetch("https://delicious-cobb.netlify.app/.netlify/functions/stations")
     .then(resp => resp.json())
     .then(trains =>{
         let maxWait = Math.max(...trains.map(item => item.WAITING_SECONDS))
