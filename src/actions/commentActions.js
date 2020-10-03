@@ -1,5 +1,9 @@
+import { config } from '../../src/constants';
+
+const url = config.url.apiUrl;
+
 export const fetchComments = () => dispatch => {
-    fetch("https://martastic.herokuapp.com/comments")
+    fetch(`${url}/comments`)
     .then(resp => resp.json())
     .then(comments => dispatch({
         type: 'FETCH_COMMENTS',
@@ -10,7 +14,7 @@ export const fetchComments = () => dispatch => {
 export const createComment = (commentData) => dispatch => {
     console.log(commentData)
     const token = localStorage.token;
-    fetch("https://martastic.herokuapp.com/comments", {
+    fetch(`${url}/comments`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

@@ -1,5 +1,9 @@
+import { config } from '../../src/constants';
+
+const url = config.url.apiUrl;
+
 export const fetchPics = () => dispatch => {
-    fetch("https://martastic.herokuapp.com/pics")
+    fetch(`${url}/pics`)
     .then(resp => resp.json())
     .then(pics => dispatch({
         type: 'FETCH_PICS',
@@ -9,7 +13,7 @@ export const fetchPics = () => dispatch => {
 
 export const createPic = (picData) => dispatch => {
     const token = localStorage.token;
-    fetch("https://martastic.herokuapp.com/pics", {
+    fetch(`${url}/pics`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -36,7 +40,7 @@ export const createPic = (picData) => dispatch => {
 
 export const editLikes = (pic) => {
     return dispatch => {
-    return fetch(`https://martastic.herokuapp.com/pics/${pic.id}`, {
+    return fetch(`${url}/pics/${pic.id}`, {
             method: "PATCH",
             headers: {
                 'Content-Type': 'application/json',
@@ -58,7 +62,7 @@ export const editLikes = (pic) => {
 
 export const addFriend = (friend) => dispatch => {
     const token = localStorage.token;
-    fetch("https://martastic.herokuapp.com/friendships", {
+    fetch(`${url}/friendships`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
