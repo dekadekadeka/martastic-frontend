@@ -1,5 +1,9 @@
+import { config } from '../../src/constants';
+
+const url = config.url.apiUrl;
+
 export const fetchStations = () => dispatch => {
-    fetch("https://martastic.herokuapp.com/stations")
+    fetch(`${url}/stations`)
     .then(resp => resp.json())
     .then(stations =>
         dispatch({
@@ -11,7 +15,7 @@ export const fetchStations = () => dispatch => {
 
 export const editLikes = (station) => {
     return dispatch => {
-    return fetch(`https://martastic.herokuapp.com/stations/${station.id}`, {
+    return fetch(`${url}/stations/${station.id}`, {
             method: "PATCH",
             headers: {
                 'Content-Type': 'application/json',

@@ -1,10 +1,14 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {createUser} from '../actions/authActions';
+import { config } from '../../src/constants';
+
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
+
+const url = config.url.apiUrl;
 
 class Signup extends Component {
   state = {
@@ -14,7 +18,7 @@ class Signup extends Component {
     home_station: "",
     location: "",
     bio: "",
-    profile_pic_url: "https://martastic.herokuapp.com/generic_profile.jpg"
+    profile_pic_url: `${url}/generic_profile.jpg`
   }
 
 

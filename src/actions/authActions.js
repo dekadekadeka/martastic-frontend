@@ -1,6 +1,10 @@
+import { config } from '../../src/constants';
+
+const url = config.url.apiUrl;
+
 export const createUser = (user, history) => {
     return dispatch => {
-    return fetch("https://martastic.herokuapp.com/users", {
+    return fetch(`${url}/users`, {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
@@ -27,7 +31,7 @@ export const createUser = (user, history) => {
 
 export function userLoginFetch(user, history){
     return dispatch => {
-    return fetch("https://martastic.herokuapp.com/login", {
+    return fetch(`${url}/login`, {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
@@ -54,7 +58,7 @@ export function userLoginFetch(user, history){
 export const initState = ()=> {
     return async dispatch => {
 
-        const resp = await fetch("https://martastic.herokuapp.com/init-state", {
+        const resp = await fetch(`${url}/init-state`, {
             headers: { Authorization: `Bearer ${localStorage.token}` }
         })
         const data = await resp.json();
@@ -71,7 +75,7 @@ export const initState = ()=> {
     return async dispatch => {
         const token = localStorage.token;
         if (token) {
-        const resp = await fetch("https://martastic.herokuapp.com/profile", {
+        const resp = await fetch(`${url}/profile`, {
             method: "GET",
             headers: {
                 'Content-Type': 'application/json',
@@ -92,7 +96,7 @@ export const initState = ()=> {
 
 export const deleteUser = (userHash, history) => dispatch => {
     const token = localStorage.token;
-    fetch(`https://martastic.herokuapp.com/${userHash.id}`, {
+    fetch(`${url}/${userHash.id}`, {
         method: 'DELETE',
         headers: {
             'Authorization': `Bearer ${token}`
