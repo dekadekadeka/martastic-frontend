@@ -3,7 +3,7 @@ const initialState = {
     error: ''
 }
 
-export default function(state = initialState, action){
+export default function userReducer (state = initialState, action){
     switch(action.type){
         case 'EDIT_USER':
             return {

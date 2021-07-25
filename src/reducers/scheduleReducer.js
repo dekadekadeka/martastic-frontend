@@ -7,7 +7,7 @@ const initialState = {
     loading: true
 }
 
-export default function(state = initialState, action){
+export default function scheduleReducer(state = initialState, action){
     switch(action.type){
         case 'FETCH_SCHEDULE':
             return {

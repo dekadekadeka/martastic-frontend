@@ -4,7 +4,7 @@ const initialState = {
     pics: [],
     error: ''
 }
-export default function(state = initialState, action){
+export default function picReducer(state = initialState, action){
     switch(action.type){
         case 'FETCH_PICS':
             return {
