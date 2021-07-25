@@ -29,7 +29,7 @@ class SinglePic extends Component {
         this.props.addFriend(friend)
         this.setState({friends: true})
     }
-    
+
     render() {
         return (
             <div className="single-pic">
@@ -46,8 +46,8 @@ class SinglePic extends Component {
                         titleTypographyProps={{variant: 'h5'}}
                         subheaderTypographyProps={{variant: 'body1', color: '#fff'}}
                         avatar={
-                        <Avatar 
-                        style={{width: '7rem', height: '7rem',borderRadius: '4px'}} 
+                        <Avatar
+                        style={{width: '7rem', height: '7rem',borderRadius: '4px'}}
                         src={this.props.pic.user.profile_pic_url}/>
                         }
                         title={this.props.pic.user.name}
@@ -55,7 +55,7 @@ class SinglePic extends Component {
                     />
                     <h4 style={{margin: '0px 0px 0px 10px'}}>Home Station: {this.props.pic.user.home_station}</h4>
                     <h4 style={{margin: '0px 0px 10px 10px'}}>Neighborhood: {this.props.pic.user.location}</h4>
-                    {localStorage.token ? 
+                    {localStorage.token ?
                     <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem'}}>
                         {!this.state.friends && !this.props.currentUser.friends.some(friend => friend.name === this.props.pic.user.name)?
                         <Button variant="outlined" color="primary" onClick={this.addFriend}>Add Friend</Button>
@@ -73,9 +73,9 @@ class SinglePic extends Component {
             <div className="ui comments">
             <h3 className="ui dividing header">Comments</h3>
             <Comments comments = {this.props.comments}/>
-            {localStorage.token ? 
-            <CommentForm item={this.props.pic} type={"Pic"} id={this.props.pic.id}/>
-            : null }
+            {localStorage.token && (
+              <CommentForm type="Pic" id={this.props.pic.id} />
+            )}
             </div>
         </div>
         )

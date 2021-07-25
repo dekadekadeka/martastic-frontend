@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import {fetchPics} from './actions/picActions'
-import {initState} from './actions/authActions'
+import { fetchPics } from './actions/picActions'
+import { initState } from './actions/authActions'
 
 import { Redirect, Route, Switch } from 'react-router-dom'
 

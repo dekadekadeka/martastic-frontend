@@ -9,7 +9,7 @@
 }
 
 body{
-  font-family: 'Roboto', sans-serif !important ; 
+  font-family: 'Roboto', sans-serif !important ;
 }
 
 h1{
@@ -258,9 +258,6 @@ h2, h3, h4, h5{
 .single-station{
   margin: 20vw 5vw 5vw;
 }
-.sad{
-  font-size: 3rem;
-}
 
 .location{
   display: flex;
@@ -400,6 +397,11 @@ h2, h3, h4, h5{
 
 
 /* end single pic */
+/* comments */
+.sad{
+  font-size: 3rem;
+}
+/* end comments */
 /* log in */
 .log-in{
   margin-top: 10vh;
@@ -414,7 +416,7 @@ h2, h3, h4, h5{
   margin: 10vh;
 }
 .header{
-    font-family: 'Roboto', sans-serif !important ; 
+    font-family: 'Roboto', sans-serif !important ;
 }
 .bio{
   font-size: x-large;
@@ -564,7 +566,7 @@ h2, h3, h4, h5{
 
 	75% {
 		width: 76%;
-    
+
 	}
 
 	94% {
@@ -581,7 +583,7 @@ h2, h3, h4, h5{
   .loading-text h1{
     font-size: 10em;
   }
-  
+
   .loading-text h3{
     font-size: 50px;
   }

@@ -1,4 +1,4 @@
-import { config } from '../../src/constants';
+import { config } from '../constants';
 
 const url = config.url.apiUrl;
 
@@ -119,4 +119,4 @@ const loginUser = userObj => ({
 
 export const logoutUser = () => ({
     type: 'LOGOUT_USER'
-})
+});

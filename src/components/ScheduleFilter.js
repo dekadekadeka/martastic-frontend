@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 
@@ -47,9 +47,9 @@ const FancySlider = withStyles({
 
 const ScheduleFilter = ({ trains, maxWait }) => {
   const [schedule, setSchedule] = useState({
-    line: "all",
-    destination: 'all',
-    station: 'all',
+    line: "All",
+    destination: 'All',
+    station: 'All',
     waiting_seconds: 900,
   });
 
@@ -73,23 +73,33 @@ const ScheduleFilter = ({ trains, maxWait }) => {
   let lines = getUnique(trains, "LINE")
 
   // add all
-  lines = ["all", ...lines]
+  lines = ["All", ...lines]
 
   // map to jsx
   lines = lines.map((item, index) =>
-    <MenuItem key={index} value={item}>{item}</MenuItem>)
+    <MenuItem key={index} value={item}>
+      <div style={{ textTransform: 'capitalize' }}>
+        {item.toLowerCase()}
+      </div>
+    </MenuItem>
+  )
 
   // destination getUnique
   let destination = getUnique(trains, "DESTINATION")
-  destination = ["all", ...destination]
+  destination = ["All", ...destination]
   destination = destination.map((item, index) =>
     <MenuItem key={index} value={item}>{item}</MenuItem>)
 
   // current station getUnique
   let station = getUnique(trains, "STATION")
-  station = ["all", ...station]
+  station = ["All", ...station]
   station = station.map((item, index) =>
-    <MenuItem key={index} value={item}>{item}</MenuItem>)
+    <MenuItem key={index} value={item}>
+      <div style={{ textTransform: 'capitalize' }}>
+        {item.toLowerCase()}
+      </div>
+    </MenuItem>
+  )
 
   return (
     <div className="flexGrow: 1">
