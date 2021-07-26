@@ -1,67 +1,54 @@
-import React, { Component } from 'react'
-import {Link} from 'react-router-dom'
-import {connect} from 'react-redux';
-import {logoutUser} from '../actions/authActions';
-import {FaArrowAltCircleDown, FaArrowAltCircleUp} from 'react-icons/fa'
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
+import { connect, useDispatch } from 'react-redux';
+import { logoutUser } from '../actions/authActions';
+import { FaArrowAltCircleDown, FaArrowAltCircleUp } from 'react-icons/fa';
 
-class Navbar extends Component {
+const Navbar = ({ currentUser }) => {
+  const [open, setOpen] = useState(false);
+  const dispatch = useDispatch();
 
-    state={
-        isOpen: false
-    }
+  const handleOpen = () => {
+    setOpen(!open);
+  }
 
-    handleOpen = () => {
-        this.setState({
-            isOpen: !this.state.isOpen
-        })
-    }
+  const handleClick = event => {
+    event.preventDefault()
+    // Remove the token from localStorage
+    localStorage.removeItem("token");
+    // Remove the user object from the Redux store
+    dispatch(logoutUser());
+  }
 
-    handleClick = event => {
-        event.preventDefault()
-        // Remove the token from localStorage
-        localStorage.removeItem("token")
-        // Remove the user object from the Redux store
-        this.props.logoutUser()
-    }
+  return (
+    <div className="navbar">
+      <div className="nav-header">
+        <button
+          type="button"
+          className="nav-btn"
+          onClick={handleOpen}
+        >
+          {open ? <FaArrowAltCircleUp className="nav-icon"/> : <FaArrowAltCircleDown className="nav-icon"/>}
+        </button>
+      </div>
+      <ul className={open ? "nav-links" : "nav-links show-nav"}>
+        {currentUser.username && <Link to="/profile" className="profile-nav">My Profile</Link>}
+        <span className="blue"><Link to="/home">Home</Link></span>
+        <span className="blue"><Link to="/schedule">Schedule</Link></span>
+        <span className="gold"><Link to="/stations">Stations</Link></span>
+        <span className="gold"><Link to="/pics">All Pictures</Link></span>
+        {currentUser.username ?
+          <span className="orange" onClick={handleClick}><Link to="/">Log Out</Link></span> :
+          <span className="orange"><Link to="/login">Log In</Link></span>
+        }
+        <span className="orange"><Link to="/about">About</Link></span>
+      </ul>
+    </div>
+  );
+};
 
-    render() {
-        console.log("Made with 💙💛🧡 by Deka")
-        console.log("https://github.com/dekadekadeka/")
-        console.log("Have a MARTASTIC day!! 🚇")
-        return (
-            <div className="navbar">
-                    <div className="nav-header">
-                    <button type="button" className="nav-btn"
-                    onClick={this.handleOpen}>
-                    {this.state.isOpen ? <FaArrowAltCircleUp className="nav-icon"/>
-                    :<FaArrowAltCircleDown className="nav-icon"/>}
-                    </button>
-                    </div>
-                <ul className={this.state.isOpen ? "nav-links" : "nav-links show-nav"}>
-                    {this.props.currentUser.username ? 
-                    <Link to="/profile" className="profile-nav">My Profile</Link>
-                    : null }
-                    <span className="blue"><Link to="/home">Home</Link></span>
-                    <span className="blue"><Link to="/schedule">Schedule</Link></span>
-                    <span className="gold"><Link to="/stations">Stations</Link></span>
-                    <span className="gold"><Link to="/pics">All Pictures</Link></span>
-                    {this.props.currentUser.username ? 
-                    <span className="orange" onClick={this.handleClick}>
-                        <Link to="/">Log Out</Link></span>
-                    : <span className="orange"><Link to="/login">Log In</Link></span>
-                    }
-                    <span className="orange"><Link to="/about">About</Link></span>
-                </ul> 
-            </div>
-        )
-    }
-}
 const mapStateToProps = state => ({
     currentUser: state.currentUser.currentUser
-})
+});
 
-const mapDispatchToProps = dispatch => ({
-    logoutUser: () => dispatch(logoutUser())
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
+export default connect (mapStateToProps)(Navbar);

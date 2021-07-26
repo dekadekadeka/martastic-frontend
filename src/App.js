@@ -24,38 +24,41 @@ import "./App.css"
 
 class App extends Component {
 
-  componentDidMount(){
-    this.props.fetchPics()
-    if (localStorage.token){
-      this.props.initState()
+  componentDidMount() {
+    this.props.fetchPics();
+    if (localStorage.token) {
+      this.props.initState();
     }
-}
+  };
 
   render() {
+  console.log ("Made with 💙💛🧡 by Deka");
+  console.log ("https://github.com/dekadekadeka/");
+  console.log ("Have a MARTASTIC day!! 🚇");
   return (
     <div>
       <Navbar />
       {localStorage.token && !this.props.user_id ? null :
-      <Switch>
-        <Route exact path="/" component={Schedule} />
-        <Route exact path="/home/" component={Home} />
-        <Route exact path="/schedule/" component={Schedule} />
-        <Route exact path="/stations/" component={Stations} />
-        <Route exact path="/stations/:slug" component={SingleStation} />
-        <Route exact path="/pics/" component={Pics} />
-        <Route exact path="/pics/:id" component={SinglePic} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/about" component={About} />
-        <Route exact path="/signup" component={Signup} />
-        <Route exact path="/profile" component={Profile} />
-        <Route exact path="/cobb" component={Cobb} />
-        <Redirect from="/cobbme" to="/cobb" />
-        <Route component={Error} />
+        <Switch>
+          <Route exact path="/" component={Schedule} />
+          <Route exact path="/home/" component={Home} />
+          <Route exact path="/schedule/" component={Schedule} />
+          <Route exact path="/stations/" component={Stations} />
+          <Route exact path="/stations/:slug" component={SingleStation} />
+          <Route exact path="/pics/" component={Pics} />
+          <Route exact path="/pics/:id" component={SinglePic} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/about" component={About} />
+          <Route exact path="/signup" component={Signup} />
+          <Route exact path="/profile" component={Profile} />
+          <Route exact path="/cobb" component={Cobb} />
+          <Redirect from="/cobbme" to="/cobb" />
+          <Route component={Error} />
         </Switch>
       }
     </div>
-    )
-  }
+    );
+  };
 }
 
 let mapStateToProps = state => ({user_id: state.currentUser.currentUser.id })
