@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { connect, useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { logoutUser } from '../actions/authActions';
 import { FaArrowAltCircleDown, FaArrowAltCircleUp } from 'react-icons/fa';
 
-const Navbar = ({ currentUser }) => {
+const Navbar = () => {
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
+  const currentUser = useSelector(state => state.currentUser.currentUser);
 
   const handleOpen = () => {
     setOpen(!open);
@@ -47,8 +48,4 @@ const Navbar = ({ currentUser }) => {
   );
 };
 
-const mapStateToProps = state => ({
-    currentUser: state.currentUser.currentUser
-});
-
-export default connect (mapStateToProps)(Navbar);
+export default Navbar;

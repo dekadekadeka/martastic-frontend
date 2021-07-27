@@ -1,11 +1,12 @@
-import React,{ useEffect }   from 'react';
-import { connect, useDispatch } from 'react-redux';
-import { fetchSchedule }     from '../actions/scheduleActions'
-import ScheduleList from './ScheduleList'
-import ScheduleFilter from './ScheduleFilter'
+import React,{ useEffect } from 'react';
+import { useDispatch,useSelector } from 'react-redux';
+import { fetchSchedule } from '../actions/scheduleActions';
+import ScheduleList from './ScheduleList';
+import ScheduleFilter from './ScheduleFilter';
 
-const Schedule = ({ trains, time, minWait, maxWait, sortedTrains, loading }) => {
+const Schedule = () => {
   const dispatch = useDispatch();
+  const schedule = useSelector(state => state.schedule);
 
   useEffect(() => {
     dispatch(fetchSchedule());
@@ -15,24 +16,15 @@ const Schedule = ({ trains, time, minWait, maxWait, sortedTrains, loading }) => 
     <div className="schedule">
       <div className="filter">
         <ScheduleFilter
-          trains={trains}
-          time={time}
-          minWait={minWait}
-          maxWait={maxWait}
+          trains={schedule.trains}
+          time={schedule.time}
+          minWait={schedule.minWait}
+          maxWait={schedule.maxWait}
         />
       </div>
-      <ScheduleList trains={sortedTrains} loading={loading}/>
+      <ScheduleList trains={schedule.sortedTrains} loading={schedule.loading}/>
     </div>
   );
-}
+};
 
-const mapStateToProps = state => ({
-    trains: state.schedule.trains,
-    time: state.schedule.time,
-    minWait: state.schedule.minWait,
-    maxWait: state.schedule.maxWait,
-    sortedTrains: state.schedule.sortedTrains,
-    loading: state.schedule.loading
-})
-
-export default connect(mapStateToProps, { fetchSchedule })(Schedule);
+export default Schedule;

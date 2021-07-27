@@ -1,12 +1,13 @@
 import React,{ useState } from 'react'
-import { connect, useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button';
 import { createComment } from '../actions/commentActions'
 
-const CommentForm = ({ type, id, currentUser }) => {
+const CommentForm = ({ type, id }) => {
   const [content,setContent] = useState('');
   const dispatch = useDispatch();
+  const currentUser = useSelector(state => state.currentUser.currentUser);
 
   const handleChange = e => {
     setContent(e.target.value);
@@ -48,8 +49,4 @@ const CommentForm = ({ type, id, currentUser }) => {
   );
 };
 
-const mapStateToProps = state => ({
-  currentUser: state.currentUser.currentUser,
-});
-
-export default connect(mapStateToProps,{ createComment })(CommentForm);
+export default CommentForm;

@@ -1,14 +1,16 @@
 import React,{ useState } from 'react'
-import { connect, useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { createPic } from '../actions/picActions'
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import Grid from '@material-ui/core/Grid';
 
-const PicForm = ({ currentUser, error }) => {
+const PicForm = () => {
   const [uploadPic, setUploadPic] = useState({ station_id: '', pic_url: '' });
 
   const dispatch = useDispatch();
+  const currentUser = useSelector(state => state.currentUser.currentUser);
+  const error =  useSelector(state => state.pics.error);
 
   const handleChange = e => {
     setUploadPic({ ...uploadPic, [e.target.name]: e.target.value })
@@ -232,9 +234,4 @@ const PicForm = ({ currentUser, error }) => {
   )
 }
 
-const mapStateToProps = state => ({
-  currentUser: state.currentUser.currentUser,
-  error: state.pics.error,
-});
-
-export default connect(mapStateToProps,{ createPic })(PicForm);
+export default PicForm;

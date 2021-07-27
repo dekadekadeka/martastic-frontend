@@ -1,5 +1,5 @@
 import React,{ useState } from 'react';
-import { connect,useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import { editUser } from '../actions/userActions';
 
@@ -29,6 +29,8 @@ const UserEditForm = ({ user }) => {
   };
 
   const handleSubmit = event => {
+    // TODO: fix this so it shows as soon as user edits
+    // TODO: and so they don't have to refresh
     event.preventDefault();
     dispatch(editUser(userEdit));
   };
@@ -116,8 +118,4 @@ const UserEditForm = ({ user }) => {
   );
 };
 
-const mapDispatchToProps = dispatch => ({
-  editUser: (userInfo) => dispatch(editUser(userInfo))
-});
-
-export default connect(null, mapDispatchToProps)(UserEditForm);
+export default UserEditForm;
