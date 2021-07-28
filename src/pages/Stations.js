@@ -1,28 +1,25 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux';
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import { fetchStations } from '../actions/stationActions'
 import StationList from '../components/StationList'
 
-class Stations extends Component {
-    componentDidMount(){
-        this.props.fetchStations()
-    }
+const Stations = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchStations());
+  }, [dispatch]);
 
-    render() {
-        return (
-            <div className="stations">
-                <section className="picslist">
-                    <div className="picslist-center">
-                    <StationList stations={this.props.stations}/>
-                    </div>
-                </section>
-            </div>
-        )
-    }
-}
+  const stations = useSelector(state => state.stations.stations);
 
-const mapStateToProps = state => ({
-    stations: state.stations.stations
-})
+  return (
+    <div className="stations">
+      <section className="picslist">
+        <div className="picslist-center">
+          <StationList stations={stations}/>
+        </div>
+      </section>
+    </div>
+  );
+};
 
-export default connect(mapStateToProps, {fetchStations})(Stations)
+export default Stations;

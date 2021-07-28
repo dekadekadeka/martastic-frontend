@@ -1,15 +1,15 @@
 import React from 'react'
 
-export default function Cobb() {
-  console.log('  ___            _       _               __  __             _    ')
-  console.log(' / __|    ___   | |__   | |__      o O O|  \\/  |   ___     | |   ')
-  console.log('| (__    / _ \\  | \'_ \\  | \'_ \\    o     | |\\/| |  / -_)    |_|   ')
-  console.log(' \\___|   \\___/  |_.__/  |_.__/   TS__[O]|_|__|_|  \\___|   _(_)_  ')
-  console.log('_|"""""|_|"""""|_|"""""|_|"""""| {======|_|"""""|_|"""""|_| """ | ')
-  console.log('"`-0-0-\'"`-0-0-\'"`-0-0-\'"`-0-0-\'./o--000\'"`-0-0-\'"`-0-0-\'"`-0-0-\'')
-  console.log('But if you\'re smart enough to have found this... 🥰')
-  console.log('🍆🍑💦🥰')
-  console.log('We can talk about it 😘')
+const Cobb = () => {
+  console.log('  ___            _       _               __  __             _    ');
+  console.log(' / __|    ___   | |__   | |__      o O O|  \\/  |   ___     | |   ');
+  console.log('| (__    / _ \\  | \'_ \\  | \'_ \\    o     | |\\/| |  / -_)    |_|   ');
+  console.log(' \\___|   \\___/  |_.__/  |_.__/   TS__[O]|_|__|_|  \\___|   _(_)_  ');
+  console.log('_|"""""|_|"""""|_|"""""|_|"""""| {======|_|"""""|_|"""""|_| """ | ');
+  console.log('"`-0-0-\'"`-0-0-\'"`-0-0-\'"`-0-0-\'./o--000\'"`-0-0-\'"`-0-0-\'"`-0-0-\'');
+  console.log('But if you\'re smart enough to have found this... 🥰');
+  console.log('🍆🍑💦🥰');
+  console.log('We can talk about it 😘');
   return (
     <div className="log-in">
       <h1 style={{ fontSize: 'xxx-large' }}>I am ashamed of you.</h1>
@@ -20,5 +20,7 @@ export default function Cobb() {
       <h1>Much love,</h1>
       <h1>Deka</h1>
     </div>
-  )
-}
+  );
+};
+
+export default Cobb;

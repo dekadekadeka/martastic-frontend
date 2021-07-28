@@ -4,8 +4,8 @@ const url = config.url.apiUrl;
 
 export const fetchPics = () => dispatch => {
   fetch (`${url}/pics`)
-    .then (resp => resp.json ())
-    .then (pics => dispatch ({
+    .then (resp => resp.json())
+    .then (pics => dispatch({
       type: 'FETCH_PICS',
       payload: pics
     })
@@ -23,15 +23,15 @@ export const createPic = (picData) => dispatch => {
     },
     body: JSON.stringify ({pic: picData})
   })
-    .then (resp => resp.json ())
+    .then (resp => resp.json())
     .then (pic => {
       if (pic.error) {
-        dispatch ({
+        dispatch({
           type: 'PIC_FAIL',
           payload: pic.error
         })
       } else {
-        dispatch ({
+        dispatch({
           type: "NEW_PIC",
           payload: pic
         })
@@ -50,10 +50,10 @@ export const editLikes = (pic) => {
       },
       body: JSON.stringify ({likes: ++ pic.likes})
     })
-      .then (resp => resp.json ())
+      .then (resp => resp.json())
       .then (data => {
         if (data.message) {
-          dispatch ({
+          dispatch({
             type: 'LIKE_FAIL',
             payload: data.error
           })
@@ -74,15 +74,15 @@ export const addFriend = (friend) => dispatch => {
     },
     body: JSON.stringify (friend)
   })
-    .then (resp => resp.json ())
+    .then (resp => resp.json())
     .then (data => {
       if (data.error) {
-        dispatch ({
+        dispatch({
           type: 'ADD_FRIEND_FAIL',
           payload: data.error
         })
       } else {
-        dispatch ({
+        dispatch({
           type: "ADD_FRIEND",
           payload: data
         })

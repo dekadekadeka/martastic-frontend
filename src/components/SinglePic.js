@@ -11,6 +11,8 @@ import { MdFavorite } from "react-icons/md";
 import { MdFavoriteBorder } from "react-icons/md"
 
 class SinglePic extends Component {
+    // TODO: We will turn this into a modal!
+    // TODO: we also have a LOT of backend work to do here!
 
     state = {
         liked: false,
