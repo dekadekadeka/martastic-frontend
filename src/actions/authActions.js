@@ -71,28 +71,28 @@ export const initState = ()=> {
     }
 }
 
-    export const getProfileFetch = () => {
-    return async dispatch => {
-        const token = localStorage.token;
-        if (token) {
-        const resp = await fetch(`${url}/profile`, {
-            method: "GET",
-            headers: {
-                'Content-Type': 'application/json',
-                Accept: 'application/json',
-                'Authorization': `Bearer ${token}`
-            }
-        });
-        const data = await resp.json();
-        if (data.message) {
-            localStorage.removeItem("token");
-        }
-        else {
-            dispatch(loginUser(data.user));
-        }
-    }
-    }
-}
+//     export const getProfileFetch = () => {
+//     return async dispatch => {
+//         const token = localStorage.token;
+//         if (token) {
+//         const resp = await fetch(`${url}/profile`, {
+//             method: "GET",
+//             headers: {
+//                 'Content-Type': 'application/json',
+//                 Accept: 'application/json',
+//                 'Authorization': `Bearer ${token}`
+//             }
+//         });
+//         const data = await resp.json();
+//         if (data.message) {
+//             localStorage.removeItem("token");
+//         }
+//         else {
+//             dispatch(loginUser(data.user));
+//         }
+//     }
+//     }
+// }
 
 export const deleteUser = (userHash, history) => dispatch => {
     const token = localStorage.token;
