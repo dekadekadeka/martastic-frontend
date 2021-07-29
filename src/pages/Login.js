@@ -48,7 +48,7 @@ const Login = () => {
           </Grid>
           <Grid item xs={12} md={6}>
             <TextField label="Password"
-              error
+              error={message}
               name='password'
               type="password"
               value={loginUser.password}

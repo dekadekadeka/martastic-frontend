@@ -33,11 +33,11 @@ const Navbar = () => {
         </button>
       </div>
       <ul className={open ? "nav-links" : "nav-links show-nav"}>
-        {currentUser.username && <Link to="/profile" className="profile-nav">My Profile</Link>}
+        {currentUser && currentUser.username && <Link to="/profile" className="profile-nav">My Profile</Link>}
         <span className="blue"><Link to="/schedule">Schedule</Link></span>
         <span className="gold"><Link to="/stations">Stations</Link></span>
         <span className="gold"><Link to="/pics">All Pictures</Link></span>
-        {currentUser.username ?
+        {currentUser && currentUser.username ?
           <span className="orange" onClick={handleClick}><Link to="/">Log Out</Link></span> :
           <span className="orange"><Link to="/login">Log In</Link></span>
         }
