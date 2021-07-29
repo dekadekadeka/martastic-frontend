@@ -3,8 +3,8 @@ const initialState ={
     error: ''
 }
 
-export default function stationReducer (state = initialState, action){
-    switch(action.type){
+export default function stationReducer(state = initialState, action) {
+    switch (action.type) {
         case 'FETCH_STATIONS':
             return {
                 ...state,

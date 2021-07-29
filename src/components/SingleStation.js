@@ -6,7 +6,6 @@ import Comments from './Comments'
 import CommentForm from '../components/CommentForm'
 import { MdFavorite } from "react-icons/md";
 import { MdFavoriteBorder } from "react-icons/md"
-// import GoogleMapReact from 'google-map-react';
 
 import StationMap from '../components/StationMap'
 
@@ -26,12 +25,6 @@ class SingleStation extends Component {
         this.setState({liked: !this.state.liked, pending: false})
     }
 
-    // addComment = () => {
-    //     if(state.stations.stations.comment > 0){
-
-    //     }
-    // }
-    
     render() {
         return (
             <div className="single-station">
@@ -53,9 +46,9 @@ class SingleStation extends Component {
             <div className="ui comments">
             <h3 className="ui dividing header">Comments</h3>
             <Comments comments={this.props.comments}/>
-            {localStorage.token ? 
-            <CommentForm item={this.props.station} type={"Station"} id={this.props.station.id}/>
-            : null }
+            {localStorage.token && (
+                <CommentForm type="Station" id={this.props.station.id} />
+            )}
             </div>
             </div>
         )

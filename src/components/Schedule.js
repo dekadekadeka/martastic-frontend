@@ -1,36 +1,30 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { fetchSchedule } from '../actions/scheduleActions'
-import ScheduleList from './ScheduleList'
-import ScheduleFilter from './ScheduleFilter'
+import React,{ useEffect } from 'react';
+import { useDispatch,useSelector } from 'react-redux';
+import { fetchSchedule } from '../actions/scheduleActions';
+import ScheduleList from './ScheduleList';
+import ScheduleFilter from './ScheduleFilter';
 
-class Schedule extends Component {
-    componentDidMount(){
-        this.props.fetchSchedule()
-    }
+const Schedule = () => {
+  const dispatch = useDispatch();
+  const schedule = useSelector(state => state.schedule);
 
-    render() {
-        return (
-            <div className="schedule">
-                <div className="filter">
-                <ScheduleFilter trains={this.props.trains} 
-                time={this.props.time}
-                minWait={this.props.minWait}
-                maxWait={this.props.maxWait}/>
-                </div>
-                <ScheduleList trains={this.props.sortedTrains} loading={this.props.loading}/>
-            </div>
-        )
-    }
-}
+  useEffect(() => {
+    dispatch(fetchSchedule());
+  }, [dispatch]);
 
-const mapStateToProps = state => ({
-    trains: state.schedule.trains,
-    time: state.schedule.time,
-    minWait: state.schedule.minWait,
-    maxWait: state.schedule.maxWait,
-    sortedTrains: state.schedule.sortedTrains,
-    loading: state.schedule.loading
-})
+  return (
+    <div className="schedule">
+      <div className="filter">
+        <ScheduleFilter
+          trains={schedule.trains}
+          time={schedule.time}
+          minWait={schedule.minWait}
+          maxWait={schedule.maxWait}
+        />
+      </div>
+      <ScheduleList trains={schedule.sortedTrains} loading={schedule.loading}/>
+    </div>
+  );
+};
 
-export default connect(mapStateToProps, { fetchSchedule })(Schedule)
+export default Schedule;

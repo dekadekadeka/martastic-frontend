@@ -1,13 +1,11 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import {fetchPics} from './actions/picActions'
-import {initState} from './actions/authActions'
+import React, { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { initState } from './actions/authActions'
 
 import { Redirect, Route, Switch } from 'react-router-dom'
 
 import Navbar from './components/Navbar'
 
-import Home from './pages/Home'
 import Schedule from './components/Schedule'
 import Stations from './pages/Stations'
 import Cobb from './pages/Cobb'
@@ -22,23 +20,21 @@ import About from './pages/About'
 
 import "./App.css"
 
-class App extends Component {
+const App = () => {
+  const dispatch = useDispatch();
 
-  componentDidMount(){
-    this.props.fetchPics()
-    if (localStorage.token){
-      this.props.initState()
-    }
-}
+  useEffect(() => {
+    dispatch(initState());
+  }, [dispatch]);
 
-  render() {
+  console.log ("Made with 💙💛🧡 by Deka");
+  console.log ("https://github.com/dekadekadeka/");
+  console.log ("Have a MARTASTIC day!! 🚇");
   return (
     <div>
       <Navbar />
-      {localStorage.token && !this.props.user_id ? null :
       <Switch>
         <Route exact path="/" component={Schedule} />
-        <Route exact path="/home/" component={Home} />
         <Route exact path="/schedule/" component={Schedule} />
         <Route exact path="/stations/" component={Stations} />
         <Route exact path="/stations/:slug" component={SingleStation} />
@@ -51,13 +47,9 @@ class App extends Component {
         <Route exact path="/cobb" component={Cobb} />
         <Redirect from="/cobbme" to="/cobb" />
         <Route component={Error} />
-        </Switch>
-      }
+      </Switch>
     </div>
-    )
-  }
-}
+  );
+};
 
-let mapStateToProps = state => ({user_id: state.currentUser.currentUser.id })
-
-export default connect(mapStateToProps, {initState, fetchPics})(App);
+export default App;

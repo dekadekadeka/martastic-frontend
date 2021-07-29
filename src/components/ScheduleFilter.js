@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 
-import {filterTrains} from '../actions/scheduleActions';
+import { filterTrains } from '../actions/scheduleActions';
 
 import Grid from '@material-ui/core/Grid';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -45,52 +45,61 @@ const FancySlider = withStyles({
   },
 })(Slider);
 
-class ScheduleFilter extends Component{
-
-  state={
-    line: "all",
-    destination: 'all',
-    station: 'all',
+const ScheduleFilter = ({ trains, maxWait }) => {
+  const [schedule, setSchedule] = useState({
+    line: "All",
+    destination: 'All',
+    station: 'All',
     waiting_seconds: 900,
+  });
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(filterTrains(trains, schedule));
+  }, [dispatch, trains, schedule])
+
+  const handleChange = e => {
+    const value = e.target.value;
+    const name =  e.target.name;
+    setSchedule({ ...schedule, [name]: value })
   }
 
-  handleChange = e => {
-    const value = e.target.value
-    const name =  e.target.name
-    this.setState({
-      [name]:value
-    }, () => {
-        this.props.filterTrains(this.props.trains, this.state);
-      }
-    )
+  const handleSlider = (e, newValue) => {
+    setSchedule({ ...schedule, waiting_seconds: newValue })
   }
 
-  handleSlider = (e, newValue) => {
-    this.setState({ waiting_seconds: newValue }, () => {
-      this.props.filterTrains(this.props.trains, this.state);
-    })
-  }
+  // get unique lines
+  let lines = getUnique(trains, "LINE")
 
-  render() {
-  //get unique lines
-  let lines = getUnique(this.props.trains, "LINE")
-  
-  //add all
-  lines = ["all", ...lines]
-  //map to jsx
-  lines = lines.map((item, index) => 
-    <MenuItem key={index} value={item}>{item}</MenuItem>)
+  // add all
+  lines = ["All", ...lines]
 
-  //destination getUnique
-  let destination = getUnique(this.props.trains, "DESTINATION")
-  destination = ["all", ...destination]
+  // map to jsx
+  lines = lines.map((item, index) =>
+    <MenuItem key={index} value={item}>
+      <div style={{ textTransform: 'capitalize' }}>
+        {item.toLowerCase()}
+      </div>
+    </MenuItem>
+  )
+
+  // destination getUnique
+  let destination = getUnique(trains, "DESTINATION")
+  destination = ["All", ...destination]
   destination = destination.map((item, index) =>
     <MenuItem key={index} value={item}>{item}</MenuItem>)
-  //current station getUnique
-  let station = getUnique(this.props.trains, "STATION")
-  station = ["all", ...station]
+
+  // current station getUnique
+  let station = getUnique(trains, "STATION")
+  station = ["All", ...station]
   station = station.map((item, index) =>
-    <MenuItem key={index} value={item}>{item}</MenuItem>)
+    <MenuItem key={index} value={item}>
+      <div style={{ textTransform: 'capitalize' }}>
+        {item.toLowerCase()}
+      </div>
+    </MenuItem>
+  )
 
   return (
     <div className="flexGrow: 1">
@@ -102,71 +111,66 @@ class ScheduleFilter extends Component{
               select
               label="Line"
               name="line"
-              value={this.state.line}
-              onChange={this.handleChange}
+              value={schedule.line}
+              onChange={handleChange}
               fullWidth
               margin="normal"
             >
               {lines}
             </TextField>
           </Grid>
-        {/* end lines */}
-        {/* destination */}
-        <Grid item xs={12} md={3}>
-          <TextField
-            select
-            label="Destination"
-            name="destination"
-            value={this.state.destination}
-            onChange={this.handleChange}
-            fullWidth
-            margin="normal"
-          >
-            {destination}
-          </TextField>
-        </Grid>
-        {/* end destination */}
-        {/* current station */}
-        <Grid item xs={12} md={3}>
-          <TextField
-            select
-            label="Current Station"
-            name="station"
-            value={this.state.station}
-            onChange={this.handleChange}
-            fullWidth
-            margin="normal"
-          >
-            {station}
-          </TextField>
-        </Grid>
-        {/* end current station */}
-        {/* waiting seconds */}
-        <Grid item xs={12} md={3}>
-        <br/>
-        <label htmlFor="waiting_seconds">
-          Max Waiting Time {Math.floor(this.state.waiting_seconds / 60)} minutes
-        </label>
-        <FancySlider
-          name="waiting_seconds"
-          value={this.state.waiting_seconds}
-          max={this.props.maxWait}
-          onChange={this.handleSlider}
-          valueLabelFormat={() => Math.floor(this.state.waiting_seconds / 60)}
-          valueLabelDisplay="auto"
-          aria-label="waiting time"
-        />
-        </Grid>
-        {/* end waiting seconds */}
+          {/* end lines */}
+          {/* destination */}
+          <Grid item xs={12} md={3}>
+            <TextField
+              select
+              label="Destination"
+              name="destination"
+              value={schedule.destination}
+              onChange={handleChange}
+              fullWidth
+              margin="normal"
+            >
+              {destination}
+            </TextField>
+          </Grid>
+          {/* end destination */}
+          {/* current station */}
+          <Grid item xs={12} md={3}>
+            <TextField
+              select
+              label="Current Station"
+              name="station"
+              value={schedule.station}
+              onChange={handleChange}
+              fullWidth
+              margin="normal"
+            >
+              {station}
+            </TextField>
+          </Grid>
+          {/* end current station */}
+          {/* waiting seconds */}
+          <Grid item xs={12} md={3}>
+            <br/>
+            <label htmlFor="waiting_seconds">
+              Max Waiting Time {Math.floor(schedule.waiting_seconds / 60)} minutes
+            </label>
+            <FancySlider
+              name="waiting_seconds"
+              value={schedule.waiting_seconds}
+              max={maxWait}
+              onChange={handleSlider}
+              valueLabelFormat={() => Math.floor(schedule.waiting_seconds / 60)}
+              valueLabelDisplay="auto"
+              aria-label="waiting time"
+            />
+          </Grid>
+          {/* end waiting seconds */}
         </Grid>
       </form>
     </div>
-    )
-  }
+  )
 }
 
-const mapStateToProps = state => ({
-  sortedTrains: state.schedule.sortedTrains
-})
-
-export default connect(mapStateToProps, { filterTrains })(ScheduleFilter)
+export default ScheduleFilter;

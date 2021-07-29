@@ -1,36 +1,33 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import PicList from '../components/PicList'
-import PicForm from'../components/PicForm'
+import PicForm from '../components/PicForm'
+import { fetchPics } from "../actions/picActions";
 
-class Pics extends Component {
-    render() {
-        return (
-            <div className="all-pics">
-                <section className="picslist">
-                    <div className="picslist-center">
-                    <PicList pics={this.props.pics} />
-                    </div>
-                </section>
-                {localStorage.token ?
-                <>
-                <h1 style={{marginLeft: '5rem'}}>Add A Pic</h1>
-                <PicForm />
-                </>
-                : null
-                }
-            </div>
-        )
-    }
+const Pics = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchPics());
+  }, [dispatch]);
+
+  const currentUser = useSelector(state => state.currentUser.currentUser);
+  const pics = useSelector(state => state.pics.pics);
+
+  return (
+    <div className="all-pics">
+      <section className="picslist">
+        <div className="picslist-center">
+          <PicList pics={pics} />
+        </div>
+      </section>
+      {currentUser && (
+        <React.Fragment>
+          <h1 style={{marginLeft: '5rem'}}>Add A Pic</h1>
+          <PicForm />
+        </React.Fragment>
+      )}
+    </div>
+  );
 }
 
-Pics.propTypes = {
-    pics: PropTypes.array.isRequired
-}
-
-const mapStateToProps = (state) => ({
-    pics: state.pics.pics
-})
-
-export default connect(mapStateToProps)(Pics)
+export default Pics;

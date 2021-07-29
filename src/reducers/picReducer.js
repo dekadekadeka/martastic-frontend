@@ -1,5 +1,3 @@
-import { sample } from 'lodash';
-
 const initialState = {
     pics: [],
     error: ''
@@ -30,7 +28,4 @@ export default function picReducer(state = initialState, action){
         default:
             return state
         }
-}
-export const getRandomPic = (state) => {
-    return sample(state.pics.pics)
 }
