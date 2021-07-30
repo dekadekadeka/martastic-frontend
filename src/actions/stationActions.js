@@ -12,6 +12,19 @@ export const fetchStations = () => dispatch => {
   );
 }
 
+export const fetchSingleStation = (stationId) => {
+  return dispatch => {
+    return fetch(`${url}/stations/${stationId}`)
+      .then(resp => resp.json())
+      .then(data => {
+        dispatch({
+          type: 'FETCH_SINGLE_STATION',
+          payload: data
+        })
+    })
+  }
+}
+
 export const editLikes = (station) => {
   return dispatch => {
     return fetch(`${url}/stations/${station.id}`, {

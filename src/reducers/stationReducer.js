@@ -1,21 +1,27 @@
-const initialState ={
+const initialState = {
     stations: [],
-    error: ''
-}
+    station: null,
+    error: '',
+};
 
 export default function stationReducer(state = initialState, action) {
     switch (action.type) {
         case 'FETCH_STATIONS':
             return {
                 ...state,
-                stations: action.payload
-            }
+                stations: action.payload,
+            };
+        case 'FETCH_SINGLE_STATION':
+            return {
+                ...state,
+                station: action.payload,
+            };
         case 'LIKE_FAIL':
             return {
                 ...state,
-                error: action.payload
-            }
+                error: action.payload,
+            };
         default:
-            return state
+            return state;
     }
 }

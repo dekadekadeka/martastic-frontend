@@ -12,12 +12,8 @@ const Stations = () => {
   const stations = useSelector(state => state.stations.stations);
 
   return (
-    <div className="stations">
-      <section className="picslist">
-        <div className="picslist-center">
-          <StationList stations={stations}/>
-        </div>
-      </section>
+    <div className="pics-station-list">
+      <StationList stations={stations}/>
     </div>
   );
 };

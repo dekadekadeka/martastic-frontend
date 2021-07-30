@@ -1,23 +1,36 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
-import defaultImg from '../images/404.jpg';
+import React, { useState } from 'react'
+import SingleStationModal from "./SingleStationModal";
+import defaultImg from "../images/404.jpg";
 
-const StationList = ({ stations }) => (
-  <React.Fragment>
-    {stations.map(station => (
-      <article className="station-pic">
-        <div className="img-container-stations">
-          <img
-            src={{ ...station.pics[0] }.pic_url || defaultImg}
-            alt={station.name} key={station.id}
-          />
-          <Link to={`/stations/${station.slug}`}>
+const StationList = ({ stations }) => {
+  const [open, setOpen] = useState(false);
+  const [stationId, setStationId] = useState(null)
+
+  return (
+    <React.Fragment>
+      {stations.map(station => (
+        <article
+          className="station-pic"
+          onClick={() => {
+            setOpen(true);
+            setStationId(station.id);
+          }}>
+          <div className="img-container-stations">
+            <img
+              src={station.first_pic_url || defaultImg}
+              alt={station.name} key={station.id}
+            />
             <h1 className="station-text">{station.name}</h1>
-          </Link>
-        </div>
-      </article>
-    ))}
-  </React.Fragment>
-);
+          </div>
+        </article>
+      ))}
+      <SingleStationModal
+        open={open}
+        setOpen={setOpen}
+        stationId={stationId}
+      />
+    </React.Fragment>
+  );
+};
 
 export default StationList;

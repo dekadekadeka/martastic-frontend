@@ -142,7 +142,7 @@ const PicForm = () => {
     },
     {
       value: '29',
-      label: 'Dome/GWCC/Philips/CNN'
+      label: 'GWCC/CNN Center'
     },
     {
       value: '30',

@@ -14,19 +14,17 @@ const Pics = () => {
   const pics = useSelector(state => state.pics.pics);
 
   return (
-    <div className="all-pics">
-      <section className="picslist">
-        <div className="picslist-center">
-          <PicList pics={pics} />
-        </div>
-      </section>
+    <React.Fragment>
+      <div className="pics-station-list">
+        <PicList pics={pics} />
+      </div>
       {currentUser && (
         <React.Fragment>
           <h1 style={{marginLeft: '5rem'}}>Add A Pic</h1>
           <PicForm />
         </React.Fragment>
       )}
-    </div>
+    </React.Fragment>
   );
 }
 
