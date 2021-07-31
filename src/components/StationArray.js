@@ -112,8 +112,8 @@ export const stations = [
     label: 'Buckhead'
   },
   {
-    value: 'Dome/GWCC/Philips/CNN',
-    label: 'Dome/GWCC/Philips/CNN'
+    value: 'GWCC/CNN Center',
+    label: 'GWCC/CNN Center'
   },
   {
     value: 'Ashby',

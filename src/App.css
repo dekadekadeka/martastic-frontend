@@ -12,11 +12,11 @@ body{
   font-family: 'Roboto', sans-serif !important ;
 }
 
-h1{
+h1, h2{
   font-family: 'Vampiro One', cursive !important ;
 }
 
-h2, h3, h4, h5{
+h3, h4, h5{
   font-family: 'Roboto', cursive !important ;
 }
 
@@ -214,9 +214,6 @@ h2, h3, h4, h5{
 }
 /* end schedule */
 /* stations */
-.stations{
-  margin-top: 10vh;
-}
 .station-pic {
   box-shadow: var(--lightShadow);
   transition: var(--mainTransition);
@@ -311,10 +308,8 @@ h2, h3, h4, h5{
   transition: var(--mainTransition);
 }
 
-.picslist {
+.pics-station-list {
   padding: 5rem 0;
-}
-.picslist-center {
   width: 80vw;
   margin: 0 auto;
   display: grid;
@@ -328,7 +323,7 @@ h2, h3, h4, h5{
 }
 
 @media screen and (min-width: 992px) {
-  .picslist-center {
+  .pics-station-list {
     width: 95vw;
     max-width: 1170px;
   }

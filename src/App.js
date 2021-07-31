@@ -9,7 +9,6 @@ import Navbar from './components/Navbar'
 import Schedule from './components/Schedule'
 import Stations from './pages/Stations'
 import Cobb from './pages/Cobb'
-import SingleStation from './components/SingleStation'
 import Pics from './pages/Pics'
 import SinglePic from './components/SinglePic'
 import Login from './pages/Login'
@@ -37,7 +36,6 @@ const App = () => {
         <Route exact path="/" component={Schedule} />
         <Route exact path="/schedule/" component={Schedule} />
         <Route exact path="/stations/" component={Stations} />
-        <Route exact path="/stations/:slug" component={SingleStation} />
         <Route exact path="/pics/" component={Pics} />
         <Route exact path="/pics/:id" component={SinglePic} />
         <Route exact path="/login" component={Login} />

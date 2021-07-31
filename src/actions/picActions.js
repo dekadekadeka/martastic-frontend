@@ -12,6 +12,19 @@ export const fetchPics = () => dispatch => {
   );
 }
 
+export const fetchSinglePic = (picId) => {
+  return dispatch => {
+    return fetch(`${url}/pics/${picId}`)
+      .then(resp => resp.json())
+      .then(data => {
+        dispatch({
+          type: 'FETCH_SINGLE_PIC',
+          payload: data
+        })
+    })
+  }
+}
+
 export const createPic = (picData) => dispatch => {
   const token = localStorage.token;
   fetch (`${url}/pics`, {

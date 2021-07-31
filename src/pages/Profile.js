@@ -49,7 +49,7 @@ const Profile = () => {
           <h1>My Friends</h1>
             {currentUser.friends.length === 0 ?
               <h2>You don't have any friends yet! :( </h2> :
-                <div className="picslist-center">
+                <div className="pics-station-list">
                 {currentUser.friends.map(friend => (
                   <Card key={friend.id}>
                     <CardActionArea>
@@ -79,7 +79,7 @@ const Profile = () => {
             }
           <h1>My Pics</h1>
           {currentUser.pics.length === 0 ? <h2>You don't have any pics yet! :(</h2> :
-            <div className="picslist-center">
+            <div className="pics-station-list">
               {currentUser.pics.map(pic => (
                 <React.Fragment>
                   <article className="pic" key={pic.id}>

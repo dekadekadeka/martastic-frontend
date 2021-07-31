@@ -3,7 +3,6 @@ import { config } from '../constants';
 const url = config.url.apiUrl;
 
 export const editUser = (userHash) => {
-    console.log(userHash)
     return async dispatch => {
         const token = localStorage.token;
         if (token) {

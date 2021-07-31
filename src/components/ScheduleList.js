@@ -29,7 +29,7 @@ const ScheduleList = ({ trains, loading }) => {
   };
 
   return (
-    <div className="picslist-center">
+    <div className="pics-station-list">
       {trains.map(train => (
         <Card>
           <CardContent>
