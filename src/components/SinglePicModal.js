@@ -52,10 +52,6 @@ const SinglePicModal = ({ open, setOpen, picId }) => {
     setOpen(false);
   };
 
-  // if (!pic || !picId) {
-  //   return null;
-  // }
-
   return (
     <Dialog
       fullScreen
@@ -92,7 +88,7 @@ const SinglePicModal = ({ open, setOpen, picId }) => {
                 />
                 <h4 style={{margin: '0px 0px 0px 10px'}}>Home Station: {pic.user.home_station}</h4>
                 <h4 style={{margin: '0px 0px 10px 10px'}}>Neighborhood: {pic.user.location}</h4>
-                {currentUser && (
+                {currentUser && currentUser.username && (
                   <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem'}}>
                     {!friends && !currentUser.friends.some(friend => friend.name === pic.user.name)?
                       <Button variant="outlined" color="primary" onClick={makeFriend}>Add Friend</Button>
