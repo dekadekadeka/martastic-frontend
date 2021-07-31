@@ -11,8 +11,7 @@ import StationMap from "./StationMap";
 import Comments from "./Comments";
 import CommentForm from "./CommentForm";
 
-import { fetchSingleStation } from "../actions/stationActions";
-import { editLikes } from "../actions/stationActions";
+import { fetchSingleStation, editLikes } from "../actions/stationActions";
 import { AppBar } from "@material-ui/core";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -31,18 +30,18 @@ const SingleStationModal = ({ open, setOpen, stationId }) => {
   const station = useSelector(state => state.stations.station);
   const currentUser = useSelector(state => state.currentUser.currentUser);
 
+  if (!station || station.status === 404 || !stationId) {
+    return null;
+  }
+
   const addLikes = () => {
     setLiked(true);
-    dispatch(editLikes(station))
+    dispatch(editLikes(station));
   }
 
   const handleClose = () => {
     setOpen(false);
   };
-
-  if (!stationId) {
-    return null;
-  }
 
   return (
     <Dialog

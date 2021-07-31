@@ -1,6 +1,7 @@
 const initialState = {
     pics: [],
-    error: ''
+    pic: null,
+    error: '',
 }
 export default function picReducer(state = initialState, action){
     switch(action.type){
@@ -8,6 +9,11 @@ export default function picReducer(state = initialState, action){
             return {
                 ...state,
                 pics: action.payload
+            }
+        case 'FETCH_SINGLE_PIC':
+            return {
+                ...state,
+                pic: action.payload
             }
         case 'NEW_PIC':
             return {

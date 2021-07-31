@@ -1,23 +1,32 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
-import defaultImg from '../images/404.jpg'
+import React, { useState } from 'react'
+import SinglePicModal from "./SinglePicModal";
 
 const PicList = ({ pics }) => {
-  // TODO: make a new component that is a SinglePic modal or something like that
-  // do the same thing for the stations
+  const [open, setOpen] = useState(false);
+  const [picId, setPicId] = useState(null);
+
   return (
     <React.Fragment>
       {pics.map(pic => (
-        <article className="pic" key={pic.id}>
+        <article
+          className="pic"
+          onClick={() => {
+            setPicId(pic.id);
+            setOpen(true);
+          }}>
           <div className="img-container">
-            <Link to={`/pics/${pic.id}`}>
-              <img src={pic.pic_url || defaultImg}
-                alt={{...pic}.station.name}
-              />
-            </Link>
+            <img
+              src={pic.pic_url}
+              alt={pic.station_name} key={pic.id}
+            />
           </div>
         </article>
       ))}
+      <SinglePicModal
+        open={open}
+        setOpen={setOpen}
+        picId={picId}
+      />
     </React.Fragment>
   );
 };

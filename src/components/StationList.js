@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 import SingleStationModal from "./SingleStationModal";
-import defaultImg from "../images/404.jpg";
 
 const StationList = ({ stations }) => {
   const [open, setOpen] = useState(false);
-  const [stationId, setStationId] = useState(null)
+  const [stationId, setStationId] = useState(null);
 
   return (
     <React.Fragment>
@@ -17,7 +16,7 @@ const StationList = ({ stations }) => {
           }}>
           <div className="img-container-stations">
             <img
-              src={station.first_pic_url || defaultImg}
+              src={station.first_pic_url}
               alt={station.name} key={station.id}
             />
             <h1 className="station-text">{station.name}</h1>
