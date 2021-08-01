@@ -25,12 +25,13 @@ const SinglePicModal = ({ open, setOpen, picId }) => {
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(fetchSinglePic(picId));
-  }, [picId, dispatch]);
-
+  const comment = useSelector(state => state.comments.comment);
   const pic = useSelector(state => state.pics.pic);
   const currentUser = useSelector(state => state.currentUser.currentUser);
+
+  useEffect(() => {
+    dispatch(fetchSinglePic(picId));
+  }, [picId, dispatch, comment]);
 
   if (!pic || pic.status === 404 || !picId) {
     return null;
@@ -109,7 +110,7 @@ const SinglePicModal = ({ open, setOpen, picId }) => {
               <Comments comments={pic.comments} />
             </React.Fragment>
           )}
-          {currentUser && (
+          {currentUser && currentUser.username && (
             <CommentForm type="Pic" id={pic.id} />
           )}
         </div>

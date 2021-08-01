@@ -5,7 +5,7 @@ import Button from '@material-ui/core/Button';
 import { createComment } from '../actions/commentActions'
 
 const CommentForm = ({ type, id }) => {
-  const [content,setContent] = useState('');
+  const [content, setContent] = useState('');
   const dispatch = useDispatch();
   const currentUser = useSelector(state => state.currentUser.currentUser);
 

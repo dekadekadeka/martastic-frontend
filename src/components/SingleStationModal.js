@@ -22,13 +22,13 @@ const SingleStationModal = ({ open, setOpen, stationId }) => {
   const [liked, setLiked] = useState(false);
 
   const dispatch = useDispatch();
+  const comment = useSelector(state => state.comments.comment);
+  const station = useSelector(state => state.stations.station);
+  const currentUser = useSelector(state => state.currentUser.currentUser);
 
   useEffect(() => {
     dispatch(fetchSingleStation(stationId));
-  }, [stationId, dispatch]);
-
-  const station = useSelector(state => state.stations.station);
-  const currentUser = useSelector(state => state.currentUser.currentUser);
+  }, [stationId, dispatch, comment]);
 
   if (!station || station.status === 404 || !stationId) {
     return null;
@@ -82,7 +82,7 @@ const SingleStationModal = ({ open, setOpen, stationId }) => {
               <Comments comments={station.comments} />
             </React.Fragment>
           )}
-          {currentUser && (
+          {currentUser && currentUser.username && (
             <CommentForm type="Station" id={station.id} />
           )}
         </div>

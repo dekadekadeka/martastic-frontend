@@ -183,7 +183,7 @@ h3, h4, h5{
 }
 
 .filter{
-  margin: 5rem 5rem;
+  margin: 5rem 5rem 0rem;
 }
 
 .empty-search {
@@ -209,7 +209,7 @@ h3, h4, h5{
 
 @media screen and (min-width: 992px) {
   .filter {
-    margin: 5rem 9rem;
+    margin: 5rem 9rem 0rem;
   }
 }
 /* end schedule */

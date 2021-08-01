@@ -1,18 +1,8 @@
-import { config } from '../../src/constants';
+import { config } from '../constants';
 
 const url = config.url.apiUrl;
 
-export const fetchComments = () => dispatch => {
-    fetch(`${url}/comments`)
-    .then(resp => resp.json())
-    .then(comments => dispatch({
-        type: 'FETCH_COMMENTS',
-        payload: comments
-    }))
-}
-
 export const createComment = (commentData) => dispatch => {
-    console.log(commentData)
     const token = localStorage.token;
     fetch(`${url}/comments`, {
         method: 'POST',
