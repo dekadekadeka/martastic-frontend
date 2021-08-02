@@ -1,26 +1,31 @@
 const initialState = {
-    comments: [],
-    newComment: null,
+  comment: null,
+  loading: false,
+  error: null,
 };
 
 export default function commentReducer (state = initialState, action){
-    switch(action.type){
-        case 'FETCH_COMMENTS':
-            return {
-                ...state,
-                comments: action.payload
-            }
-        case 'COMMENT_FAIL':
-            return {
-                ...state,
-                comment: action.payload
-            }
-        case 'NEW_COMMENT':
-            return {
-                ...state,
-                comment: action.payload
-            }
-        default:
-            return state
-    }
-}
+  switch(action.type){
+    case 'COMMENT_LOAD':
+      return {
+        ...state,
+        loading: true,
+        error: null,
+      };
+    case 'COMMENT_SUCCESS':
+      return {
+        ...state,
+        comment: action.payload,
+        loading: false,
+      };
+    case 'COMMENT_ERROR':
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+        comment: null,
+      };
+    default:
+      return state;
+  }
+};

@@ -22,7 +22,7 @@ const SingleStationModal = ({ open, setOpen, stationId }) => {
   const [liked, setLiked] = useState(false);
 
   const dispatch = useDispatch();
-  const comment = useSelector(state => state.comments.comment);
+  const comment = useSelector(state => state.comment);
   const station = useSelector(state => state.stations.station);
   const currentUser = useSelector(state => state.currentUser.currentUser);
 
@@ -79,11 +79,11 @@ const SingleStationModal = ({ open, setOpen, stationId }) => {
           {station.comments && (
             <React.Fragment>
               <h3 className="ui dividing header">Comments</h3>
-              <Comments comments={station.comments} />
+              <Comments comments={station.comments} loading={comment.loading} />
             </React.Fragment>
           )}
           {currentUser && currentUser.username && (
-            <CommentForm type="Station" id={station.id} />
+            <CommentForm type="Station" id={station.id} error={comment.error} />
           )}
         </div>
       </div>

@@ -25,7 +25,7 @@ const SinglePicModal = ({ open, setOpen, picId }) => {
 
   const dispatch = useDispatch();
 
-  const comment = useSelector(state => state.comments.comment);
+  const comment = useSelector(state => state.comment);
   const pic = useSelector(state => state.pics.pic);
   const currentUser = useSelector(state => state.currentUser.currentUser);
 
@@ -107,11 +107,11 @@ const SinglePicModal = ({ open, setOpen, picId }) => {
           {pic.comments && (
             <React.Fragment>
               <h3 className="ui dividing header">Comments</h3>
-              <Comments comments={pic.comments} />
+              <Comments comments={pic.comments} loading={comment.loading} />
             </React.Fragment>
           )}
           {currentUser && currentUser.username && (
-            <CommentForm type="Pic" id={pic.id} />
+            <CommentForm type="Pic" id={pic.id} error={comment.error} />
           )}
         </div>
       </div>
