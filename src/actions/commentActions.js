@@ -2,10 +2,6 @@ import { config } from '../constants';
 
 const url = config.url.apiUrl;
 
-export const createCommentBegin = () => ({
-  type: 'FETCH_PRODUCTS_BEGIN'
-});
-
 export const createComment = (commentData) => dispatch => {
   const token = localStorage.token;
   fetch(`${url}/comments`, {

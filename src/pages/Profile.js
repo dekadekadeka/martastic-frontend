@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import UserEditForm from '../components/UserEditForm'
 import Card from '@material-ui/core/Card';
@@ -7,18 +7,27 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
-import { deleteUser } from '../actions/authActions'
+import { deleteUser, getProfileFetch } from '../actions/authActions'
 import { deleteFriend } from '../actions/userActions'
 import { Link, useHistory } from 'react-router-dom';
 
 const Profile = () => {
-  const currentUser = useSelector(state => state.currentUser.currentUser);
   const dispatch = useDispatch();
+  const currentUser = useSelector(state => state.currentUser.currentUser);
+  useEffect(() => {
+    if (!currentUser) {
+      dispatch(getProfileFetch());
+    }
+  }, [dispatch, currentUser])
   const history = useHistory();
 
   const removeFriend = (deletedFriend) => {
     dispatch(deleteFriend(currentUser.id, deletedFriend))
   };
+
+  if (!currentUser) {
+    return <p>Loading....</p>
+  }
 
   return (
     <div className="profile">

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import SinglePicModal from "./SinglePicModal";
+import SinglePic from "./SinglePic";
 
 const PicList = ({ pics }) => {
   const [open, setOpen] = useState(false);
@@ -22,7 +22,7 @@ const PicList = ({ pics }) => {
           </div>
         </article>
       ))}
-      <SinglePicModal
+      <SinglePic
         open={open}
         setOpen={setOpen}
         picId={picId}

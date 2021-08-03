@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import SingleStationModal from "./SingleStationModal";
+import SingleStation from "./SingleStation";
 
 const StationList = ({ stations }) => {
   const [open, setOpen] = useState(false);
@@ -23,7 +23,7 @@ const StationList = ({ stations }) => {
           </div>
         </article>
       ))}
-      <SingleStationModal
+      <SingleStation
         open={open}
         setOpen={setOpen}
         stationId={stationId}

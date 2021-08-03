@@ -2,6 +2,28 @@ import { config } from '../constants';
 
 const url = config.url.apiUrl;
 
+export const getProfileFetch = () => {
+  return async dispatch => {
+    const token = localStorage.token;
+    if (token) {
+      const resp = await fetch(`${url}/profile`, {
+        method: "GET",
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+          'Authorization': `Bearer ${token}`
+        }
+      });
+      const data = await resp.json();
+      if (data.message) {
+        localStorage.removeItem('token');
+      } else {
+        dispatch(loginUser(data.user));
+      }
+    }
+  }
+}
+
 export const createUser = (user, history) => {
   return dispatch => {
   return fetch(`${url}/users`, {
@@ -19,11 +41,11 @@ export const createUser = (user, history) => {
           type: 'SIGNUP_FAIL',
           payload: data.error
         })
-        localStorage.removeItem("token");
+        localStorage.removeItem('token');
       } else {
-        localStorage.setItem("token", data.jwt);
+        localStorage.setItem('token', data.jwt);
         dispatch(loginUser(data.user));
-        history.push("/profile")
+        history.push('/profile')
       }
     })
   }

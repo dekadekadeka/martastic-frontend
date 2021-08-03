@@ -1,106 +1,125 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux';
-import { editLikes, addFriend } from '../actions/picActions';
-import Comments from './Comments'
-import CommentForm from './CommentForm'
-import Tooltip from '@material-ui/core/Tooltip';
-import CardHeader from '@material-ui/core/CardHeader';
-import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
-import { MdFavorite } from "react-icons/md";
-import { MdFavoriteBorder } from "react-icons/md"
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import Dialog from "@material-ui/core/Dialog";
+import { AppBar } from "@material-ui/core";
+import Toolbar from "@material-ui/core/Toolbar";
+import IconButton from "@material-ui/core/IconButton";
+import CloseIcon from "@material-ui/icons/Close";
+import Slide from "@material-ui/core/Slide";
+import { MdFavorite, MdFavoriteBorder } from "react-icons/md";
+import Comments from "./Comments";
+import CommentForm from "./CommentForm";
+import Tooltip from "@material-ui/core/Tooltip";
+import CardHeader from "@material-ui/core/CardHeader";
+import Avatar from "@material-ui/core/Avatar";
+import Button from "@material-ui/core/Button";
+import { fetchSinglePic, editLikes } from "../actions/picActions";
+import { addFriend } from "../actions/userActions";
 
-class SinglePic extends Component {
-    // TODO: We will turn this into a modal!
-    // TODO: we also have a LOT of backend work to do here!
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
 
-    state = {
-        liked: false,
-        pending: true,
-        friends: false
-    }
+const SinglePic = ({ open, setOpen, picId }) => {
+  const [liked, setLiked] = useState(false);
+  const [friends, setFriends] = useState(false)
 
-    addLikes = () => {
-        this.props.editLikes(this.props.pic)
-        this.setState({liked: !this.state.liked, pending: false})
-    }
+  const dispatch = useDispatch();
 
-    addFriend = () => {
-        const friend = {user_id: this.props.currentUser.id,
-            friend_id: this.props.pic.user.id}
-        this.props.addFriend(friend)
-        this.setState({friends: true})
-    }
+  const comment = useSelector(state => state.comment);
+  const pic = useSelector(state => state.pics.pic);
+  const currentUser = useSelector(state => state.currentUser.currentUser);
 
-    render() {
-        return (
-            <div className="single-pic">
-            <img className="big-pic" src={this.props.pic.pic_url} alt=""/>
-            <div className="likes">
-                <div className="pics-heart" onClick={this.state.pending ? this.addLikes : null}>
-                {this.state.liked ? <MdFavorite/> : <MdFavoriteBorder/>}
-                <h3>Likes: {this.props.pic.likes}</h3>
-                </div>
-                <Tooltip
-                title={
-                    <>
-                    <CardHeader
-                        titleTypographyProps={{variant: 'h5'}}
-                        subheaderTypographyProps={{variant: 'body1', color: '#fff'}}
-                        avatar={
-                        <Avatar
-                        style={{width: '7rem', height: '7rem',borderRadius: '4px'}}
-                        src={this.props.pic.user.profile_pic_url}/>
-                        }
-                        title={this.props.pic.user.name}
-                        subheader={this.props.pic.user.bio}
-                    />
-                    <h4 style={{margin: '0px 0px 0px 10px'}}>Home Station: {this.props.pic.user.home_station}</h4>
-                    <h4 style={{margin: '0px 0px 10px 10px'}}>Neighborhood: {this.props.pic.user.location}</h4>
-                    {localStorage.token ?
-                    <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem'}}>
-                        {!this.state.friends && !this.props.currentUser.friends.some(friend => friend.name === this.props.pic.user.name)?
-                        <Button variant="outlined" color="primary" onClick={this.addFriend}>Add Friend</Button>
-                        : <Button variant="contained" disabled>We're already friends</Button>}
-                    </div>
-                    :null
-                    }
-                    </>
-                }
-                interactive
-                >
-                    <h3>Picture by {this.props.pic.user.name}</h3>
-                </Tooltip>
-            </div>
-            <div className="ui comments">
-            <h3 className="ui dividing header">Comments</h3>
-            <Comments comments = {this.props.comments}/>
-            {localStorage.token && (
-              <CommentForm type="Pic" id={this.props.pic.id} />
-            )}
-            </div>
+  useEffect(() => {
+    dispatch(fetchSinglePic(picId));
+  }, [picId, dispatch, comment]);
+
+  if (!pic || pic.status === 404 || !picId) {
+    return null;
+  }
+
+  const addLikes = () => {
+    setLiked(true);
+    dispatch(editLikes(pic));
+  }
+
+  const makeFriend = () => {
+    const friend = {
+      user_id: currentUser.id,
+      friend_id: pic.user.id
+    };
+    dispatch(addFriend(friend));
+    setFriends(true);
+  }
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  return (
+    <Dialog
+      fullScreen
+      open={open}
+      onClose={handleClose}
+      TransitionComponent={Transition}
+    >
+      <AppBar position="sticky" style={{ backgroundImage: 'linear-gradient(135deg, #0092D0, #FDBE43, #FF7500)' }}>
+        <Toolbar>
+          <IconButton edge="start" color="inherit" onClick={handleClose} aria-label="close">
+            <CloseIcon />
+          </IconButton>
+        </Toolbar>
+      </AppBar>
+      <div className="single-pic">
+        <img className="big-pic" src={pic.pic_url} alt={pic.station} />
+        <div className="likes">
+          <div className="pics-heart" onClick={liked ? null : addLikes}>
+            {liked ? <MdFavorite/> : <MdFavoriteBorder/>}
+            <h3>Likes: {pic.likes}</h3>
+          </div>
+          <Tooltip
+            title={
+              <React.Fragment>
+                <CardHeader
+                  titleTypographyProps={{variant: 'h5'}}
+                  subheaderTypographyProps={{variant: 'body1', color: '#fff'}}
+                  avatar={<Avatar
+                      style={{width: '7rem', height: '7rem',borderRadius: '4px'}}
+                      src={pic.user.profile_pic_url}
+                    />}
+                  title={pic.user.name}
+                  subheader={pic.user.bio}
+                />
+                <h4 style={{margin: '0px 0px 0px 10px'}}>Home Station: {pic.user.home_station}</h4>
+                <h4 style={{margin: '0px 0px 10px 10px'}}>Neighborhood: {pic.user.location}</h4>
+                {currentUser && currentUser.username && (
+                  <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem'}}>
+                    {!friends && !currentUser.friends.some(friend => friend.name === pic.user.name)?
+                      <Button variant="outlined" color="primary" onClick={makeFriend}>Add Friend</Button>
+                      : <Button variant="contained" disabled>We're already friends</Button>}
+                  </div>
+                ) }
+              </React.Fragment>
+            }
+            interactive
+          >
+            <h3>Picture by {pic.user.name}</h3>
+          </Tooltip>
         </div>
-        )
-    }
+        <div className="ui comments">
+          {pic.comments && (
+            <React.Fragment>
+              <h3 className="ui dividing header">Comments</h3>
+              <Comments comments={pic.comments} loading={comment.loading} />
+            </React.Fragment>
+          )}
+          {currentUser && currentUser.username && (
+            <CommentForm type="Pic" id={pic.id} error={comment.error} />
+          )}
+        </div>
+      </div>
+    </Dialog>
+  );
 }
 
-function mapStateToProps(state, ownProps){
-    let pic = {id:'', user_id:'', station_id:'', pic_url:'', likes:'', user:{}, station: {}, comments:[]};
-    const picId = ownProps.match.params.id;
-    if(state.pics.pics.length > 0){
-        pic = Object.assign({}, state.pics.pics.find(pic => pic.id === parseInt(picId)))
-    }
-    if(pic.comments.length >= 0){
-        pic.comments = pic.comments.concat(state.comments.comments)
-    }
-    return {pic: pic,
-        currentUser: state.currentUser.currentUser,
-        comments: pic.comments}
-}
-
-const mapDispatchToProps = dispatch => ({
-    editLikes: (pic) => dispatch(editLikes(pic)),
-    addFriend: (friend) => dispatch(addFriend(friend))
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(SinglePic)
+export default SinglePic;

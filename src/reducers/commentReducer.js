@@ -5,7 +5,7 @@ const initialState = {
 };
 
 export default function commentReducer (state = initialState, action){
-  switch(action.type){
+  switch(action.type) {
     case 'COMMENT_LOAD':
       return {
         ...state,
@@ -21,9 +21,9 @@ export default function commentReducer (state = initialState, action){
     case 'COMMENT_ERROR':
       return {
         ...state,
+        comment: null,
         loading: false,
         error: action.payload,
-        comment: null,
       };
     default:
       return state;
