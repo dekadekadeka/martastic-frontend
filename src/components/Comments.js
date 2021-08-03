@@ -1,25 +1,25 @@
 import React from 'react';
 import { FaRegFrown } from "react-icons/fa";
 
-const Comments = ({ comments }) => {
+const Comments = ({ comments, loading }) => {
   return (
     <React.Fragment>
-      {comments.map (comment => (
+      {comments.map(comment => (
         <React.Fragment>
           <div className="comment" key={comment.id}>
           <span className="avatar">
-            {{ ...comment.user }.profile_pic_url === undefined ?
+            {comment.user.profile_pic_url === undefined ?
               <span className="sad"><FaRegFrown/></span> :
-              <img src={{ ...comment.user }.profile_pic_url} alt="Yay Marta"/>
+              <img src={comment.user.profile_pic_url} alt="Yay Marta"/>
             }
           </span>
             <div className="content">
-              {{ ...comment.user }.name === undefined ?
+              {comment.user.name === undefined ?
                 "[user deleted]" :
-                <span className="author">{{ ...comment.user }.name}</span>
+                <span className="author">{comment.user.name}</span>
               }
               <div className="metadata">
-                <span className="date">{{ ...comment.user }.home_station}</span>
+                <span className="date">{comment.user.home_station}</span>
               </div>
               <div className="text">
                 {comment.content}
@@ -28,6 +28,9 @@ const Comments = ({ comments }) => {
           </div>
         </React.Fragment>
       ))}
+      {loading && (
+        <p>Loading...</p>
+      )}
     </React.Fragment>
   )
 }

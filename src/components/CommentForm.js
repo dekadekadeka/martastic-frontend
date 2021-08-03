@@ -4,8 +4,8 @@ import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button';
 import { createComment } from '../actions/commentActions'
 
-const CommentForm = ({ type, id }) => {
-  const [content,setContent] = useState('');
+const CommentForm = ({ type, id, error }) => {
+  const [content, setContent] = useState('');
   const dispatch = useDispatch();
   const currentUser = useSelector(state => state.currentUser.currentUser);
 
@@ -30,6 +30,8 @@ const CommentForm = ({ type, id }) => {
       <div className="field">
         <TextField
           name="content"
+          error={error}
+          helperText={error}
           label="Add Comment"
           type="content"
           value={content}
@@ -40,7 +42,7 @@ const CommentForm = ({ type, id }) => {
       </div>
       <Button
         type="submit"
-        disabled={!content}
+        disabled={!content || error}
         variant="outlined"
       >
         {content ? 'Add Comment' : 'Write Something First'}
