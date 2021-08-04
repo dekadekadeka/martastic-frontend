@@ -1,7 +1,7 @@
 import React,{ useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { editUser } from '../actions/userActions';
+import { editUser } from '../actions/authActions';
 
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -29,10 +29,13 @@ const UserEditForm = ({ user }) => {
   };
 
   const handleSubmit = event => {
-    // TODO: fix this so it shows as soon as user edits
-    // TODO: and so they don't have to refresh
     event.preventDefault();
     dispatch(editUser(userEdit));
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
   };
 
   return (
