@@ -14,7 +14,7 @@ import CardHeader from "@material-ui/core/CardHeader";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import { fetchSinglePic, editLikes } from "../actions/picActions";
-import { addFriend } from "../actions/userActions";
+import { addFriend } from "../actions/authActions";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -22,7 +22,6 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 const SinglePic = ({ open, setOpen, picId }) => {
   const [liked, setLiked] = useState(false);
-  const [friends, setFriends] = useState(false)
 
   const dispatch = useDispatch();
 
@@ -45,15 +44,14 @@ const SinglePic = ({ open, setOpen, picId }) => {
 
   const makeFriend = () => {
     const friend = {
-      user_id: currentUser.id,
       friend_id: pic.user.id
     };
     dispatch(addFriend(friend));
-    setFriends(true);
   }
 
   const handleClose = () => {
     setOpen(false);
+    setLiked(false);
   };
 
   return (
@@ -92,13 +90,13 @@ const SinglePic = ({ open, setOpen, picId }) => {
                 />
                 <h4 style={{margin: '0px 0px 0px 10px'}}>Home Station: {pic.user.home_station}</h4>
                 <h4 style={{margin: '0px 0px 10px 10px'}}>Neighborhood: {pic.user.location}</h4>
-                {currentUser && currentUser.username && (
+                {currentUser && (
                   <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem'}}>
-                    {!friends && !currentUser.friends.some(friend => friend.name === pic.user.name)?
+                    {!currentUser.friends.some(friend => friend.id === pic.user.id)?
                       <Button variant="outlined" color="primary" onClick={makeFriend}>Add Friend</Button>
                       : <Button variant="contained" disabled>We're already friends</Button>}
                   </div>
-                ) }
+                )}
               </React.Fragment>
             }
             interactive

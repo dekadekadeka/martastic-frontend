@@ -7,8 +7,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
-import { deleteUser, getProfileFetch } from '../actions/authActions'
-import { deleteFriend } from '../actions/userActions'
+import { deleteFriend, deleteUser, getProfileFetch } from '../actions/authActions'
 import { Link, useHistory } from 'react-router-dom';
 
 const Profile = () => {
@@ -21,8 +20,8 @@ const Profile = () => {
   }, [dispatch, currentUser])
   const history = useHistory();
 
-  const removeFriend = (deletedFriend) => {
-    dispatch(deleteFriend(currentUser.id, deletedFriend))
+  const removeFriend = deletedFriend => {
+    dispatch(deleteFriend(deletedFriend))
   };
 
   if (!currentUser) {
