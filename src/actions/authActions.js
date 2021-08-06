@@ -140,11 +140,9 @@ export const deleteUser = (userObj, history) => dispatch => {
   );
 };
 
-// change this to create/delete friendships from the currentUser side.
-// /friendships endpoint is not working to render information correctly either in the profile or the pics.
-export const addFriend = (friend) => dispatch => {
+export const addFriend = friend => dispatch => {
   const token = localStorage.token;
-  fetch(`${url}/friendships`, {
+  fetch(`${url}/add-friend`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -158,38 +156,45 @@ export const addFriend = (friend) => dispatch => {
       dispatch({
         type: 'FRIEND_LOAD',
       })
-      if (data.friend_id) {
+      if (data.user) {
         dispatch({
           type: 'ADD_FRIEND',
-          // payload: data
+          payload: data.user
         })
       } else if (data.error) {
         dispatch({
-          type: 'ADD_FRIEND_FAIL',
+          type: 'ADD_FRIEND_ERROR',
           payload: data.error
         })
       }
     });
 }
 
-export const deleteFriend = (user, friend) => dispatch => {
+export const deleteFriend = friend => dispatch => {
   const token = localStorage.token;
-  fetch(`${url}/friendships`)
+  fetch(`${url}/delete-friend`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      'Authorization': `Bearer ${ token }`
+    },
+    body: JSON.stringify({ friend_id: friend })
+  })
     .then(resp => resp.json())
     .then(data => {
-      let toBeDeleted = (
-        data.find(friendObj => friendObj.user_id === user && friendObj.friend_id === friend)
-      )
-      fetch(`${url}/friendships/${toBeDeleted.id}`, {
-        method: 'DELETE',
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
-      })
-        .then(dispatch({
-          type: 'DELETE_FRIEND'
-        }))
-    })
+      if (data.user) {
+        dispatch({
+          type: 'DELETE_FRIEND',
+          payload: data.user
+        })
+      } else if (data.error) {
+        dispatch({
+          type: 'DELETE_FRIEND_ERROR',
+          payload: data.error
+        })
+      }
+    });
 }
 
 const loginUser = userObj => ({

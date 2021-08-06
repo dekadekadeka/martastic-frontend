@@ -20,8 +20,8 @@ const Profile = () => {
   }, [dispatch, currentUser])
   const history = useHistory();
 
-  const removeFriend = (deletedFriend) => {
-    dispatch(deleteFriend(currentUser.id, deletedFriend))
+  const removeFriend = deletedFriend => {
+    dispatch(deleteFriend(deletedFriend))
   };
 
   if (!currentUser) {

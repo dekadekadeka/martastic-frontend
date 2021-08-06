@@ -56,6 +56,11 @@ export default function authReducer (state = initialState, action) {
         ...state,
         currentUser: action.payload,
       }
+    case 'DELETE_FRIEND_ERROR':
+      return {
+        ...state,
+        error: action.payload,
+      }
     default:
       return state;
   }

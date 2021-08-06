@@ -44,13 +44,9 @@ const SinglePic = ({ open, setOpen, picId }) => {
 
   const makeFriend = () => {
     const friend = {
-      user_id: currentUser.id,
       friend_id: pic.user.id
     };
-    // add friend
     dispatch(addFriend(friend));
-    // re-fetch currentUser
-    // dispatch(getProfileFetch());
   }
 
   const handleClose = () => {
